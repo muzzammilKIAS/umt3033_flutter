@@ -1,0 +1,612 @@
+[
+  {
+    "id": 1,
+    "code": "UMT3033-U01",
+    "titleAr": "التَّعْرِيفُ بِالْمُقَرَّرِ",
+    "title": "Pengenalan Kursus",
+    "pageNumber": 9,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "Menyatakan objektif kursus Bahasa Arab Asas untuk Muamalat dan skopnya.",
+      "Mengenal pasti komponen pembelajaran utama kursus ini.",
+      "Menggunakan kosa kata asas yang berkaitan dengan kursus dan pembelajaran.",
+      "Memahami dialog berkaitan hari pertama kuliah."
+    ],
+    "introductionAr": "",
+    "introduction": "Kursus ini memperkenalkan pelajar kepada asas Bahasa Arab yang diperlukan untuk memahami istilah dan teks yang dipermudahkan dalam bidang muamalat dan kewangan Islam.",
+    "vocab": [
+      {
+        "id": "u01-vocab-001",
+        "arabic": "مُقَرَّرٌ",
+        "meaning": "Kursus",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-002",
+        "arabic": "لُغَةٌ عَرَبِيَّةٌ",
+        "meaning": "Bahasa Arab",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-003",
+        "arabic": "مُعَامَلَاتٌ",
+        "meaning": "Muamalat",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-004",
+        "arabic": "طَالِبٌ",
+        "meaning": "Pelajar lelaki",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-005",
+        "arabic": "طَالِبَةٌ",
+        "meaning": "Pelajar perempuan",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-006",
+        "arabic": "مُحَاضِرٌ",
+        "meaning": "Pensyarah lelaki",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-007",
+        "arabic": "مُحَاضِرَةٌ",
+        "meaning": "Pensyarah perempuan",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-008",
+        "arabic": "دَرْسٌ",
+        "meaning": "Pelajaran",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-009",
+        "arabic": "مَوْضُوعٌ",
+        "meaning": "Topik",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-010",
+        "arabic": "وَاجِبٌ",
+        "meaning": "Tugasan",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-011",
+        "arabic": "اِخْتِبَارٌ",
+        "meaning": "Ujian",
+        "type": "اِسْمٌ"
+      },
+      {
+        "id": "u01-vocab-012",
+        "arabic": "عَرْضٌ تَقْدِيمِيٌّ",
+        "meaning": "Pembentangan",
+        "type": "اِسْمٌ"
+      }
+    ],
+    "dialog": [
+      {
+        "id": "u01-dialog-001",
+        "arabic": "الْمُحَاضِرَةُ: السَّلَامُ عَلَيْكُمْ، أَهْلًا وَسَهْلًا بِكُمْ فِي مُقَرَّرِ اللُّغَةِ الْعَرَبِيَّةِ لِلْمُعَامَلَاتِ.",
+        "meaning": "Pensyarah: Assalamualaikum. Selamat datang ke kursus Bahasa Arab untuk Muamalat.",
+        "speakerLabel": "Pensyarah",
+        "speakerAr": "الْمُحَاضِرَةُ",
+        "gender": "female"
+      },
+      {
+        "id": "u01-dialog-002",
+        "arabic": "الطَّالِبُ: وَعَلَيْكُمُ السَّلَامُ. مَا مَوْضُوعَاتُ هَذَا الْمُقَرَّرِ؟",
+        "meaning": "Pelajar: Waalaikumussalam. Apakah topik-topik dalam kursus ini?",
+        "speakerLabel": "Pelajar",
+        "speakerAr": "الطَّالِبُ",
+        "gender": "male"
+      },
+      {
+        "id": "u01-dialog-003",
+        "arabic": "الْمُحَاضِرَةُ: نَدْرُسُ الْمُفْرَدَاتِ وَالْحِوَارَ وَالْقَوَاعِدَ وَنُصُوصَ الْمُعَامَلَاتِ.",
+        "meaning": "Pensyarah: Kita mempelajari mufradat perbualan tatabahasa dan teks muamalat.",
+        "speakerLabel": "Pensyarah",
+        "speakerAr": "الْمُحَاضِرَةُ",
+        "gender": "female"
+      },
+      {
+        "id": "u01-dialog-004",
+        "arabic": "الطَّالِبُ: هَلْ فِي الْمُقَرَّرِ وَاجِبٌ وَعَرْضٌ تَقْدِيمِيٌّ؟",
+        "meaning": "Pelajar: Adakah kursus ini mempunyai tugasan dan pembentangan?",
+        "speakerLabel": "Pelajar",
+        "speakerAr": "الطَّالِبُ",
+        "gender": "male"
+      },
+      {
+        "id": "u01-dialog-005",
+        "arabic": "الْمُحَاضِرَةُ: نَعَمْ، فِيهِ اِخْتِبَارٌ وَوَاجِبٌ وَعَرْضٌ تَقْدِيمِيٌّ.",
+        "meaning": "Pensyarah: Ya terdapat ujian tugasan dan pembentangan.",
+        "speakerLabel": "Pensyarah",
+        "speakerAr": "الْمُحَاضِرَةُ",
+        "gender": "female"
+      },
+      {
+        "id": "u01-dialog-006",
+        "arabic": "الطَّالِبُ: شُكْرًا. سَأَجْتَهِدُ فِي هَذَا الْمُقَرَّرِ.",
+        "meaning": "Pelajar: Terima kasih. Saya akan berusaha bersungguh-sungguh dalam kursus ini.",
+        "speakerLabel": "Pelajar",
+        "speakerAr": "الطَّالِبُ",
+        "gender": "male"
+      }
+    ],
+    "dialogInstructionAr": "",
+    "readingAr": "مُقَرَّرُ اللُّغَةِ الْعَرَبِيَّةِ لِلْمُعَامَلَاتِ مُقَرَّرٌ أَسَاسِيٌّ لِطُلَّابِ الْمُعَامَلَاتِ وَالْمَالِيَّةِ الْإِسْلَامِيَّةِ. يَتَعَلَّمُ الطَّالِبُ فِيهِ الْمُفْرَدَاتِ وَالْقَوَاعِدَ الْأَسَاسِيَّةَ، وَيَقْرَأُ نُصُوصًا قَصِيرَةً، وَيُجْرِي حِوَارَاتٍ فِي مَوْضُوعَاتٍ مِثْلَ الْمَصْرِفِ وَالِاسْتِثْمَارِ وَالزَّكَاةِ وَالتَّكَافُلِ. وَيَجْتَهِدُ الطَّالِبُ فِي التَّعَلُّمِ، وَيَسْتَعْمِلُ اللُّغَةَ الْعَرَبِيَّةَ فِي دِرَاسَتِهِ.\nMaksud: Kursus Bahasa Arab untuk Muamalat ialah kursus asas bagi pelajar muamalat dan kewangan Islam. Pelajar mempelajari mufradat dan tatabahasa asas membaca teks pendek serta menjalankan perbualan tentang topik seperti bank pelaburan zakat dan takaful. Pelajar berusaha dalam pembelajaran dan menggunakan Bahasa Arab dalam pengajiannya.",
+    "readingMs": "Kursus Bahasa Arab untuk Muamalat merupakan kursus asas untuk pelajar bidang muamalat dan kewangan Islam. Pelajar mempelajari kosa kata, kaedah tatabahasa asas dan teks bacaan ringkas berkaitan muamalat. Kursus ini juga melatih kemahiran perbualan, penulisan dan pemahaman istilah dalam Bahasa Arab. Semua pelajar digalakkan menyertai aktiviti tugasan dan pembentangan dalam kursus ini.",
+    "hadithAr": "قَالَ رَسُولُ اللهِ ﷺ \"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ\"\nصَحِيحُ مُسْلِمٍ، رَقْمُ ٢٦٩٩.\nMaksud: “Sesiapa yang menempuh suatu jalan untuk mencari ilmu, Allah memudahkan baginya jalan menuju syurga.”",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [
+      "يَحْتَاجُ طَلَبُ الْعِلْمِ إِلَى الْجِدِّ وَالِاجْتِهَادِ.",
+      "يَنْبَغِي أَنْ يُعْمَلَ بِالْعِلْمِ النَّافِعِ بِأَمَانَةٍ.",
+      "عَلَى الطَّالِبِ أَنْ يَلْتَزِمَ بِالْأَدَبِ وَالِانْضِبَاطِ وَالتَّعَاوُنِ طَوَالَ الْمُقَرَّرِ."
+    ],
+    "exercisesAr": "أَجِبْ عَنِ الْأَسْئِلَةِ الْآتِيَةِ جَمِيعِهَا:\n١. صِلْ سِتَّ مُفْرَدَاتٍ عَرَبِيَّةٍ بِمَعَانِيهَا الصَّحِيحَةِ.\n٢. اُذْكُرْ أَرْبَعَةَ مُكَوِّنَاتٍ يَتَعَلَّمُهَا الطَّالِبُ فِي هَذَا الْمُقَرَّرِ.\n٣. كَوِّنْ جُمْلَتَيْنِ بَسِيطَتَيْنِ بِاسْتِعْمَالِ كَلِمَتَيْ مُقَرَّرٌ وَطَالِبٌ.\n٤. عَرِّفْ بِنَفْسِكَ بِاللُّغَةِ الْعَرَبِيَّةِ، وَاذْكُرِ اسْمَكَ وَبَرْنَامَجَ دِرَاسَتِكَ وَمَا تَرْجُوهُ مِنَ الْمُقَرَّرِ.\n٥. نَاقِشْ مَعَ زُمَلَائِكَ مَوْضُوعًا وَاحِدًا مِنْ مَوْضُوعَاتِ الْمُعَامَلَاتِ يَصْلُحُ لِلْعَرْضِ الْجَمَاعِيِّ.",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "",
+    "summary": "Pelajar telah mengenali objektif kursus, skop pembelajaran dan kaedah penilaian. Pelajar juga mempelajari kosa kata asas dan ungkapan yang digunakan pada hari pertama kuliah.",
+    "assessmentAr": "ضَعْ عَلَامَةَ (✓) أَمَامَ الْعِبَارَاتِ الَّتِي أَتْقَنْتَهَا:\n☐ أَسْتَطِيعُ أَنْ أُبَيِّنَ أَهْدَافَ الْمُقَرَّرِ.\n☐ أَسْتَطِيعُ أَنْ أَذْكُرَ ثَمَانِيَ مُفْرَدَاتٍ عَلَى الْأَقَلِّ فِي مَوْضُوعِ التَّعَلُّمِ.\n☐ أَسْتَطِيعُ أَنْ أُعَرِّفَ بِنَفْسِي تَعْرِيفًا مُخْتَصَرًا بِاللُّغَةِ الْعَرَبِيَّةِ.\n☐ أَفْهَمُ مَسْؤُولِيَّتِي نَحْوَ الِاخْتِبَارَاتِ الْقَصِيرَةِ وَالِاخْتِبَارِ وَالْعَرْضِ التَّقْدِيمِيِّ.",
+    "assessmentItems": [
+      "أَسْتَطِيعُ أَنْ أُبَيِّنَ أَهْدَافَ الْمُقَرَّرِ.",
+      "أَسْتَطِيعُ أَنْ أَذْكُرَ ثَمَانِيَ مُفْرَدَاتٍ عَلَى الْأَقَلِّ فِي مَوْضُوعِ التَّعَلُّمِ.",
+      "أَسْتَطِيعُ أَنْ أُعَرِّفَ بِنَفْسِي تَعْرِيفًا مُخْتَصَرًا بِاللُّغَةِ الْعَرَبِيَّةِ.",
+      "أَفْهَمُ مَسْؤُولِيَّتِي نَحْوَ الِاخْتِبَارَاتِ الْقَصِيرَةِ وَالِاخْتِبَارِ وَالْعَرْضِ التَّقْدِيمِيِّ."
+    ],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[PERLU SEMAKAN PENSYARAH]"
+    }
+  },
+  {
+    "id": 2,
+    "code": "UMT3033-U02",
+    "titleAr": "الْحِوَارُ فِي مُؤَسَّسَةِ الْمُعَامَلَاتِ الْإِسْلَامِيَّةِ",
+    "title": "Dialog di Institusi Muamalat Islam",
+    "pageNumber": 11,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 3,
+    "code": "UMT3033-U03",
+    "titleAr": "الْحِوَارُ فِي الْمَصْرِفِ",
+    "title": "Dialog di Bank",
+    "pageNumber": 18,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 4,
+    "code": "UMT3033-U04",
+    "titleAr": "آيَاتٌ قُرْآنِيَّةٌ فِي الْمُعَامَلَاتِ",
+    "title": "Ayat-Ayat al-Quran dalam Muamalat",
+    "pageNumber": 27,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 5,
+    "code": "UMT3033-U05",
+    "titleAr": "أَحَادِيثُ فِي الْمُعَامَلَاتِ",
+    "title": "Hadis-Hadis dalam Muamalat",
+    "pageNumber": 36,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 6,
+    "code": "UMT3033-U06",
+    "titleAr": "الِاسْتِثْمَارُ",
+    "title": "Pelaburan",
+    "pageNumber": 44,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 7,
+    "code": "UMT3033-U07",
+    "titleAr": "الْحَلَالُ وَالْحَرَامُ فِي الْمُعَامَلَاتِ",
+    "title": "Halal dan Haram dalam Muamalat",
+    "pageNumber": 53,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 8,
+    "code": "UMT3033-U08",
+    "titleAr": "التَّكَافُلُ وَالتَّأْمِينُ",
+    "title": "Takaful dan Insurans",
+    "pageNumber": 61,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 9,
+    "code": "UMT3033-U09",
+    "titleAr": "بَيْتُ الْمَالِ",
+    "title": "Baitulmal",
+    "pageNumber": 67,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 10,
+    "code": "UMT3033-U10",
+    "titleAr": "الزَّكَاةُ وَالصَّدَقَةُ وَالْهِبَةُ",
+    "title": "Zakat, Sedekah dan Hibah",
+    "pageNumber": 76,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 11,
+    "code": "UMT3033-U11",
+    "titleAr": "الرَّهْنُ",
+    "title": "Ar-Rahn",
+    "pageNumber": 84,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 12,
+    "code": "UMT3033-U12",
+    "titleAr": "النُّقُودُ وَالصَّرْفُ",
+    "title": "Mata Wang dan Sarf",
+    "pageNumber": 96,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 13,
+    "code": "UMT3033-U13",
+    "titleAr": "اشْتِقَاقُ مُصْطَلَحَاتِ الْمُعَامَلَاتِ وَأَوْزَانُهَا",
+    "title": "Pembentukan Istilah Muamalat dan Wazan",
+    "pageNumber": 105,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  },
+  {
+    "id": 14,
+    "code": "UMT3033-U14",
+    "titleAr": "مُقَدِّمَةٌ إِلَى مُعْجَمِ مُصْطَلَحَاتِ الْمُعَامَلَاتِ",
+    "title": "Pengenalan Kamus Istilah Muamalat",
+    "pageNumber": 115,
+    "outcomesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "outcomes": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "introductionAr": "[PERLU SEMAKAN PENSYARAH]",
+    "introduction": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "vocab": [],
+    "dialog": [],
+    "dialogInstructionAr": "",
+    "readingAr": "[PERLU SEMAKAN PENSYARAH]",
+    "readingMs": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "hadithAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "hadithSource": "",
+    "hadithMaksud": "",
+    "hadithLessons": [],
+    "exercisesAr": "[PERLU SEMAKAN PENSYARAH]",
+    "exercises": [
+      "[PERLU SEMAKAN PENSYARAH]"
+    ],
+    "summaryAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "summary": "[Kandungan akan tersedia selepas pengesahan pensyarah]",
+    "assessmentAr": "[KANDUNGAN BELUM TERSEDIA]",
+    "assessmentItems": [],
+    "rules": {
+      "title": "Kaidah Bahasa",
+      "content": "[KANDUNGAN BELUM TERSEDIA]"
+    }
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "id": "u01-vocab-001",
+    "term": "Kursus",
+    "termAr": "مُقَرَّرٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-002",
+    "term": "Bahasa Arab",
+    "termAr": "لُغَةٌ عَرَبِيَّةٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-003",
+    "term": "Muamalat",
+    "termAr": "مُعَامَلَاتٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-004",
+    "term": "Pelajar lelaki",
+    "termAr": "طَالِبٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-005",
+    "term": "Pelajar perempuan",
+    "termAr": "طَالِبَةٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-006",
+    "term": "Pensyarah lelaki",
+    "termAr": "مُحَاضِرٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-007",
+    "term": "Pensyarah perempuan",
+    "termAr": "مُحَاضِرَةٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-008",
+    "term": "Pelajaran",
+    "termAr": "دَرْسٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-009",
+    "term": "Topik",
+    "termAr": "مَوْضُوعٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-010",
+    "term": "Tugasan",
+    "termAr": "وَاجِبٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-011",
+    "term": "Ujian",
+    "termAr": "اِخْتِبَارٌ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-012",
+    "term": "Pembentangan",
+    "termAr": "عَرْضٌ تَقْدِيمِيٌّ",
+    "type": "اِسْمٌ",
+    "unitId": 1
+  }
+]

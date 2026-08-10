@@ -1,0 +1,416 @@
+{
+  "version": "1.0",
+  "ttsModel": "Piper TTS ar_JO-kareem-low",
+  "license": "MIT",
+  "generatedCount": 42,
+  "items": [
+    {
+      "id": "u01-vocab-001",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُقَرَّرٌ",
+      "meaning": "Kursus",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-001-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-001",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُقَرَّرٌ",
+      "meaning": "Kursus",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-001-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-002",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "لُغَةٌ عَرَبِيَّةٌ",
+      "meaning": "Bahasa Arab",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-002-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-002",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "لُغَةٌ عَرَبِيَّةٌ",
+      "meaning": "Bahasa Arab",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-002-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-003",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُعَامَلَاتٌ",
+      "meaning": "Muamalat",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-003-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-003",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُعَامَلَاتٌ",
+      "meaning": "Muamalat",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-003-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-004",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "طَالِبٌ",
+      "meaning": "Pelajar lelaki",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-004-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-004",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "طَالِبٌ",
+      "meaning": "Pelajar lelaki",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-004-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-005",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "طَالِبَةٌ",
+      "meaning": "Pelajar perempuan",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-005-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-005",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "طَالِبَةٌ",
+      "meaning": "Pelajar perempuan",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-005-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-006",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُحَاضِرٌ",
+      "meaning": "Pensyarah lelaki",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-006-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-006",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُحَاضِرٌ",
+      "meaning": "Pensyarah lelaki",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-006-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-007",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُحَاضِرَةٌ",
+      "meaning": "Pensyarah perempuan",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-007-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-007",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مُحَاضِرَةٌ",
+      "meaning": "Pensyarah perempuan",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-007-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-008",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "دَرْسٌ",
+      "meaning": "Pelajaran",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-008-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-008",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "دَرْسٌ",
+      "meaning": "Pelajaran",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-008-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-009",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مَوْضُوعٌ",
+      "meaning": "Topik",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-009-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-009",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "مَوْضُوعٌ",
+      "meaning": "Topik",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-009-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-010",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "وَاجِبٌ",
+      "meaning": "Tugasan",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-010-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-010",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "وَاجِبٌ",
+      "meaning": "Tugasan",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-010-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-011",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "اِخْتِبَارٌ",
+      "meaning": "Ujian",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-011-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-011",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "اِخْتِبَارٌ",
+      "meaning": "Ujian",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-011-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-012",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "عَرْضٌ تَقْدِيمِيٌّ",
+      "meaning": "Pembentangan",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-vocab-012-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-vocab-012",
+      "unitId": 1,
+      "section": "vocab",
+      "arabic": "عَرْضٌ تَقْدِيمِيٌّ",
+      "meaning": "Pembentangan",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-vocab-012-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-001",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الْمُحَاضِرَةُ: السَّلَامُ عَلَيْكُمْ، أَهْلًا وَسَهْلًا بِكُمْ فِي مُقَرَّرِ اللُّغَةِ الْعَرَبِيَّةِ لِلْمُعَامَلَاتِ.",
+      "meaning": "Pensyarah: Assalamualaikum. Selamat datang ke kursus Bahasa Arab untuk Muamalat.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-dialog-001-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-002",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الطَّالِبُ: وَعَلَيْكُمُ السَّلَامُ. مَا مَوْضُوعَاتُ هَذَا الْمُقَرَّرِ؟",
+      "meaning": "Pelajar: Waalaikumussalam. Apakah topik-topik dalam kursus ini?",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-dialog-002-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-003",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الْمُحَاضِرَةُ: نَدْرُسُ الْمُفْرَدَاتِ وَالْحِوَارَ وَالْقَوَاعِدَ وَنُصُوصَ الْمُعَامَلَاتِ.",
+      "meaning": "Pensyarah: Kita mempelajari mufradat perbualan tatabahasa dan teks muamalat.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-dialog-003-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-004",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الطَّالِبُ: هَلْ فِي الْمُقَرَّرِ وَاجِبٌ وَعَرْضٌ تَقْدِيمِيٌّ؟",
+      "meaning": "Pelajar: Adakah kursus ini mempunyai tugasan dan pembentangan?",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-dialog-004-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-005",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الْمُحَاضِرَةُ: نَعَمْ، فِيهِ اِخْتِبَارٌ وَوَاجِبٌ وَعَرْضٌ تَقْدِيمِيٌّ.",
+      "meaning": "Pensyarah: Ya terdapat ujian tugasan dan pembentangan.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-dialog-005-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-dialog-006",
+      "unitId": 1,
+      "section": "dialog",
+      "arabic": "الطَّالِبُ: شُكْرًا. سَأَجْتَهِدُ فِي هَذَا الْمُقَرَّرِ.",
+      "meaning": "Pelajar: Terima kasih. Saya akan berusaha bersungguh-sungguh dalam kursus ini.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-dialog-006-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-reading",
+      "unitId": 1,
+      "section": "reading",
+      "arabic": "مُقَرَّرُ اللُّغَةِ الْعَرَبِيَّةِ لِلْمُعَامَلَاتِ مُقَرَّرٌ أَسَاسِيٌّ لِطُلَّابِ الْمُعَامَلَاتِ وَالْمَالِيَّةِ الْإِسْلَامِيَّةِ. يَتَعَلَّمُ الطَّالِبُ فِيهِ الْمُفْرَدَاتِ وَالْقَوَاعِدَ الْأَسَاسِيَّةَ، وَيَقْرَأُ نُصُوصًا قَصِيرَةً، وَيُجْرِي حِوَارَاتٍ فِي مَوْضُوعَاتٍ مِثْلَ الْمَصْرِفِ وَالِاسْتِثْمَارِ وَالزَّكَاةِ وَالتَّكَافُلِ. وَيَجْتَهِدُ الطَّالِبُ فِي التَّعَلُّمِ، وَيَسْتَعْمِلُ اللُّغَةَ الْعَرَبِيَّةَ فِي دِرَاسَتِهِ.\nMaksud: Kursus Bahasa Arab untuk Muamalat ialah kursus asas bagi pelajar muamalat dan kewangan Islam. Pelajar mempelajari mufradat dan tatabahasa asas membaca teks pendek serta menjalankan perbualan tentang topik seperti bank pelaburan zakat dan takaful. Pelajar berusaha dalam pembelajaran dan menggunakan Bahasa Arab dalam pengajiannya.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-reading-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-reading",
+      "unitId": 1,
+      "section": "reading",
+      "arabic": "مُقَرَّرُ اللُّغَةِ الْعَرَبِيَّةِ لِلْمُعَامَلَاتِ مُقَرَّرٌ أَسَاسِيٌّ لِطُلَّابِ الْمُعَامَلَاتِ وَالْمَالِيَّةِ الْإِسْلَامِيَّةِ. يَتَعَلَّمُ الطَّالِبُ فِيهِ الْمُفْرَدَاتِ وَالْقَوَاعِدَ الْأَسَاسِيَّةَ، وَيَقْرَأُ نُصُوصًا قَصِيرَةً، وَيُجْرِي حِوَارَاتٍ فِي مَوْضُوعَاتٍ مِثْلَ الْمَصْرِفِ وَالِاسْتِثْمَارِ وَالزَّكَاةِ وَالتَّكَافُلِ. وَيَجْتَهِدُ الطَّالِبُ فِي التَّعَلُّمِ، وَيَسْتَعْمِلُ اللُّغَةَ الْعَرَبِيَّةَ فِي دِرَاسَتِهِ.\nMaksud: Kursus Bahasa Arab untuk Muamalat ialah kursus asas bagi pelajar muamalat dan kewangan Islam. Pelajar mempelajari mufradat dan tatabahasa asas membaca teks pendek serta menjalankan perbualan tentang topik seperti bank pelaburan zakat dan takaful. Pelajar berusaha dalam pembelajaran dan menggunakan Bahasa Arab dalam pengajiannya.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-reading-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-hadith",
+      "unitId": 1,
+      "section": "hadith",
+      "arabic": "قَالَ رَسُولُ اللهِ ﷺ \"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ\"\nصَحِيحُ مُسْلِمٍ، رَقْمُ ٢٦٩٩.\nMaksud: “Sesiapa yang menempuh suatu jalan untuk mencari ilmu, Allah memudahkan baginya jalan menuju syurga.”",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-hadith-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-hadith",
+      "unitId": 1,
+      "section": "hadith",
+      "arabic": "قَالَ رَسُولُ اللهِ ﷺ \"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ\"\nصَحِيحُ مُسْلِمٍ، رَقْمُ ٢٦٩٩.\nMaksud: “Sesiapa yang menempuh suatu jalan untuk mencari ilmu, Allah memudahkan baginya jalan menuju syurga.”",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-hadith-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-001",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أُبَيِّنَ أَهْدَافَ الْمُقَرَّرِ.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-assess-001-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-001",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أُبَيِّنَ أَهْدَافَ الْمُقَرَّرِ.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-assess-001-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-002",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أَذْكُرَ ثَمَانِيَ مُفْرَدَاتٍ عَلَى الْأَقَلِّ فِي مَوْضُوعِ التَّعَلُّمِ.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-assess-002-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-002",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أَذْكُرَ ثَمَانِيَ مُفْرَدَاتٍ عَلَى الْأَقَلِّ فِي مَوْضُوعِ التَّعَلُّمِ.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-assess-002-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-003",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أُعَرِّفَ بِنَفْسِي تَعْرِيفًا مُخْتَصَرًا بِاللُّغَةِ الْعَرَبِيَّةِ.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-assess-003-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-003",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَسْتَطِيعُ أَنْ أُعَرِّفَ بِنَفْسِي تَعْرِيفًا مُخْتَصَرًا بِاللُّغَةِ الْعَرَبِيَّةِ.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-assess-003-female.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-004",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَفْهَمُ مَسْؤُولِيَّتِي نَحْوَ الِاخْتِبَارَاتِ الْقَصِيرَةِ وَالِاخْتِبَارِ وَالْعَرْضِ التَّقْدِيمِيِّ.",
+      "gender": "male",
+      "path": "/audio/unit-01/male/u01-assess-004-male.wav",
+      "status": "generated"
+    },
+    {
+      "id": "u01-assess-004",
+      "unitId": 1,
+      "section": "assessment",
+      "arabic": "أَفْهَمُ مَسْؤُولِيَّتِي نَحْوَ الِاخْتِبَارَاتِ الْقَصِيرَةِ وَالِاخْتِبَارِ وَالْعَرْضِ التَّقْدِيمِيِّ.",
+      "gender": "female",
+      "path": "/audio/unit-01/female/u01-assess-004-female.wav",
+      "status": "generated"
+    }
+  ]
+}
