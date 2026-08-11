@@ -1011,6 +1011,8 @@ class _UnitScreenState extends State<UnitScreen> {
                   : _OpenExercise(exercise: ex),
             ),
           ),
+          if (unit.modelAnswersAr.isNotEmpty)
+            _ModelAnswersReveal(answers: unit.modelAnswersAr),
         ],
       ),
     );
@@ -1174,6 +1176,116 @@ class _OpenExerciseState extends State<_OpenExercise> {
           label: Text(done ? 'Ditandakan Selesai' : 'Tandakan Selesai'),
         ),
       ],
+    );
+  }
+}
+
+/// Lecturer answer-guide model answers for this unit, collapsed by default --
+/// the student must explicitly tap to reveal them. Framed as guidance
+/// ("نموذج الإجابة", per the guide's own wording), not an auto-grading key:
+/// open-ended activities may have more than one acceptable answer.
+class _ModelAnswersReveal extends StatefulWidget {
+  final List<String> answers;
+  const _ModelAnswersReveal({required this.answers});
+
+  @override
+  State<_ModelAnswersReveal> createState() => _ModelAnswersRevealState();
+}
+
+class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
+  bool _revealed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
+    return Container(
+      margin: const EdgeInsets.only(top: 4),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: tokens.mist,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: tokens.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: () => setState(() => _revealed = !_revealed),
+            child: Row(
+              children: [
+                Icon(
+                  _revealed
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  size: 18,
+                  color: scheme.primary,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    _revealed
+                        ? 'Sembunyikan نَمُوذَجَ الْإِجَابَةِ'
+                        : 'Papar نَمُوذَجُ الْإِجَابَةِ (Panduan Pensyarah)',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: scheme.primary,
+                      fontSize: 13,
+                    ),
+                  ),
+                ),
+                Icon(
+                  _revealed ? Icons.expand_less : Icons.expand_more,
+                  color: scheme.primary,
+                ),
+              ],
+            ),
+          ),
+          if (_revealed) ...[
+            const SizedBox(height: 10),
+            Text(
+              'Ini panduan jawapan contoh daripada dalil pensyarah. Aktiviti terbuka mungkin mempunyai lebih daripada satu jawapan yang boleh diterima.',
+              style: TextStyle(
+                fontSize: 11,
+                color: tokens.textSecondary,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            const Divider(height: 20),
+            ...widget.answers.asMap().entries.map(
+              (e) => Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${e.key + 1}.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: tokens.textSecondary,
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        e.value,
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(
+                          fontFamily: 'LotusLinotype',
+                          fontSize: 14,
+                          height: 1.6,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

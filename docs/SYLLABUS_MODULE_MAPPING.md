@@ -47,20 +47,24 @@ numbers; the syllabus therefore does not mandate a specific teaching week per
 unit, only the topic order, which is followed exactly (Unit 1 → Unit 14, no
 reordering).
 
-## Known limitation: answer guide not yet wired into the app
+## Answer guide integration
 
-`Dalil_Al-Ijabat_UMT3033_Final.docx` (the lecturer answer guide) was located
-and its path recorded above, but time did not allow parsing it into a
-structured, per-exercise answer key in this pass. Consequently:
+`Dalil_Al-Ijabat_UMT3033_Final.docx` (the lecturer answer guide, marked
+"نسخة المحاضر — ليست للتوزيع على الطلبة") is now parsed by
+`scripts/extract_answer_guide.py` into `assets/data/answer_guide.json`,
+grouped per unit (204 model-answer blocks across all 14 units). It has no
+per-question anchors to bind each answer to one specific exercise
+sub-question reliably, so answers are surfaced grouped **per unit** rather
+than mapped 1:1 to a single exercise — misattributing a specific answer
+would be worse than not attaching it precisely. In the app:
 
-- Interactive exercises (matching type) self-check using the unit's own
-  vocabulary table as the answer key (mathematically identical to the
-  approved answers, since matching exercises reuse vocab already in the
-  module) — this is safe and required no answer-guide parsing.
-- Other exercise types (classification, fill-in, comprehension) are offered
-  as free-response with a "mark as attempted" toggle, not auto-graded,
-  which is the deliberately safe fallback per the project's exercise-feedback
-  rules (never mark open-ended work objectively wrong).
-- No lecturer answer content is exposed to students anywhere in the app.
+- Interactive matching exercises still self-check using the unit's own
+  vocabulary table (an exact, verifiable answer key for that exercise type).
+- All other exercises remain free-response, never auto-graded incorrect.
+- A unit's grouped model answers are available behind an explicit
+  "Papar نموذج الإجابة (Panduan Pensyarah)" reveal toggle at the end of the
+  exercises section — collapsed by default, framed as lecturer guidance
+  ("قد تُقبل إجابات أخرى صحيحة" per the guide's own preface), never exposed
+  automatically or presented as the single compulsory answer.
 
-See `docs/CONTENT_REVIEW_FLAGS.md` for how this is tracked as follow-up work.
+See `docs/CONTENT_REVIEW_FLAGS.md` for the detailed reasoning.

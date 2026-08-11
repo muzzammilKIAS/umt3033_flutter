@@ -42,8 +42,10 @@ The app's content is derived, in this priority order, from:
    which lists the 14-unit topic sequence and grammar scope.
 2. **Final edited student module** — `Topik_*_Enriched_Final.docx` (7 files,
    2 units each), the newest approved version.
-3. **Answer guide** — `Dalil_Al-Ijabat_UMT3033_Final.docx` (located; not yet
-   parsed into the app — see `docs/CONTENT_REVIEW_FLAGS.md`).
+3. **Answer guide** — `Dalil_Al-Ijabat_UMT3033_Final.docx`, parsed into
+   per-unit model answers surfaced behind an explicit reveal toggle in each
+   unit's exercises section (never shown by default, never auto-graded —
+   see `docs/CONTENT_REVIEW_FLAGS.md`).
 4. **Existing app architecture** — preserved and extended, not replaced.
 
 Full source-to-unit mapping: `docs/SYLLABUS_MODULE_MAPPING.md`.
@@ -67,6 +69,7 @@ only ever reads the committed JSON/audio under `assets/`.
 pip3 install python-docx piper-tts pillow
 
 python3 scripts/extract_units.py          # DOCX -> assets/data/units_extracted.json
+python3 scripts/extract_answer_guide.py   # lecturer answer guide -> answer_guide.json
 python3 scripts/build_units_json.py       # -> units.json, glossary.json, references.json
 python3 scripts/extract_illustrations.py  # -> assets/images/units/*.jpg + illustrations.json
 python3 scripts/generate_hiwar_audio.py   # -> assets/audio/unit-NN/male/*.wav + audio-manifest.json
@@ -107,12 +110,17 @@ bundled as a secondary option but not currently used by default.
 ## Testing & QA
 
 ```bash
-flutter analyze   # 0 issues
-flutter test      # 14/14 passing (11 data-integrity + 3 widget smoke tests)
-flutter build web --release   # succeeds (used as the build-QA proxy —
-                               # this dev machine has no Android SDK/JDK or
-                               # full Xcode installed; see OVERNIGHT_WORKLOG)
+flutter analyze        # 0 issues
+flutter test           # 15/15 passing (12 data-integrity + 3 widget smoke tests)
+flutter build web --release   # succeeds
+flutter build apk --debug     # succeeds (JDK 17 + Android cmdline-tools
+                               # installed via Homebrew during setup; see
+                               # docs/OVERNIGHT_WORKLOG.md)
 ```
+
+iOS build was not attempted — this machine's Xcode install is incomplete
+(`sudo xcode-select`/App Store steps require interactive/admin access not
+available in this environment).
 
 ## Design
 

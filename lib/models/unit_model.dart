@@ -122,6 +122,13 @@ class UnitModel {
   final String pairPracticeRoleB;
   final String pairPracticeConditionsAr;
   final List<ExerciseBlock> exercises;
+
+  /// Lecturer answer-guide model answers for this unit's exercises, in
+  /// document order. Grouped per-unit rather than bound to one specific
+  /// exercise (the source guide has no reliable per-question anchor to bind
+  /// to; see docs/CONTENT_REVIEW_FLAGS.md). Never shown by default -- only
+  /// behind an explicit "reveal" action in the UI.
+  final List<String> modelAnswersAr;
   final String summaryAr;
   final List<String> assessmentItems;
   final String? illustration;
@@ -159,6 +166,7 @@ class UnitModel {
     this.pairPracticeRoleB = '',
     this.pairPracticeConditionsAr = '',
     this.exercises = const [],
+    this.modelAnswersAr = const [],
     this.summaryAr = '',
     this.assessmentItems = const [],
     this.illustration,
@@ -216,6 +224,7 @@ class UnitModel {
     exercises: (json['exercises'] as List<dynamic>? ?? [])
         .map((e) => ExerciseBlock.fromJson(e))
         .toList(),
+    modelAnswersAr: List<String>.from(json['modelAnswersAr'] ?? []),
     summaryAr: json['summaryAr'] ?? '',
     assessmentItems: List<String>.from(json['assessmentItems'] ?? []),
     illustration: json['illustration'] as String?,

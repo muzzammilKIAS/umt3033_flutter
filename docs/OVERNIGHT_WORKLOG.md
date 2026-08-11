@@ -115,9 +115,38 @@ every step (never trusted blindly).
   environment limitation, not a code defect; the web build (same Dart
   compiler front-end) is the closest available compile-correctness proxy.
 
+## 9. Follow-up pass: answer guide + Android build
+
+- **Android toolchain.** `flutter build apk --debug` initially failed (no
+  JDK, `cmdline-tools` missing from an otherwise-present Android SDK).
+  Fixed without any sudo/admin prompts: `brew install openjdk@17` (a
+  Homebrew *formula*, installs into `/opt/homebrew` — no root needed, unlike
+  the `temurin@17` *cask*, which requires a `.pkg` install under sudo and
+  was abandoned after it hung on a password prompt), pointed Flutter at it
+  with `flutter config --jdk-dir`, downloaded Android cmdline-tools directly
+  from Google's repository into the existing `~/Library/Android/sdk`,
+  accepted the SDK licenses non-interactively. Result:
+  `flutter build apk --debug` now succeeds (264MB debug APK, includes the
+  108MB bundled audio). iOS remains unattempted — Xcode's missing pieces
+  require interactive `sudo`/App Store steps this environment can't do.
+- **Answer guide.** Added `scripts/extract_answer_guide.py`, parsing
+  `Dalil_Al-Ijabat_UMT3033_Final.docx` into 204 model-answer blocks grouped
+  per unit (verified unit-boundary paragraphs match `units.json` titles for
+  all 14 units). Wired into `UnitModel.modelAnswersAr` and a new
+  `_ModelAnswersReveal` widget in `UnitScreen`: collapsed by default, an
+  explicit tap reveals that unit's lecturer-guide answers, clearly labelled
+  as guidance ("other correct answers may be accepted"), never auto-graded.
+  Per-exercise (rather than per-unit) binding was deliberately not
+  attempted — the guide has no per-question anchor, and guessing one risks
+  attaching the wrong answer to the wrong question, which is worse than the
+  current unit-grouped presentation. See `docs/CONTENT_REVIEW_FLAGS.md`.
+- `flutter analyze` clean, `flutter test` 15/15 passing (added a 12th data
+  test asserting every unit has model answers available) after both fixes.
+
 ## Limitations carried forward (see docs/CONTENT_REVIEW_FLAGS.md for detail)
 
-- Answer guide (`Dalil_Al-Ijabat_UMT3033_Final.docx`) located but not parsed
-  into a structured per-exercise key in this pass.
+- Answer-guide model answers are grouped per unit, not bound to one specific
+  exercise sub-question (see §9 above for why).
 - Female voice quality/identity depends on the end-user's device TTS engine.
-- Android/iOS builds unverified in this environment (web build verified).
+- iOS build unverified (Xcode installation incomplete on this machine and
+  requires interactive/admin steps).

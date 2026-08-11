@@ -18,6 +18,10 @@ def load(name):
 def main():
     units = load("units_extracted.json")
     illustrations = load("illustrations.json")
+    try:
+        answer_guide = load("answer_guide.json")
+    except FileNotFoundError:
+        answer_guide = {}
 
     glossary = []
     seen_terms = set()
@@ -55,6 +59,12 @@ def main():
 
         img = illustrations.get(str(no))
         u["illustration"] = img[0] if img else None
+
+        # Lecturer answer-guide model answers (see docs/TTS... no, see
+        # docs/CONTENT_REVIEW_FLAGS.md for why these are grouped per-unit
+        # rather than bound to one specific exercise). Never shown to
+        # students by default in the app -- only behind an explicit reveal.
+        u["modelAnswersAr"] = answer_guide.get(str(no), [])
 
         for src, text, kind in [
             (u.get("hadithSource", ""), u.get("hadithAr", ""), "hadith"),

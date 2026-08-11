@@ -64,6 +64,19 @@ void main() {
     });
 
     test(
+      'every unit has lecturer-guide model answers available (reveal-only)',
+      () {
+        for (final u in units) {
+          expect(
+            u.modelAnswersAr,
+            isNotEmpty,
+            reason: 'unit ${u.id} missing modelAnswersAr',
+          );
+        }
+      },
+    );
+
+    test(
       'dialogue speaker gender is always male or female (never guessed odd/even)',
       () {
         for (final u in units) {
