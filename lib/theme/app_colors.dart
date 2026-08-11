@@ -1,35 +1,39 @@
 import 'package:flutter/material.dart';
 
+/// Design tokens for the "premium digital university Arabic textbook" look:
+/// deep teal + sage + mist/ivory, with a restrained champagne accent.
+/// No orange/brown/cocoa anywhere in the app -- see docs/OVERNIGHT_WORKLOG.md.
 class AppColors {
-  static const MaterialColor burntOrange = MaterialColor(0xFFF5670A, {
-    50: Color(0xFFFFF0E5),
-    100: Color(0xFFFFD4B3),
-    200: Color(0xFFFFB980),
-    300: Color(0xFFFF9E4D),
-    400: Color(0xFFFA8729),
-    500: Color(0xFFF5670A),
-    600: Color(0xFFCF4A05),
-    700: Color(0xFFA83704),
-    800: Color(0xFF802903),
-    900: Color(0xFF591A02),
-  });
+  AppColors._();
 
-  static const Color accent = Color(0xFFF5670A);
-  static const Color accentHover = Color(0xFFCF4A05);
-  static const Color accentSoft = Color(0xFFFFB36F);
+  // ---- Light palette ----
+  static const Color primaryDeepTeal = Color(0xFF164E4A);
+  static const Color primaryDark = Color(0xFF103B38);
+  static const Color secondarySage = Color(0xFF789C94);
+  static const Color softSage = Color(0xFFAFC5BF);
+  static const Color veryLightSage = Color(0xFFE5EFEC);
+  static const Color mistBackground = Color(0xFFF3F7F6);
+  static const Color warmIvory = Color(0xFFFAFBF8);
+  static const Color surfaceLight = Color(0xFFFFFFFF);
+  static const Color textPrimaryLight = Color(0xFF203331);
+  static const Color textSecondaryLight = Color(0xFF5D706D);
+  static const Color borderLight = Color(0xFFD5E1DE);
+  static const Color mutedChampagne = Color(0xFFB7A46A);
+  static const Color veryLightChampagne = Color(0xFFF2EEDC);
 
-  static const Color espresso = Color(0xFF4A1F0D);
-  static const Color darkCocoa = Color(0xFF2A1008);
-  static const Color warmWhite = Color(0xFFFFF8F1);
-  static const Color cream = Color(0xFFF7E8DA);
-  static const Color mutedBrown = Color(0xFFBFA99A);
-  static const Color white = Color(0xFFFFFFFF);
+  // ---- Dark palette ----
+  static const Color backgroundDark = Color(0xFF0D1C1B);
+  static const Color surfaceDark = Color(0xFF132624);
+  static const Color elevatedSurfaceDark = Color(0xFF19302D);
+  static const Color primaryTealDark = Color(0xFF74A79E);
+  static const Color softTealDark = Color(0xFF96BBB4);
+  static const Color textPrimaryDark = Color(0xFFECF4F2);
+  static const Color textSecondaryDark = Color(0xFFA9BFBA);
+  static const Color borderDark = Color(0xFF294440);
+  static const Color mutedChampagneDark = Color(0xFFB8A873);
 
-  static const Color textDark = Color(0xFF2A1008);
-  static const Color textMid = Color(0xFF4A1F0D);
-  static const Color textMuted = Color(0xFF795F50);
-  static const Color textOnDark = Color(0xFFFFF8F1);
+  // ---- Semantic (shared) ----
   static const Color success = Color(0xFF2D6A4F);
-  static const Color error = Color(0xFF8D1F12);
-  static const Color warning = Color(0xFFB87A14);
+  static const Color error = Color(0xFFB3261E);
+  static const Color warning = Color(0xFF8A6D1E);
 }

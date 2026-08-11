@@ -43,3 +43,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Development-time content tooling (not shipped in the app; large or
+# regeneratable). See docs/README for how to reconstruct these.
+/scripts/.piper_voices/
+/assets/data/units_extracted.json
+/docs/_extract_report.txt

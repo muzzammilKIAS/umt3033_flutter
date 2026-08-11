@@ -42,7 +42,10 @@ class StorageService extends ChangeNotifier {
     var progress = _state['progress'] as Map<String, dynamic>?;
     progress ??= {};
     _state['progress'] = progress;
-    progress['$unitId'] = {'completed': true, 'completedAt': DateTime.now().toIso8601String()};
+    progress['$unitId'] = {
+      'completed': true,
+      'completedAt': DateTime.now().toIso8601String(),
+    };
     _save();
   }
 
@@ -69,8 +72,28 @@ class StorageService extends ChangeNotifier {
     _save();
   }
 
+  /// Generic checked-state set for self-assessment checklists / pair-practice
+  /// "mark complete" toggles -- kept separate from [vocabLearned] so the
+  /// dashboard's vocabulary count stat stays accurate.
+  Set<String> get checkedItems {
+    final raw = _state['checkedItems'] as List? ?? [];
+    return raw.cast<String>().toSet();
+  }
+
+  void toggleChecked(String id) {
+    var raw = _state['checkedItems'] as List? ?? [];
+    _state['checkedItems'] = raw;
+    if (raw.contains(id)) {
+      raw.remove(id);
+    } else {
+      raw.add(id);
+    }
+    _save();
+  }
+
+  /// 'light' | 'dark' | 'system'
   String get theme {
-    return _state['theme'] as String? ?? 'light';
+    return _state['theme'] as String? ?? 'system';
   }
 
   void setTheme(String theme) {
@@ -78,12 +101,40 @@ class StorageService extends ChangeNotifier {
     _save();
   }
 
-  Map<String, dynamic> get audioPrefs {
-    return _state['audioPrefs'] as Map<String, dynamic>? ?? {
-      'voice': 'male',
-      'speed': 1.0,
-      'repeat': 'none',
+  double get textScale {
+    return (_state['textScale'] as num?)?.toDouble() ?? 1.0;
+  }
+
+  void setTextScale(double scale) {
+    _state['textScale'] = scale;
+    _save();
+  }
+
+  bool isExerciseAnswered(String exerciseId) {
+    final answers = _state['exerciseAnswers'] as Map<String, dynamic>? ?? {};
+    return answers.containsKey(exerciseId);
+  }
+
+  bool? exerciseCorrect(String exerciseId) {
+    final answers = _state['exerciseAnswers'] as Map<String, dynamic>? ?? {};
+    final entry = answers[exerciseId] as Map<String, dynamic>?;
+    return entry?['correct'] as bool?;
+  }
+
+  void setExerciseAnswer(String exerciseId, {required bool correct}) {
+    var answers = _state['exerciseAnswers'] as Map<String, dynamic>?;
+    answers ??= {};
+    _state['exerciseAnswers'] = answers;
+    answers[exerciseId] = {
+      'correct': correct,
+      'at': DateTime.now().toIso8601String(),
     };
+    _save();
+  }
+
+  Map<String, dynamic> get audioPrefs {
+    return _state['audioPrefs'] as Map<String, dynamic>? ??
+        {'voice': 'male', 'speed': 1.0, 'repeat': 'none'};
   }
 
   void setAudioPref(String key, dynamic value) {

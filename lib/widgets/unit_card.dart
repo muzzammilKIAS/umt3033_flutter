@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/unit_model.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_theme.dart';
 
 class UnitCard extends StatelessWidget {
   final UnitModel unit;
@@ -16,64 +16,127 @@ class UnitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(18),
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: completed ? AppColors.success : AppColors.accentHover,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+              if (unit.illustration != null)
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    unit.illustration!,
+                    width: 64,
+                    height: 64,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              else
+                Container(
+                  width: 64,
+                  height: 64,
+                  decoration: BoxDecoration(
+                    color: tokens.mist,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Center(
                     child: Text(
-                      'Unit ${unit.id}',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 11,
+                      '${unit.id}',
+                      style: TextStyle(
+                        fontSize: 22,
                         fontWeight: FontWeight.w800,
+                        color: scheme.primary,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  Text(
-                    unit.code,
-                    style: const TextStyle(fontSize: 11, color: AppColors.textMuted),
-                  ),
-                  const Spacer(),
-                  if (completed)
-                    const Icon(Icons.check_circle, color: AppColors.success, size: 20),
-                ],
-              ),
-              const SizedBox(height: 14),
-              Text(
-                unit.titleAr,
-                textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontFamily: 'LotusLinotype',
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textMid,
-                  height: 1.6,
+                ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: completed
+                                ? AppColors2.success(context)
+                                : scheme.primary,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            'Unit ${unit.id}',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        if (completed)
+                          Icon(
+                            Icons.check_circle,
+                            color: AppColors2.success(context),
+                            size: 18,
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      unit.titleAr,
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
+                      style: const TextStyle(
+                        fontFamily: 'LotusLinotype',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 1.6,
+                      ),
+                    ),
+                    if (unit.titleSubAr.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        unit.titleSubAr,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: tokens.textSecondary,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                unit.title,
-                style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.textMid),
-              ),
+              Icon(Icons.chevron_right, color: tokens.textSecondary),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+/// Small helper so semantic success/error stay theme-aware without importing
+/// AppColors' raw brightness-specific constants directly in widgets.
+class AppColors2 {
+  static Color success(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+      ? const Color(0xFF5FAE86)
+      : const Color(0xFF2D6A4F);
+  static Color error(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+      ? const Color(0xFFE0837A)
+      : const Color(0xFFB3261E);
 }

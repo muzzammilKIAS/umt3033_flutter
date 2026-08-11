@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 import '../models/unit_model.dart';
 import '../services/data_service.dart';
 import '../services/storage_service.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_theme.dart';
 import '../widgets/unit_card.dart';
+import 'unit_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   final void Function(int unitId) onOpenUnit;
@@ -17,39 +18,28 @@ class DashboardScreen extends StatelessWidget {
     final storage = context.watch<StorageService>();
     final course = data.course;
     final units = data.units;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final tokens = context.tokens;
 
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'اللُّغَةُ الْعَرَبِيَّةُ لِلْمُعَامَلَاتِ',
+            const Text(
+              'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
+              textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontFamily: 'LotusLinotype',
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
-                color: AppColors.textOnDark,
               ),
             ),
             Text(
               'Basic Arabic for Muamalat • UMT3033',
-              style: TextStyle(
-                fontSize: 11,
-                color: AppColors.mutedBrown,
-              ),
+              style: TextStyle(fontSize: 11, color: tokens.textSecondary),
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
-            onPressed: () {
-              storage.setTheme(isDark ? 'light' : 'dark');
-            },
-          ),
-        ],
       ),
       body: units.isEmpty
           ? const Center(child: CircularProgressIndicator())
@@ -58,87 +48,86 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 _heroSection(context, course, storage),
                 const SizedBox(height: 20),
-                _progressCards(storage, context),
+                _progressCard(context, storage),
                 const SizedBox(height: 24),
-                _sectionHeader('فِهْرِسُ الْوَحَدَاتِ', 'Senarai Unit Pembelajaran'),
+                _sectionHeader(
+                  context,
+                  'فِهْرِسُ الْوَحَدَاتِ',
+                  'Senarai Unit Pembelajaran',
+                ),
                 const SizedBox(height: 12),
-                ...units.map((u) => UnitCard(
-                      unit: u,
-                      completed: storage.isUnitCompleted(u.id),
-                      onTap: () => onOpenUnit(u.id),
-                    )),
+                ...units.map(
+                  (u) => UnitCard(
+                    unit: u,
+                    completed: storage.isUnitCompleted(u.id),
+                    onTap: () => onOpenUnit(u.id),
+                  ),
+                ),
               ],
             ),
     );
   }
 
-  Widget _heroSection(BuildContext context, CourseModel? course, StorageService storage) {
+  Widget _heroSection(
+    BuildContext context,
+    CourseModel? course,
+    StorageService storage,
+  ) {
+    final tokens = context.tokens;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
-        gradient: const LinearGradient(
-          colors: [Color(0xFF2A1008), Color(0xFF4A1F0D)],
+        gradient: LinearGradient(
+          colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.3),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
-          ),
-        ],
       ),
       padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _eyebrow('MODUL INTERAKTIF • 14 UNIT'),
-          const SizedBox(height: 12),
-          Text(
-            'اللُّغَةُ الْعَرَبِيَّةُ لِلْمُعَامَلَاتِ',
+          _eyebrow('مُقَرَّرٌ تَفَاعُلِيٌّ • ١٤ وَحْدَةً'),
+          const SizedBox(height: 14),
+          const Text(
+            'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
             textAlign: TextAlign.right,
+            textDirection: TextDirection.rtl,
             style: TextStyle(
               fontFamily: 'LotusLinotype',
-              fontSize: 32,
+              fontSize: 26,
               fontWeight: FontWeight.bold,
-              color: AppColors.textOnDark,
-              height: 1.5,
+              color: Colors.white,
+              height: 1.6,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             course?.courseTitleEn ?? 'Basic Arabic for Muamalat',
-            style: TextStyle(
-              color: AppColors.mutedBrown,
-              fontSize: 14,
-            ),
+            style: const TextStyle(color: Colors.white70, fontSize: 14),
           ),
           Text(
             '${course?.courseCode ?? 'UMT3033'} • ${course?.authorName ?? ''}',
-            style: TextStyle(
-              color: AppColors.accentSoft,
-              fontSize: 13,
-            ),
+            style: const TextStyle(color: Colors.white60, fontSize: 12),
           ),
           const SizedBox(height: 20),
-          Row(
-            children: [
-              ElevatedButton.icon(
-                onPressed: () => onOpenUnit(storage.lastUnitId),
-                icon: const Icon(Icons.play_arrow, size: 20),
-                label: Text(storage.lastUnitId > 1 ? 'Sambung Belajar' : 'Mula Belajar'),
+          ElevatedButton.icon(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => UnitScreen(unitId: storage.lastUnitId),
               ),
-              const SizedBox(width: 12),
-              OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: AppColors.accentSoft,
-                  side: const BorderSide(color: AppColors.accentSoft),
-                ),
-                child: const Text('Panduan Kursus'),
-              ),
-            ],
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: tokens.heroGradientStart,
+            ),
+            icon: const Icon(Icons.play_arrow, size: 20),
+            label: Text(
+              storage.lastUnitId > 1 || storage.completedUnitCount > 0
+                  ? 'Sambung Belajar'
+                  : 'Mula Belajar',
+            ),
           ),
         ],
       ),
@@ -149,50 +138,67 @@ class DashboardScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.accent.withValues(alpha: 0.2),
+        color: Colors.white.withValues(alpha: 0.14),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.accent.withValues(alpha: 0.4)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
       ),
       child: Text(
         text,
+        textDirection: TextDirection.rtl,
         style: const TextStyle(
-          color: AppColors.accentSoft,
+          color: Colors.white,
           fontSize: 11,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 1.5,
+          fontFamily: 'LotusLinotype',
+          fontWeight: FontWeight.w700,
         ),
       ),
     );
   }
 
-  Widget _progressCards(StorageService storage, BuildContext ctx) {
+  Widget _progressCard(BuildContext context, StorageService storage) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(ctx).cardColor,
+        color: tokens.card,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.textDark.withValues(alpha: 0.08)),
+        border: Border.all(color: tokens.border),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionKicker('تَقَدُّمُ التَّعَلُّمِ', 'Progress'),
-          const SizedBox(height: 12),
+          _sectionKicker(context, 'تَقَدُّمُ التَّعَلُّمِ', 'Progress'),
+          const SizedBox(height: 14),
           Row(
             children: [
-              _statCard('Unit Selesai', '${storage.completedUnitCount}/14', Icons.check_circle),
-              _statCard('Kosa Kata', '${storage.vocabLearned.length}', Icons.book),
-              _statCard('Progress', '${(storage.overallProgress * 100).round()}%', Icons.trending_up),
+              _statTile(
+                context,
+                'Unit Selesai',
+                '${storage.completedUnitCount}/14',
+                Icons.check_circle_outline,
+              ),
+              _statTile(
+                context,
+                'Kosa Kata',
+                '${storage.vocabLearned.length}',
+                Icons.style_outlined,
+              ),
+              _statTile(
+                context,
+                'Progress',
+                '${(storage.overallProgress * 100).round()}%',
+                Icons.trending_up,
+              ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: LinearProgressIndicator(
               value: storage.overallProgress,
-              backgroundColor: AppColors.accent.withValues(alpha: 0.1),
-              color: AppColors.accent,
               minHeight: 8,
+              color: scheme.primary,
             ),
           ),
         ],
@@ -200,25 +206,40 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _statCard(String label, String value, IconData icon) {
+  Widget _statTile(
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon,
+  ) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(right: 8),
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppColors.warmWhite,
+            color: tokens.mist,
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: AppColors.textDark.withValues(alpha: 0.06)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, size: 22, color: AppColors.accent),
+              Icon(icon, size: 20, color: scheme.primary),
               const SizedBox(height: 6),
-              Text(value,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: AppColors.accentHover)),
-              Text(label, style: const TextStyle(fontSize: 11, color: AppColors.textMuted)),
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                  color: tokens.textPrimary,
+                ),
+              ),
+              Text(
+                label,
+                style: TextStyle(fontSize: 10.5, color: tokens.textSecondary),
+              ),
             ],
           ),
         ),
@@ -226,45 +247,76 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _sectionHeader(String ar, String my) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        children: [
-          Text(ar,
-              style: TextStyle(
-                  fontFamily: 'LotusLinotype', fontSize: 14, color: AppColors.accent, fontWeight: FontWeight.bold)),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(my, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: AppColors.textMid)),
-          ),
-          _countBadge('14 Unit'),
-        ],
-      ),
-    );
-  }
-
-  Widget _sectionKicker(String ar, String my) {
+  Widget _sectionHeader(BuildContext context, String ar, String my) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return Row(
       children: [
-        Text(ar,
+        Text(
+          ar,
+          textDirection: TextDirection.rtl,
+          style: TextStyle(
+            fontFamily: 'LotusLinotype',
+            fontSize: 14,
+            color: scheme.primary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            my,
             style: TextStyle(
-                fontFamily: 'LotusLinotype', fontSize: 13, color: AppColors.accent, fontWeight: FontWeight.bold)),
-        const SizedBox(width: 6),
-        Text(my, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: AppColors.textMid)),
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: tokens.textPrimary,
+            ),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          decoration: BoxDecoration(
+            color: scheme.primary,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: const Text(
+            '14 Unit',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ),
       ],
     );
   }
 
-  Widget _countBadge(String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: AppColors.accentHover,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(text,
-          style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w800)),
+  Widget _sectionKicker(BuildContext context, String ar, String my) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
+    return Row(
+      children: [
+        Text(
+          ar,
+          textDirection: TextDirection.rtl,
+          style: TextStyle(
+            fontFamily: 'LotusLinotype',
+            fontSize: 13,
+            color: scheme.primary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(width: 6),
+        Text(
+          my,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w800,
+            color: tokens.textPrimary,
+          ),
+        ),
+      ],
     );
   }
 }
