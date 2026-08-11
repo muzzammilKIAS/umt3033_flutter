@@ -49,3 +49,4 @@ app.*.map.json
 /scripts/.piper_voices/
 /assets/data/units_extracted.json
 /docs/_extract_report.txt
+.claude/
