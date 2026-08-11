@@ -118,7 +118,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               textAlign: TextAlign.right,
                               style: const TextStyle(
                                 fontFamily: 'LotusLinotype',
-                                fontSize: 16,
+                                fontSize: 20,
                               ),
                             ),
                             subtitle: Text(

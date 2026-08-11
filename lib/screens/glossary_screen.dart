@@ -35,11 +35,11 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
             const Text(
               'مُعْجَمُ الْمُصْطَلَحَاتِ',
               textDirection: TextDirection.rtl,
-              style: TextStyle(fontFamily: 'LotusLinotype', fontSize: 16),
+              style: TextStyle(fontFamily: 'LotusLinotype', fontSize: 20),
             ),
             Text(
               'Glosari (${data.glossary.length} istilah)',
-              style: TextStyle(fontSize: 11, color: tokens.textSecondary),
+              style: TextStyle(fontSize: 14, color: tokens.textSecondary),
             ),
           ],
         ),
@@ -116,7 +116,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                               textDirection: TextDirection.rtl,
                               style: const TextStyle(
                                 fontFamily: 'LotusLinotype',
-                                fontSize: 20,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

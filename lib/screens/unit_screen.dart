@@ -206,7 +206,7 @@ class _UnitScreenState extends State<UnitScreen> {
             textDirection: TextDirection.rtl,
             style: TextStyle(
               fontFamily: 'LotusLinotype',
-              fontSize: 15,
+              fontSize: 19,
               color: scheme.primary,
               fontWeight: FontWeight.bold,
             ),
@@ -313,7 +313,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       textAlign: TextAlign.right,
                       style: const TextStyle(
                         fontFamily: 'LotusLinotype',
-                        fontSize: 15,
+                        fontSize: 19,
                         height: 1.7,
                       ),
                     ),
@@ -416,7 +416,7 @@ class _UnitScreenState extends State<UnitScreen> {
                           textAlign: TextAlign.right,
                           style: const TextStyle(
                             fontFamily: 'LotusLinotype',
-                            fontSize: 20,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -656,7 +656,7 @@ class _UnitScreenState extends State<UnitScreen> {
             textAr,
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
-            style: const TextStyle(fontFamily: 'LotusLinotype', fontSize: 14),
+            style: const TextStyle(fontFamily: 'LotusLinotype', fontSize: 17.5),
           ),
         ],
       ),
@@ -695,7 +695,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
                       fontFamily: 'LotusLinotype',
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -743,7 +743,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       style: const TextStyle(
                         fontFamily: 'LotusLinotype',
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 19,
                       ),
                     ),
                   const SizedBox(height: 6),
@@ -797,7 +797,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontFamily: 'LotusLinotype',
-                        fontSize: 13,
+                        fontSize: 16,
                       ),
                     ),
                   ),
@@ -893,7 +893,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   fontFamily: 'LotusLinotype',
-                  fontSize: 14,
+                  fontSize: 17.5,
                 ),
               ),
             ),
@@ -982,7 +982,7 @@ class _UnitScreenState extends State<UnitScreen> {
                         textAlign: TextAlign.right,
                         style: const TextStyle(
                           fontFamily: 'LotusLinotype',
-                          fontSize: 14,
+                          fontSize: 17.5,
                         ),
                       ),
                     ),
@@ -1062,7 +1062,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 textAlign: TextAlign.right,
                 style: const TextStyle(
                   fontFamily: 'LotusLinotype',
-                  fontSize: 15,
+                  fontSize: 19,
                 ),
               ),
             );
@@ -1144,7 +1144,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           style: const TextStyle(
             fontFamily: 'LotusLinotype',
             fontWeight: FontWeight.bold,
-            fontSize: 15,
+            fontSize: 19,
           ),
         ),
         const SizedBox(height: 6),
@@ -1156,7 +1156,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
             height: 1.8,
             color: tokens.textPrimary,
             fontFamily: 'LotusLinotype',
-            fontSize: 15,
+            fontSize: 19,
           ),
         ),
         const SizedBox(height: 8),
@@ -1274,7 +1274,7 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                         textAlign: TextAlign.right,
                         style: const TextStyle(
                           fontFamily: 'LotusLinotype',
-                          fontSize: 14,
+                          fontSize: 17.5,
                           height: 1.6,
                         ),
                       ),

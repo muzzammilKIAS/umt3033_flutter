@@ -30,7 +30,7 @@ class DashboardScreen extends StatelessWidget {
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontFamily: 'LotusLinotype',
-                fontSize: 15,
+                fontSize: 19,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -95,7 +95,7 @@ class DashboardScreen extends StatelessWidget {
             textDirection: TextDirection.rtl,
             style: TextStyle(
               fontFamily: 'LotusLinotype',
-              fontSize: 26,
+              fontSize: 32.5,
               fontWeight: FontWeight.bold,
               color: Colors.white,
               height: 1.6,
@@ -147,7 +147,7 @@ class DashboardScreen extends StatelessWidget {
         textDirection: TextDirection.rtl,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 11,
+          fontSize: 14,
           fontFamily: 'LotusLinotype',
           fontWeight: FontWeight.w700,
         ),
@@ -257,7 +257,7 @@ class DashboardScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontFamily: 'LotusLinotype',
-            fontSize: 14,
+            fontSize: 17.5,
             color: scheme.primary,
             fontWeight: FontWeight.bold,
           ),
@@ -302,7 +302,7 @@ class DashboardScreen extends StatelessWidget {
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontFamily: 'LotusLinotype',
-            fontSize: 13,
+            fontSize: 16,
             color: scheme.primary,
             fontWeight: FontWeight.bold,
           ),

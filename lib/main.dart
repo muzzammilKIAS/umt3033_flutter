@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'services/data_service.dart';
 import 'services/storage_service.dart';
@@ -62,13 +63,26 @@ class UMT3033App extends StatelessWidget {
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
       themeMode: _themeMode(storage.theme),
+      // The whole app is Arabic-medium, so the entire UI -- nav bar order,
+      // back-button chevrons, list/row alignment, app bar layout -- mirrors
+      // to right-to-left, not just individual Arabic text blocks.
+      locale: const Locale('ar'),
+      supportedLocales: const [Locale('ar'), Locale('ms'), Locale('en')],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       builder: (context, child) {
         final scale = storage.textScale;
         return MediaQuery(
           data: MediaQuery.of(
             context,
           ).copyWith(textScaler: TextScaler.linear(scale)),
-          child: child!,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: child!,
+          ),
         );
       },
       home: const MainShell(),
