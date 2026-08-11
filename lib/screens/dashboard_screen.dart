@@ -25,13 +25,19 @@ class DashboardScreen extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                fontFamily: 'NotoNaskhArabic',
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: AlignmentDirectional.centerStart,
+              child: Text(
+                'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
+                textDirection: TextDirection.rtl,
+                maxLines: 1,
+                softWrap: false,
+                style: TextStyle(
+                  fontFamily: 'NotoNaskhArabic',
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Text(
@@ -90,16 +96,21 @@ class DashboardScreen extends StatelessWidget {
         children: [
           _eyebrow('مُقَرَّرٌ تَفَاعُلِيٌّ • ١٤ وَحْدَةً'),
           const SizedBox(height: 14),
-          const Text(
-            'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: TextStyle(
-              fontFamily: 'NotoNaskhArabic',
-              fontSize: 32.5,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              height: 1.6,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: AlignmentDirectional.centerEnd,
+            child: Text(
+              'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
+              textAlign: TextAlign.right,
+              textDirection: TextDirection.rtl,
+              maxLines: 1,
+              softWrap: false,
+              style: TextStyle(
+                fontFamily: 'NotoNaskhArabic',
+                fontSize: 32.5,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ),
           const SizedBox(height: 8),

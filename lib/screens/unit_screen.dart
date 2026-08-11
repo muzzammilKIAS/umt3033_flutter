@@ -270,7 +270,22 @@ class _UnitScreenState extends State<UnitScreen> {
           ),
         ),
         const SizedBox(height: 6),
-        _arabicBlock(context, unit.titleAr, size: 26),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: AlignmentDirectional.centerEnd,
+          child: Text(
+            unit.titleAr,
+            textDirection: TextDirection.rtl,
+            maxLines: 1,
+            softWrap: false,
+            style: TextStyle(
+              fontFamily: 'NotoNaskhArabic',
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: tokens.textPrimary,
+            ),
+          ),
+        ),
         if (unit.titleSubAr.isNotEmpty) ...[
           const SizedBox(height: 4),
           Text(
