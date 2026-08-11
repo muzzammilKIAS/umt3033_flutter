@@ -108,14 +108,18 @@ class _UnitScreenState extends State<UnitScreen> {
 
     if (unit == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('Unit')),
-        body: const Center(child: Text('Unit tidak dijumpai')),
+        appBar: AppBar(
+          title: const Text('Unit', textDirection: TextDirection.ltr),
+        ),
+        body: const Center(
+          child: Text('Unit tidak dijumpai', textDirection: TextDirection.ltr),
+        ),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Unit ${unit.id}'),
+        title: Text('Unit ${unit.id}', textDirection: TextDirection.ltr),
         actions: [
           IconButton(
             icon: Icon(
@@ -215,6 +219,7 @@ class _UnitScreenState extends State<UnitScreen> {
           Expanded(
             child: Text(
               my,
+              textDirection: TextDirection.ltr,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
@@ -257,6 +262,7 @@ class _UnitScreenState extends State<UnitScreen> {
       children: [
         Text(
           'Unit ${unit.id} • ${unit.code}',
+          textDirection: TextDirection.ltr,
           style: TextStyle(
             fontSize: 12,
             color: tokens.textSecondary,
@@ -269,7 +275,13 @@ class _UnitScreenState extends State<UnitScreen> {
           const SizedBox(height: 4),
           Text(
             unit.titleSubAr,
-            style: TextStyle(color: tokens.textSecondary, fontSize: 14),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontFamily: 'NotoNaskhArabic',
+              color: tokens.textSecondary,
+              fontSize: 14,
+            ),
           ),
         ],
       ],
@@ -336,6 +348,7 @@ class _UnitScreenState extends State<UnitScreen> {
       child: Center(
         child: Text(
           '$n',
+          textDirection: TextDirection.ltr,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 11,
@@ -426,6 +439,7 @@ class _UnitScreenState extends State<UnitScreen> {
                             Expanded(
                               child: Text(
                                 v.meaning,
+                                textDirection: TextDirection.ltr,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: context.tokens.textPrimary,
@@ -436,6 +450,7 @@ class _UnitScreenState extends State<UnitScreen> {
                             if (v.transliteration.isNotEmpty)
                               Text(
                                 v.transliteration,
+                                textDirection: TextDirection.ltr,
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: context.tokens.textSecondary,
@@ -547,11 +562,11 @@ class _UnitScreenState extends State<UnitScreen> {
                   const SizedBox(height: 4),
                   Text(
                     d.meaning,
+                    textDirection: TextDirection.ltr,
                     style: TextStyle(
                       color: tokens.textSecondary,
                       fontSize: 12.5,
                     ),
-                    textAlign: TextAlign.right,
                   ),
                   const SizedBox(height: 4),
                   IconButton(
@@ -624,7 +639,10 @@ class _UnitScreenState extends State<UnitScreen> {
               done ? Icons.check_circle : Icons.circle_outlined,
               size: 18,
             ),
-            label: Text(done ? 'Latihan Selesai' : 'Tandakan Selesai'),
+            label: Text(
+              done ? 'Latihan Selesai' : 'Tandakan Selesai',
+              textDirection: TextDirection.ltr,
+            ),
           ),
         ],
       ),
@@ -645,6 +663,7 @@ class _UnitScreenState extends State<UnitScreen> {
         children: [
           Text(
             label,
+            textDirection: TextDirection.ltr,
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -686,6 +705,7 @@ class _UnitScreenState extends State<UnitScreen> {
                   Expanded(
                     child: Text(
                       e.meaning,
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(
                         color: tokens.textSecondary,
                         fontSize: 13,
@@ -870,6 +890,7 @@ class _UnitScreenState extends State<UnitScreen> {
             const Divider(height: 20),
             Text(
               'Maksud:',
+              textDirection: TextDirection.ltr,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w800,
@@ -879,6 +900,7 @@ class _UnitScreenState extends State<UnitScreen> {
             const SizedBox(height: 4),
             Text(
               unit.ayahMaksud,
+              textDirection: TextDirection.ltr,
               style: TextStyle(color: tokens.textSecondary, height: 1.5),
             ),
           ],
@@ -947,6 +969,7 @@ class _UnitScreenState extends State<UnitScreen> {
             const Divider(height: 20),
             Text(
               'Maksud:',
+              textDirection: TextDirection.ltr,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w800,
@@ -956,6 +979,7 @@ class _UnitScreenState extends State<UnitScreen> {
             const SizedBox(height: 4),
             Text(
               unit.hadithMaksud,
+              textDirection: TextDirection.ltr,
               style: TextStyle(color: tokens.textSecondary, height: 1.5),
             ),
           ],
@@ -1089,13 +1113,14 @@ class _UnitScreenState extends State<UnitScreen> {
                 )
               : null,
           icon: const Icon(Icons.arrow_back, size: 18),
-          label: const Text('Sebelum'),
+          label: const Text('Sebelum', textDirection: TextDirection.ltr),
         ),
         ElevatedButton.icon(
           onPressed: () => storage.setUnitCompleted(unit.id),
           icon: const Icon(Icons.check, size: 18),
           label: Text(
             storage.isUnitCompleted(unit.id) ? 'Selesai' : 'Tandakan Selesai',
+            textDirection: TextDirection.ltr,
           ),
         ),
         TextButton.icon(
@@ -1108,7 +1133,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 )
               : null,
           icon: const Icon(Icons.arrow_forward, size: 18),
-          label: const Text('Seterusnya'),
+          label: const Text('Seterusnya', textDirection: TextDirection.ltr),
         ),
       ],
     );
@@ -1176,7 +1201,10 @@ class _OpenExerciseState extends State<_OpenExercise> {
             done ? Icons.check_circle : Icons.circle_outlined,
             size: 18,
           ),
-          label: Text(done ? 'Ditandakan Selesai' : 'Tandakan Selesai'),
+          label: Text(
+            done ? 'Ditandakan Selesai' : 'Tandakan Selesai',
+            textDirection: TextDirection.ltr,
+          ),
         ),
       ],
     );
@@ -1230,6 +1258,7 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                     _revealed
                         ? 'Sembunyikan نَمُوذَجَ الْإِجَابَةِ'
                         : 'Papar نَمُوذَجُ الْإِجَابَةِ (Panduan Pensyarah)',
+                    textDirection: TextDirection.ltr,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: scheme.primary,
@@ -1247,7 +1276,8 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
           if (_revealed) ...[
             const SizedBox(height: 10),
             Text(
-              'Ini panduan jawapan contoh daripada dalil pensyarah. Aktiviti terbuka mungkin mempunyai lebih daripada satu jawapan yang boleh diterima.',
+              'Ini contoh jawapan daripada panduan pensyarah. Aktiviti terbuka mungkin menerima lebih daripada satu jawapan yang betul.',
+              textDirection: TextDirection.ltr,
               style: TextStyle(
                 fontSize: 11,
                 color: tokens.textSecondary,
@@ -1263,6 +1293,7 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                   children: [
                     Text(
                       '${e.key + 1}.',
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: tokens.textSecondary,

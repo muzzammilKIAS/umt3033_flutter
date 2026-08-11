@@ -140,6 +140,7 @@ class _MatchingExerciseState extends State<MatchingExercise> {
                     ),
                     hint: const Text(
                       'Pilih makna',
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(fontSize: 12),
                     ),
                     items: _meanings
@@ -149,6 +150,7 @@ class _MatchingExerciseState extends State<MatchingExercise> {
                             value: m,
                             child: Text(
                               m,
+                              textDirection: TextDirection.ltr,
                               style: const TextStyle(fontSize: 12),
                               overflow: TextOverflow.ellipsis,
                             ),

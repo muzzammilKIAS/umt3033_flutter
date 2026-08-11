@@ -47,7 +47,9 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     final tokens = context.tokens;
     return Scaffold(
-      appBar: AppBar(title: const Text('Carian')),
+      appBar: AppBar(
+        title: const Text('Carian', textDirection: TextDirection.ltr),
+      ),
       body: Column(
         children: [
           Padding(
@@ -78,6 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       padding: const EdgeInsets.all(32),
                       child: Text(
                         'Taip untuk mencari kandungan merentasi semua 14 unit, glosari dan teks bacaan.',
+                        textDirection: TextDirection.ltr,
                         textAlign: TextAlign.center,
                         style: TextStyle(color: tokens.textSecondary),
                       ),
@@ -87,6 +90,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ? Center(
                     child: Text(
                       'Tiada hasil dijumpai',
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(color: tokens.textSecondary),
                     ),
                   )
@@ -123,11 +127,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             subtitle: Text(
                               '${labels.$2} • ${r['subtitle']}',
+                              textDirection: TextDirection.ltr,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
                             trailing: Text(
                               'U${r['unitId']}',
+                              textDirection: TextDirection.ltr,
                               style: TextStyle(
                                 color: tokens.textSecondary,
                                 fontSize: 12,

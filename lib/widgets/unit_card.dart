@@ -49,6 +49,7 @@ class UnitCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       '${unit.id}',
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w800,
@@ -77,6 +78,7 @@ class UnitCard extends StatelessWidget {
                           ),
                           child: Text(
                             'Unit ${unit.id}',
+                            textDirection: TextDirection.ltr,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 10.5,
@@ -109,7 +111,10 @@ class UnitCard extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         unit.titleSubAr,
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.right,
                         style: TextStyle(
+                          fontFamily: 'NotoNaskhArabic',
                           fontWeight: FontWeight.w600,
                           color: tokens.textSecondary,
                           fontSize: 13,

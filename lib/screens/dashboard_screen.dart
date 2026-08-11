@@ -36,6 +36,7 @@ class DashboardScreen extends StatelessWidget {
             ),
             Text(
               'Basic Arabic for Muamalat • UMT3033',
+              textDirection: TextDirection.ltr,
               style: TextStyle(fontSize: 11, color: tokens.textSecondary),
             ),
           ],
@@ -104,10 +105,12 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             course?.courseTitleEn ?? 'Basic Arabic for Muamalat',
+            textDirection: TextDirection.ltr,
             style: const TextStyle(color: Colors.white70, fontSize: 14),
           ),
           Text(
             '${course?.courseCode ?? 'UMT3033'} • ${course?.authorName ?? ''}',
+            textDirection: TextDirection.ltr,
             style: const TextStyle(color: Colors.white60, fontSize: 12),
           ),
           const SizedBox(height: 20),
@@ -127,6 +130,7 @@ class DashboardScreen extends StatelessWidget {
               storage.lastUnitId > 1 || storage.completedUnitCount > 0
                   ? 'Sambung Belajar'
                   : 'Mula Belajar',
+              textDirection: TextDirection.ltr,
             ),
           ),
         ],
@@ -230,6 +234,7 @@ class DashboardScreen extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 value,
+                textDirection: TextDirection.ltr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
@@ -238,6 +243,7 @@ class DashboardScreen extends StatelessWidget {
               ),
               Text(
                 label,
+                textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 10.5, color: tokens.textSecondary),
               ),
             ],
@@ -266,6 +272,7 @@ class DashboardScreen extends StatelessWidget {
         Expanded(
           child: Text(
             my,
+            textDirection: TextDirection.ltr,
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w800,
@@ -281,6 +288,7 @@ class DashboardScreen extends StatelessWidget {
           ),
           child: const Text(
             '14 Unit',
+            textDirection: TextDirection.ltr,
             style: TextStyle(
               color: Colors.white,
               fontSize: 11,
@@ -310,6 +318,7 @@ class DashboardScreen extends StatelessWidget {
         const SizedBox(width: 6),
         Text(
           my,
+          textDirection: TextDirection.ltr,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w800,

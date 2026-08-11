@@ -39,6 +39,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
             ),
             Text(
               'Glosari (${data.glossary.length} istilah)',
+              textDirection: TextDirection.ltr,
               style: TextStyle(fontSize: 14, color: tokens.textSecondary),
             ),
           ],
@@ -61,6 +62,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                 ? Center(
                     child: Text(
                       'Tiada istilah dijumpai',
+                      textDirection: TextDirection.ltr,
                       style: TextStyle(color: tokens.textSecondary),
                     ),
                   )
@@ -86,6 +88,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                                 children: [
                                   Text(
                                     g.term,
+                                    textDirection: TextDirection.ltr,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       color: tokens.textPrimary,
@@ -94,6 +97,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                                   if (g.transliteration.isNotEmpty)
                                     Text(
                                       g.transliteration,
+                                      textDirection: TextDirection.ltr,
                                       style: TextStyle(
                                         fontSize: 11,
                                         color: tokens.textSecondary,
@@ -102,6 +106,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                                     ),
                                   Text(
                                     'Unit ${g.unitId}',
+                                    textDirection: TextDirection.ltr,
                                     style: TextStyle(
                                       fontSize: 10,
                                       color: tokens.textSecondary,

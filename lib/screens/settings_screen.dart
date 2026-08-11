@@ -16,7 +16,9 @@ class SettingsScreen extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Tetapan')),
+      appBar: AppBar(
+        title: const Text('Tetapan', textDirection: TextDirection.ltr),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -43,7 +45,8 @@ class SettingsScreen extends StatelessWidget {
                   context,
                   icon: Icons.record_voice_over_outlined,
                   title: 'Suara Lalai',
-                  subtitle: 'Digunakan untuk kosa kata & bacaan bebas jantina',
+                  subtitle:
+                      'Digunakan untuk kosa kata dan bacaan yang tiada penanda jantina',
                   value: audioPrefs['voice'] == 'female' ? 'Wanita' : 'Lelaki',
                   options: const {'male': 'Lelaki', 'female': 'Wanita'},
                   onSelected: (v) => storage.setAudioPref('voice', v),
@@ -66,9 +69,13 @@ class SettingsScreen extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: Icon(Icons.info_outline, color: scheme.primary),
-                  title: const Text('Mengenai Audio & TTS'),
+                  title: const Text(
+                    'Mengenai Audio & TTS',
+                    textDirection: TextDirection.ltr,
+                  ),
                   subtitle: const Text(
-                    'Hiwar lelaki: suara Piper Arab pra-jana. Suara wanita & fallback lain: TTS peranti (luar talian).',
+                    'Suara lelaki: suara Piper Arab yang telah dijana lebih awal. Suara wanita dan suara lain: TTS peranti (luar talian).',
+                    textDirection: TextDirection.ltr,
                   ),
                 ),
               ],
@@ -87,9 +94,13 @@ class SettingsScreen extends StatelessWidget {
                     Icons.check_circle_outline,
                     color: scheme.primary,
                   ),
-                  title: const Text('Unit Selesai'),
+                  title: const Text(
+                    'Unit Selesai',
+                    textDirection: TextDirection.ltr,
+                  ),
                   trailing: Text(
                     '${storage.completedUnitCount}/14',
+                    textDirection: TextDirection.ltr,
                     style: TextStyle(
                       fontWeight: FontWeight.w800,
                       color: tokens.textPrimary,
@@ -105,6 +116,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   title: const Text(
                     'Reset Semua Progress',
+                    textDirection: TextDirection.ltr,
                     style: TextStyle(color: Colors.red),
                   ),
                   onTap: () => _confirmReset(context, storage),
@@ -133,15 +145,18 @@ class SettingsScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   data.course?.courseTitleEn ?? 'Basic Arabic for Muamalat',
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(color: tokens.textSecondary),
                 ),
                 Text(
                   data.course?.courseCode ?? 'UMT3033',
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(color: tokens.textSecondary, fontSize: 12),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   data.course?.authorName ?? '',
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: tokens.textPrimary,
@@ -150,11 +165,13 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 Text(
                   data.course?.authorTitle ?? '',
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(color: tokens.textSecondary, fontSize: 12),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   'Aplikasi ini berfungsi sepenuhnya luar talian. Tiada data peribadi dikumpul atau dihantar ke pelayan.',
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(color: tokens.textSecondary, fontSize: 11.5),
                 ),
               ],
@@ -169,6 +186,7 @@ class SettingsScreen extends StatelessWidget {
   Widget _sectionTitle(BuildContext context, String text) {
     return Text(
       text,
+      textDirection: TextDirection.ltr,
       style: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.w800,
@@ -197,22 +215,22 @@ class SettingsScreen extends StatelessWidget {
       children: [
         Icon(Icons.palette_outlined, color: scheme.primary),
         const SizedBox(width: 12),
-        const Expanded(child: Text('Tema')),
+        const Expanded(child: Text('Tema', textDirection: TextDirection.ltr)),
         SegmentedButton<String>(
           segments: const [
             ButtonSegment(
               value: 'light',
-              label: Text('Cerah'),
+              label: Text('Cerah', textDirection: TextDirection.ltr),
               icon: Icon(Icons.light_mode_outlined, size: 16),
             ),
             ButtonSegment(
               value: 'dark',
-              label: Text('Gelap'),
+              label: Text('Gelap', textDirection: TextDirection.ltr),
               icon: Icon(Icons.dark_mode_outlined, size: 16),
             ),
             ButtonSegment(
               value: 'system',
-              label: Text('Auto'),
+              label: Text('Auto', textDirection: TextDirection.ltr),
               icon: Icon(Icons.brightness_auto, size: 16),
             ),
           ],
@@ -231,7 +249,9 @@ class SettingsScreen extends StatelessWidget {
       children: [
         Icon(Icons.text_fields, color: scheme.primary),
         const SizedBox(width: 12),
-        const Expanded(child: Text('Saiz Teks Arab')),
+        const Expanded(
+          child: Text('Saiz Teks Arab', textDirection: TextDirection.ltr),
+        ),
         IconButton(
           icon: const Icon(Icons.remove_circle_outline),
           onPressed: storage.textScale > 0.85
@@ -240,7 +260,10 @@ class SettingsScreen extends StatelessWidget {
                 )
               : null,
         ),
-        Text('${(storage.textScale * 100).round()}%'),
+        Text(
+          '${(storage.textScale * 100).round()}%',
+          textDirection: TextDirection.ltr,
+        ),
         IconButton(
           icon: const Icon(Icons.add_circle_outline),
           onPressed: storage.textScale < 1.4
@@ -271,10 +294,11 @@ class SettingsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title),
+              Text(title, textDirection: TextDirection.ltr),
               if (subtitle != null)
                 Text(
                   subtitle,
+                  textDirection: TextDirection.ltr,
                   style: TextStyle(
                     fontSize: 11,
                     color: context.tokens.textSecondary,
@@ -286,7 +310,12 @@ class SettingsScreen extends StatelessWidget {
         PopupMenuButton<String>(
           onSelected: onSelected,
           itemBuilder: (_) => options.entries
-              .map((e) => PopupMenuItem(value: e.key, child: Text(e.value)))
+              .map(
+                (e) => PopupMenuItem(
+                  value: e.key,
+                  child: Text(e.value, textDirection: TextDirection.ltr),
+                ),
+              )
               .toList(),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -296,6 +325,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             child: Text(
               value,
+              textDirection: TextDirection.ltr,
               style: TextStyle(
                 color: scheme.primary,
                 fontWeight: FontWeight.w700,
@@ -311,14 +341,15 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Reset Progress?'),
+        title: const Text('Reset Progress?', textDirection: TextDirection.ltr),
         content: const Text(
           'Semua kemajuan pembelajaran akan dipadam. Tindakan ini tidak boleh dibatalkan.',
+          textDirection: TextDirection.ltr,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Batal'),
+            child: const Text('Batal', textDirection: TextDirection.ltr),
           ),
           ElevatedButton(
             onPressed: () {
@@ -326,7 +357,7 @@ class SettingsScreen extends StatelessWidget {
               Navigator.pop(ctx);
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text('Reset'),
+            child: const Text('Reset', textDirection: TextDirection.ltr),
           ),
         ],
       ),
