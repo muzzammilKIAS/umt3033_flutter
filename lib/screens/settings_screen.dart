@@ -125,7 +125,7 @@ class SettingsScreen extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
-                    fontFamily: 'LotusLinotype',
+                    fontFamily: 'NotoNaskhArabic',
                     fontSize: 22.5,
                     fontWeight: FontWeight.bold,
                   ),

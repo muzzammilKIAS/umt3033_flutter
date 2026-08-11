@@ -99,7 +99,7 @@ class UnitCard extends StatelessWidget {
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
-                        fontFamily: 'LotusLinotype',
+                        fontFamily: 'NotoNaskhArabic',
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         height: 1.6,

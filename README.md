@@ -88,10 +88,22 @@ depends on the device's own (still offline) TTS engine.
 
 ## Arabic font
 
-**LotusLinotype**, already present in the repo (`assets/fonts/lotus-linotype/`),
-used for all Arabic text throughout the app for correct harakat rendering.
-No new proprietary font was downloaded or bundled. Amiri (open-licensed) is
-bundled as a secondary option but not currently used by default.
+**Noto Naskh Arabic** (Google, SIL Open Font License 1.1 — free to bundle
+and redistribute; `assets/fonts/noto-naskh-arabic/`, license text in that
+same folder). A Naskh text face with excellent harakat rendering, chosen for
+body-text legibility over decoration, matching the "premium textbook" goal.
+
+This replaces two problems found in the previously-bundled fonts, fixed in
+this pass:
+- `LotusLinotype.ttf` was a genuine **proprietary Linotype GmbH font** whose
+  own embedded license explicitly forbids copying/distribution — it had been
+  bundled into the app anyway, which would have shipped a license violation
+  to every install. A note left in the old font folder had explicitly warned
+  against this ("Beli lesen dari pemilik asal" / buy a license from the
+  original owner) and named Noto Naskh Arabic as the correct free fallback;
+  that fallback is what's now actually wired in.
+- The bundled "Amiri-Regular.ttf" was not a font file at all — it was a
+  saved GitHub HTML error page with a `.ttf` extension.
 
 ## Audio / TTS strategy
 

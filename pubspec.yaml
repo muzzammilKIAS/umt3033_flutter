@@ -28,21 +28,14 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: LotusLinotype
+    - family: NotoNaskhArabic
       fonts:
-        - asset: assets/fonts/lotus-linotype/LotusLinotype.ttf
-    - family: Amiri
-      fonts:
-        - asset: assets/fonts/Amiri/Amiri-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Amiri/Amiri-Bold.ttf
-          weight: 700
+        - asset: assets/fonts/noto-naskh-arabic/NotoNaskhArabic-VariableFont_wght.ttf
 
   assets:
     - assets/data/
     - assets/images/
     - assets/images/units/
-    - assets/fonts/lotus-linotype/
     - assets/audio/unit-01/male/
     - assets/audio/unit-02/male/
     - assets/audio/unit-03/male/

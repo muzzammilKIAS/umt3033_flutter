@@ -205,7 +205,7 @@ class _UnitScreenState extends State<UnitScreen> {
             ar,
             textDirection: TextDirection.rtl,
             style: TextStyle(
-              fontFamily: 'LotusLinotype',
+              fontFamily: 'NotoNaskhArabic',
               fontSize: 19,
               color: scheme.primary,
               fontWeight: FontWeight.bold,
@@ -239,7 +239,7 @@ class _UnitScreenState extends State<UnitScreen> {
       textAlign: align,
       textDirection: TextDirection.rtl,
       style: TextStyle(
-        fontFamily: 'LotusLinotype',
+        fontFamily: 'NotoNaskhArabic',
         fontSize: size,
         fontWeight: FontWeight.bold,
         height: 1.9,
@@ -312,7 +312,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.right,
                       style: const TextStyle(
-                        fontFamily: 'LotusLinotype',
+                        fontFamily: 'NotoNaskhArabic',
                         fontSize: 19,
                         height: 1.7,
                       ),
@@ -415,7 +415,7 @@ class _UnitScreenState extends State<UnitScreen> {
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                           style: const TextStyle(
-                            fontFamily: 'LotusLinotype',
+                            fontFamily: 'NotoNaskhArabic',
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
@@ -656,7 +656,10 @@ class _UnitScreenState extends State<UnitScreen> {
             textAr,
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
-            style: const TextStyle(fontFamily: 'LotusLinotype', fontSize: 17.5),
+            style: const TextStyle(
+              fontFamily: 'NotoNaskhArabic',
+              fontSize: 17.5,
+            ),
           ),
         ],
       ),
@@ -694,7 +697,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     e.arabic,
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
-                      fontFamily: 'LotusLinotype',
+                      fontFamily: 'NotoNaskhArabic',
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
@@ -741,7 +744,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       title,
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
-                        fontFamily: 'LotusLinotype',
+                        fontFamily: 'NotoNaskhArabic',
                         fontWeight: FontWeight.bold,
                         fontSize: 19,
                       ),
@@ -796,7 +799,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontFamily: 'LotusLinotype',
+                        fontFamily: 'NotoNaskhArabic',
                         fontSize: 16,
                       ),
                     ),
@@ -892,7 +895,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
                 style: const TextStyle(
-                  fontFamily: 'LotusLinotype',
+                  fontFamily: 'NotoNaskhArabic',
                   fontSize: 17.5,
                 ),
               ),
@@ -962,7 +965,7 @@ class _UnitScreenState extends State<UnitScreen> {
               'الدُّرُوسُ الْمُسْتَفَادَةُ',
               textDirection: TextDirection.rtl,
               style: TextStyle(
-                fontFamily: 'LotusLinotype',
+                fontFamily: 'NotoNaskhArabic',
                 fontWeight: FontWeight.bold,
                 color: scheme.primary,
               ),
@@ -981,7 +984,7 @@ class _UnitScreenState extends State<UnitScreen> {
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(
-                          fontFamily: 'LotusLinotype',
+                          fontFamily: 'NotoNaskhArabic',
                           fontSize: 17.5,
                         ),
                       ),
@@ -1061,7 +1064,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
                 style: const TextStyle(
-                  fontFamily: 'LotusLinotype',
+                  fontFamily: 'NotoNaskhArabic',
                   fontSize: 19,
                 ),
               ),
@@ -1142,7 +1145,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.right,
           style: const TextStyle(
-            fontFamily: 'LotusLinotype',
+            fontFamily: 'NotoNaskhArabic',
             fontWeight: FontWeight.bold,
             fontSize: 19,
           ),
@@ -1155,7 +1158,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           style: TextStyle(
             height: 1.8,
             color: tokens.textPrimary,
-            fontFamily: 'LotusLinotype',
+            fontFamily: 'NotoNaskhArabic',
             fontSize: 19,
           ),
         ),
@@ -1273,7 +1276,7 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(
-                          fontFamily: 'LotusLinotype',
+                          fontFamily: 'NotoNaskhArabic',
                           fontSize: 17.5,
                           height: 1.6,
                         ),

@@ -117,7 +117,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               textDirection: TextDirection.rtl,
                               textAlign: TextAlign.right,
                               style: const TextStyle(
-                                fontFamily: 'LotusLinotype',
+                                fontFamily: 'NotoNaskhArabic',
                                 fontSize: 20,
                               ),
                             ),

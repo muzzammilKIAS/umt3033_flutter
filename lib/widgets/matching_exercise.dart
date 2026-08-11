@@ -119,7 +119,7 @@ class _MatchingExerciseState extends State<MatchingExercise> {
                     w,
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
-                      fontFamily: 'LotusLinotype',
+                      fontFamily: 'NotoNaskhArabic',
                       fontSize: 22.5,
                       fontWeight: FontWeight.bold,
                     ),
@@ -209,7 +209,7 @@ class _StaticExercise extends StatelessWidget {
           style: TextStyle(
             height: 1.8,
             color: tokens.textPrimary,
-            fontFamily: 'LotusLinotype',
+            fontFamily: 'NotoNaskhArabic',
             fontSize: 20,
           ),
         ),

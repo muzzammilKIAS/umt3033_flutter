@@ -29,7 +29,7 @@ class DashboardScreen extends StatelessWidget {
               'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
               textDirection: TextDirection.rtl,
               style: TextStyle(
-                fontFamily: 'LotusLinotype',
+                fontFamily: 'NotoNaskhArabic',
                 fontSize: 19,
                 fontWeight: FontWeight.bold,
               ),
@@ -94,7 +94,7 @@ class DashboardScreen extends StatelessWidget {
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
             style: TextStyle(
-              fontFamily: 'LotusLinotype',
+              fontFamily: 'NotoNaskhArabic',
               fontSize: 32.5,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -148,7 +148,7 @@ class DashboardScreen extends StatelessWidget {
         style: const TextStyle(
           color: Colors.white,
           fontSize: 14,
-          fontFamily: 'LotusLinotype',
+          fontFamily: 'NotoNaskhArabic',
           fontWeight: FontWeight.w700,
         ),
       ),
@@ -256,7 +256,7 @@ class DashboardScreen extends StatelessWidget {
           ar,
           textDirection: TextDirection.rtl,
           style: TextStyle(
-            fontFamily: 'LotusLinotype',
+            fontFamily: 'NotoNaskhArabic',
             fontSize: 17.5,
             color: scheme.primary,
             fontWeight: FontWeight.bold,
@@ -301,7 +301,7 @@ class DashboardScreen extends StatelessWidget {
           ar,
           textDirection: TextDirection.rtl,
           style: TextStyle(
-            fontFamily: 'LotusLinotype',
+            fontFamily: 'NotoNaskhArabic',
             fontSize: 16,
             color: scheme.primary,
             fontWeight: FontWeight.bold,
