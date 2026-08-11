@@ -209,8 +209,8 @@ class _UnitScreenState extends State<UnitScreen> {
             ar,
             textDirection: TextDirection.rtl,
             style: TextStyle(
-              fontFamily: 'NotoNaskhArabic',
-              fontSize: 19,
+              fontFamily: 'Amiri',
+              fontSize: 20,
               color: scheme.primary,
               fontWeight: FontWeight.bold,
             ),
@@ -244,7 +244,7 @@ class _UnitScreenState extends State<UnitScreen> {
       textAlign: align,
       textDirection: TextDirection.rtl,
       style: TextStyle(
-        fontFamily: 'NotoNaskhArabic',
+        fontFamily: 'Amiri',
         fontSize: size,
         fontWeight: FontWeight.bold,
         height: 1.9,
@@ -279,8 +279,8 @@ class _UnitScreenState extends State<UnitScreen> {
             maxLines: 1,
             softWrap: false,
             style: TextStyle(
-              fontFamily: 'NotoNaskhArabic',
-              fontSize: 26,
+              fontFamily: 'Amiri',
+              fontSize: 28,
               fontWeight: FontWeight.bold,
               color: tokens.textPrimary,
             ),
@@ -293,9 +293,9 @@ class _UnitScreenState extends State<UnitScreen> {
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
             style: TextStyle(
-              fontFamily: 'NotoNaskhArabic',
+              fontFamily: 'Amiri',
               color: tokens.textSecondary,
-              fontSize: 14,
+              fontSize: 17,
             ),
           ),
         ],
@@ -321,7 +321,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 color: context.tokens.mist,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: _arabicBlock(context, unit.learningContextAr, size: 15),
+              child: _arabicBlock(context, unit.learningContextAr, size: 20),
             ),
             const SizedBox(height: 12),
           ],
@@ -339,9 +339,9 @@ class _UnitScreenState extends State<UnitScreen> {
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.right,
                       style: const TextStyle(
-                        fontFamily: 'NotoNaskhArabic',
-                        fontSize: 19,
-                        height: 1.7,
+                        fontFamily: 'Amiri',
+                        fontSize: 21,
+                        height: 1.8,
                       ),
                     ),
                   ),
@@ -443,7 +443,7 @@ class _UnitScreenState extends State<UnitScreen> {
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                           style: const TextStyle(
-                            fontFamily: 'NotoNaskhArabic',
+                            fontFamily: 'Amiri',
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
@@ -573,7 +573,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     ],
                   ),
                   const SizedBox(height: 4),
-                  _arabicBlock(context, d.arabic, size: 17),
+                  _arabicBlock(context, d.arabic, size: 22),
                   const SizedBox(height: 4),
                   Text(
                     d.meaning,
@@ -626,7 +626,7 @@ class _UnitScreenState extends State<UnitScreen> {
             'Latihan Berpasangan',
           ),
           if (unit.pairPracticeSimpleAr.isNotEmpty)
-            _arabicBlock(context, unit.pairPracticeSimpleAr, size: 15),
+            _arabicBlock(context, unit.pairPracticeSimpleAr, size: 20),
           if (unit.pairPracticeRoleA.isNotEmpty) ...[
             const SizedBox(height: 8),
             _roleTile(context, 'Pelajar (أ)', unit.pairPracticeRoleA),
@@ -690,10 +690,7 @@ class _UnitScreenState extends State<UnitScreen> {
             textAr,
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
-            style: const TextStyle(
-              fontFamily: 'NotoNaskhArabic',
-              fontSize: 17.5,
-            ),
+            style: const TextStyle(fontFamily: 'Amiri', fontSize: 21),
           ),
         ],
       ),
@@ -732,7 +729,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     e.arabic,
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
-                      fontFamily: 'NotoNaskhArabic',
+                      fontFamily: 'Amiri',
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
                     ),
@@ -763,7 +760,7 @@ class _UnitScreenState extends State<UnitScreen> {
                   color: tokens.mist,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: _arabicBlock(context, q['raw'] as String, size: 14),
+                child: _arabicBlock(context, q['raw'] as String, size: 20),
               );
             }
             final title = q['titleAr'] as String? ?? '';
@@ -779,9 +776,9 @@ class _UnitScreenState extends State<UnitScreen> {
                       title,
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
-                        fontFamily: 'NotoNaskhArabic',
+                        fontFamily: 'Amiri',
                         fontWeight: FontWeight.bold,
-                        fontSize: 19,
+                        fontSize: 22,
                       ),
                     ),
                   const SizedBox(height: 6),
@@ -833,10 +830,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       '$cell',
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontFamily: 'NotoNaskhArabic',
-                        fontSize: 16,
-                      ),
+                      style: const TextStyle(fontFamily: 'Amiri', fontSize: 18),
                     ),
                   ),
                 )
@@ -892,7 +886,7 @@ class _UnitScreenState extends State<UnitScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _sectionLabel(context, 'الْآيَةُ الْقُرْآنِيَّةُ', 'Ayat al-Quran'),
-          _arabicBlock(context, unit.ayahAr, size: 19),
+          _arabicBlock(context, unit.ayahAr, size: 24),
           if (unit.ayahSource.isNotEmpty) ...[
             const SizedBox(height: 6),
             Text(
@@ -931,10 +925,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 unit.ayahReflection,
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontFamily: 'NotoNaskhArabic',
-                  fontSize: 17.5,
-                ),
+                style: const TextStyle(fontFamily: 'Amiri', fontSize: 20),
               ),
             ),
           ],
@@ -971,7 +962,7 @@ class _UnitScreenState extends State<UnitScreen> {
               ),
             ],
           ),
-          _arabicBlock(context, unit.hadithAr, size: 19),
+          _arabicBlock(context, unit.hadithAr, size: 24),
           if (unit.hadithSource.isNotEmpty) ...[
             const SizedBox(height: 6),
             Text(
@@ -1004,7 +995,8 @@ class _UnitScreenState extends State<UnitScreen> {
               'الدُّرُوسُ الْمُسْتَفَادَةُ',
               textDirection: TextDirection.rtl,
               style: TextStyle(
-                fontFamily: 'NotoNaskhArabic',
+                fontFamily: 'Amiri',
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: scheme.primary,
               ),
@@ -1023,8 +1015,8 @@ class _UnitScreenState extends State<UnitScreen> {
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(
-                          fontFamily: 'NotoNaskhArabic',
-                          fontSize: 17.5,
+                          fontFamily: 'Amiri',
+                          fontSize: 20,
                         ),
                       ),
                     ),
@@ -1067,7 +1059,7 @@ class _UnitScreenState extends State<UnitScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _sectionLabel(context, 'خُلَاصَةُ الْوَحْدَةِ', 'Rumusan'),
-          _arabicBlock(context, unit.summaryAr, size: 15),
+          _arabicBlock(context, unit.summaryAr, size: 20),
         ],
       ),
     );
@@ -1102,10 +1094,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 e.value,
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontFamily: 'NotoNaskhArabic',
-                  fontSize: 19,
-                ),
+                style: const TextStyle(fontFamily: 'Amiri', fontSize: 21),
               ),
             );
           }),
@@ -1185,9 +1174,9 @@ class _OpenExerciseState extends State<_OpenExercise> {
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.right,
           style: const TextStyle(
-            fontFamily: 'NotoNaskhArabic',
+            fontFamily: 'Amiri',
             fontWeight: FontWeight.bold,
-            fontSize: 19,
+            fontSize: 22,
           ),
         ),
         const SizedBox(height: 6),
@@ -1198,8 +1187,8 @@ class _OpenExerciseState extends State<_OpenExercise> {
           style: TextStyle(
             height: 1.8,
             color: tokens.textPrimary,
-            fontFamily: 'NotoNaskhArabic',
-            fontSize: 19,
+            fontFamily: 'Amiri',
+            fontSize: 21,
           ),
         ),
         const SizedBox(height: 8),
@@ -1322,9 +1311,9 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(
-                          fontFamily: 'NotoNaskhArabic',
-                          fontSize: 17.5,
-                          height: 1.6,
+                          fontFamily: 'Amiri',
+                          fontSize: 20,
+                          height: 1.7,
                         ),
                       ),
                     ),

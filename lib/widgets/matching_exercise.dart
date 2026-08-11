@@ -83,7 +83,11 @@ class _MatchingExerciseState extends State<MatchingExercise> {
         Text(
           widget.exercise.titleAr,
           textDirection: TextDirection.rtl,
-          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+          style: const TextStyle(
+            fontFamily: 'Amiri',
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
         ),
         const SizedBox(height: 10),
         ..._words.map((w) {
@@ -119,7 +123,7 @@ class _MatchingExerciseState extends State<MatchingExercise> {
                     w,
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
-                      fontFamily: 'NotoNaskhArabic',
+                      fontFamily: 'Amiri',
                       fontSize: 22.5,
                       fontWeight: FontWeight.bold,
                     ),
@@ -201,7 +205,11 @@ class _StaticExercise extends StatelessWidget {
         Text(
           exercise.titleAr,
           textDirection: TextDirection.rtl,
-          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+          style: const TextStyle(
+            fontFamily: 'Amiri',
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+          ),
         ),
         const SizedBox(height: 8),
         Text(
@@ -211,7 +219,7 @@ class _StaticExercise extends StatelessWidget {
           style: TextStyle(
             height: 1.8,
             color: tokens.textPrimary,
-            fontFamily: 'NotoNaskhArabic',
+            fontFamily: 'Amiri',
             fontSize: 20,
           ),
         ),

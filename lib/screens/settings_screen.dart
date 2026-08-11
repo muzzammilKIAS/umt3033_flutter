@@ -137,8 +137,8 @@ class SettingsScreen extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
-                    fontFamily: 'NotoNaskhArabic',
-                    fontSize: 22.5,
+                    fontFamily: 'Amiri',
+                    fontSize: 26,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

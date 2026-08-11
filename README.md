@@ -23,7 +23,7 @@ assets/
              audio-manifest.json, illustrations.json
   images/units/  one hiwar illustration per unit (JPEG, ~100KB each)
   audio/unit-NN/male/  pre-generated Piper TTS audio (male voice)
-  fonts/     LotusLinotype (Arabic, harakat-friendly), Amiri
+  fonts/     Amiri (Arabic), Inter (Latin) -- see "Fonts" below
 scripts/     Development-time content pipeline (DOCX -> JSON -> audio).
              Not shipped in the app; see "Regenerating course data" below.
 docs/        This project's academic-source mapping, content/audio QA
@@ -86,24 +86,63 @@ male-voice hiwar/vocab/reading audio — works with no network connection
 after install. See "Audio / TTS strategy" below for the one feature that
 depends on the device's own (still offline) TTS engine.
 
-## Arabic font
+## Fonts
 
-**Noto Naskh Arabic** (Google, SIL Open Font License 1.1 — free to bundle
-and redistribute; `assets/fonts/noto-naskh-arabic/`, license text in that
-same folder). A Naskh text face with excellent harakat rendering, chosen for
-body-text legibility over decoration, matching the "premium textbook" goal.
+**Arabic (all lesson content — vocab, hiwar, expanded hiwar, reading texts,
+qawaid, exercises, glossary, unit titles): Amiri.**
+- Source: official release `Amiri-1.003.zip` from
+  `github.com/aliftype/amiri` (the font's own upstream repo).
+- License: SIL Open Font License 1.1 — free to bundle and redistribute.
+  License text bundled at `assets/fonts/amiri/OFL.txt`.
+- Files bundled: `assets/fonts/amiri/Amiri-Regular.ttf`,
+  `assets/fonts/amiri/Amiri-Bold.ttf`.
+- Why: a classical Naskh book face (originally drawn for Quranic
+  typesetting) with excellent, purpose-built harakat/shaddah/tanwin
+  rendering — closer to the traditional, elegant look the course wanted
+  than a more modern-leaning face, while being fully redistributable.
 
-This replaces two problems found in the previously-bundled fonts, fixed in
-this pass:
+**Malay / English / transliteration / UI / navigation: Inter.**
+- Source: Google Fonts' upstream repo (`github.com/google/fonts`,
+  `ofl/inter/`), variable font (weight 100–900 in one file).
+- License: SIL Open Font License 1.1. License text bundled at
+  `assets/fonts/inter/OFL.txt`.
+- Files bundled: `assets/fonts/inter/Inter-VariableFont.ttf`. Set as the
+  app's default `fontFamily` in `lib/theme/app_theme.dart`; every Arabic
+  text widget explicitly overrides to `fontFamily: 'Amiri'` instead.
+
+Two fonts were rejected before landing on the above, both discovered while
+auditing the previously-bundled files:
 - `LotusLinotype.ttf` was a genuine **proprietary Linotype GmbH font** whose
   own embedded license explicitly forbids copying/distribution — it had been
   bundled into the app anyway, which would have shipped a license violation
-  to every install. A note left in the old font folder had explicitly warned
-  against this ("Beli lesen dari pemilik asal" / buy a license from the
-  original owner) and named Noto Naskh Arabic as the correct free fallback;
-  that fallback is what's now actually wired in.
-- The bundled "Amiri-Regular.ttf" was not a font file at all — it was a
-  saved GitHub HTML error page with a `.ttf` extension.
+  to every install.
+- The bundled "Amiri-Regular.ttf" *at that time* was not a font file at
+  all — it was a saved GitHub HTML error page with a `.ttf` extension. The
+  real Amiri now bundled above was fetched fresh from the upstream release.
+
+Noto Naskh Arabic was used as an intermediate replacement for one revision
+before this one; Amiri was chosen over it on request for a more classical,
+book-like appearance. If Amiri or Inter ever shows a rendering problem with
+fully-vocalized text, the documented fallback path is Scheherazade New
+(SIL OFL) for Arabic — not a silent revert to Noto Naskh Arabic.
+
+### Typography scale
+
+Per-role Arabic sizes (logical px), tuned for phone-first reading:
+
+| Role | Size | Line height |
+|---|---|---|
+| Arabic body (context notes, qawaid notes, summaries) | 20 | 1.7–1.9 |
+| Arabic hiwar (dialogue lines) | 22 | 1.9 |
+| Arabic reading text (النص القرائي) | 22 | 1.9 |
+| Arabic headings (unit titles, course title, glossary header) | 24–32 | — |
+| Ayah / hadith quotes | 24 | 1.9 |
+| Malay / English translation | 12–17 | 1.5–1.8 |
+
+Module/unit title headings use `FittedBox` + `maxLines: 1` so they scale to
+fit on one line rather than wrapping, while staying as large as the
+available width allows; hiwar, instructions and vocab sections keep normal
+multi-line wrapping.
 
 ## Audio / TTS strategy
 

@@ -12,7 +12,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.8
-  google_fonts: ^6.2.1
   shared_preferences: ^2.3.4
   just_audio: ^0.9.42
   url_launcher: ^6.3.1
@@ -28,9 +27,15 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: NotoNaskhArabic
+    - family: Amiri
       fonts:
-        - asset: assets/fonts/noto-naskh-arabic/NotoNaskhArabic-VariableFont_wght.ttf
+        - asset: assets/fonts/amiri/Amiri-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/amiri/Amiri-Bold.ttf
+          weight: 700
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/inter/Inter-VariableFont.ttf
 
   assets:
     - assets/data/

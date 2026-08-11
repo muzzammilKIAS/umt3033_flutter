@@ -121,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               textDirection: TextDirection.rtl,
                               textAlign: TextAlign.right,
                               style: const TextStyle(
-                                fontFamily: 'NotoNaskhArabic',
+                                fontFamily: 'Amiri',
                                 fontSize: 20,
                               ),
                             ),

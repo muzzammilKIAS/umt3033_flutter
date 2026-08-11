@@ -101,7 +101,7 @@ class UnitCard extends StatelessWidget {
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
-                        fontFamily: 'NotoNaskhArabic',
+                        fontFamily: 'Amiri',
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         height: 1.6,
@@ -114,10 +114,10 @@ class UnitCard extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: TextStyle(
-                          fontFamily: 'NotoNaskhArabic',
+                          fontFamily: 'Amiri',
                           fontWeight: FontWeight.w600,
                           color: tokens.textSecondary,
-                          fontSize: 13,
+                          fontSize: 17,
                         ),
                       ),
                     ],
