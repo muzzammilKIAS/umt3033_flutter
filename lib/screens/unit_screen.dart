@@ -863,7 +863,7 @@ class _UnitScreenState extends State<UnitScreen> {
               ),
             ],
           ),
-          _arabicBlock(context, unit.readingAr, size: 16),
+          _arabicBlock(context, unit.readingAr, size: 22),
         ],
       ),
     );
