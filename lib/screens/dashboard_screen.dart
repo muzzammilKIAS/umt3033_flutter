@@ -22,28 +22,42 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        titleSpacing: 0,
+        title: Row(
           children: [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              alignment: AlignmentDirectional.centerStart,
-              child: Text(
-                'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
-                textDirection: TextDirection.rtl,
-                maxLines: 1,
-                softWrap: false,
-                style: TextStyle(
-                  fontFamily: 'Amiri',
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Center(
+                child: Text(
+                  'ع',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontFamily: 'Amiri',
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
+            const SizedBox(width: 10),
             Text(
-              'Basic Arabic for Muamalat • UMT3033',
+              'UMT3033',
               textDirection: TextDirection.ltr,
-              style: TextStyle(fontSize: 11, color: tokens.textSecondary),
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 15,
+                color: tokens.textPrimary,
+              ),
             ),
           ],
         ),
@@ -193,8 +207,8 @@ class DashboardScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: 108,
-                height: 108,
+                width: 92,
+                height: 92,
                 child: TweenAnimationBuilder<double>(
                   duration: const Duration(milliseconds: 800),
                   curve: Curves.easeOutCubic,
@@ -223,7 +237,7 @@ class DashboardScreen extends StatelessWidget {
                           '${(value * 100).round()}%',
                           textDirection: TextDirection.ltr,
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 17,
                             fontWeight: FontWeight.w800,
                             color: tokens.textPrimary,
                           ),
@@ -233,7 +247,7 @@ class DashboardScreen extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(width: 24),
+              const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -248,7 +262,7 @@ class DashboardScreen extends StatelessWidget {
                     _legendRow(
                       context,
                       color: scheme.secondary,
-                      label: 'Kosa Kata Dipelajari',
+                      label: 'Kosa Kata',
                       value: '${storage.vocabLearned.length}',
                     ),
                     const SizedBox(height: 12),
@@ -287,6 +301,8 @@ class DashboardScreen extends StatelessWidget {
           child: Text(
             label,
             textDirection: TextDirection.ltr,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 13, color: tokens.textSecondary),
           ),
         ),
