@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import '../models/unit_model.dart';
 import '../theme/app_theme.dart';
+import '../utils/arabic_text.dart';
 import '../widgets/unit_card.dart';
 
 /// Interactive matching exercise: reconstructs word/meaning pairs from the
@@ -12,11 +13,13 @@ import '../widgets/unit_card.dart';
 class MatchingExercise extends StatefulWidget {
   final ExerciseBlock exercise;
   final UnitModel unit;
+  final bool showHarakat;
 
   const MatchingExercise({
     super.key,
     required this.exercise,
     required this.unit,
+    required this.showHarakat,
   });
 
   @override
@@ -73,15 +76,19 @@ class _MatchingExerciseState extends State<MatchingExercise> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
+    String h(String s) => widget.showHarakat ? s : stripHarakat(s);
     if (_words.isEmpty) {
       // Couldn't confidently parse -- show the original prompt as authored.
-      return _StaticExercise(exercise: widget.exercise);
+      return _StaticExercise(
+        exercise: widget.exercise,
+        showHarakat: widget.showHarakat,
+      );
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.exercise.titleAr,
+          h(widget.exercise.titleAr),
           textDirection: TextDirection.rtl,
           style: const TextStyle(
             fontFamily: 'Amiri',
@@ -120,7 +127,7 @@ class _MatchingExerciseState extends State<MatchingExercise> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    w,
+                    h(w),
                     textDirection: TextDirection.rtl,
                     style: const TextStyle(
                       fontFamily: 'Amiri',
@@ -194,16 +201,18 @@ class _MatchingExerciseState extends State<MatchingExercise> {
 
 class _StaticExercise extends StatelessWidget {
   final ExerciseBlock exercise;
-  const _StaticExercise({required this.exercise});
+  final bool showHarakat;
+  const _StaticExercise({required this.exercise, required this.showHarakat});
 
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
+    String h(String s) => showHarakat ? s : stripHarakat(s);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          exercise.titleAr,
+          h(exercise.titleAr),
           textDirection: TextDirection.rtl,
           style: const TextStyle(
             fontFamily: 'Amiri',
@@ -213,7 +222,7 @@ class _StaticExercise extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          exercise.promptAr,
+          h(exercise.promptAr),
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.right,
           style: TextStyle(

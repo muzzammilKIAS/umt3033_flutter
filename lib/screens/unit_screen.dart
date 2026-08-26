@@ -7,6 +7,7 @@ import '../models/unit_model.dart';
 import '../services/data_service.dart';
 import '../services/storage_service.dart';
 import '../theme/app_theme.dart';
+import '../utils/arabic_text.dart';
 import '../widgets/matching_exercise.dart';
 
 class UnitScreen extends StatefulWidget {
@@ -23,6 +24,10 @@ class _UnitScreenState extends State<UnitScreen> {
   String? _playingId;
   bool _ttsReady = false;
   final Set<String> _revealedTranslations = {};
+  bool _showHarakat = true;
+
+  /// Applies the harakat toggle to any Arabic text before rendering.
+  String _h(String s) => _showHarakat ? s : stripHarakat(s);
 
   @override
   void initState() {
@@ -130,6 +135,24 @@ class _UnitScreenState extends State<UnitScreen> {
         title: Text('Unit ${unit.id}', textDirection: TextDirection.ltr),
         actions: [
           IconButton(
+            icon: Text(
+              'ً',
+              style: TextStyle(
+                fontFamily: 'Amiri',
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: _showHarakat
+                    ? Theme.of(context).colorScheme.primary
+                    : context.tokens.textSecondary,
+                decoration: _showHarakat
+                    ? null
+                    : TextDecoration.lineThrough,
+              ),
+            ),
+            tooltip: _showHarakat ? 'Sembunyikan Harakat' : 'Tunjukkan Harakat',
+            onPressed: () => setState(() => _showHarakat = !_showHarakat),
+          ),
+          IconButton(
             icon: Icon(
               storage.isUnitCompleted(unit.id)
                   ? Icons.check_circle
@@ -217,7 +240,7 @@ class _UnitScreenState extends State<UnitScreen> {
       child: Row(
         children: [
           Text(
-            ar,
+            _h(ar),
             textDirection: TextDirection.rtl,
             style: TextStyle(
               fontFamily: 'Amiri',
@@ -253,7 +276,7 @@ class _UnitScreenState extends State<UnitScreen> {
   }) {
     final tokens = context.tokens;
     return Text(
-      text,
+      _h(text),
       textAlign: align,
       textDirection: TextDirection.rtl,
       style: TextStyle(
@@ -287,7 +310,7 @@ class _UnitScreenState extends State<UnitScreen> {
           fit: BoxFit.scaleDown,
           alignment: AlignmentDirectional.centerEnd,
           child: Text(
-            unit.titleAr,
+            _h(unit.titleAr),
             textDirection: TextDirection.rtl,
             maxLines: 1,
             softWrap: false,
@@ -302,7 +325,7 @@ class _UnitScreenState extends State<UnitScreen> {
         if (unit.titleSubAr.isNotEmpty) ...[
           const SizedBox(height: 4),
           Text(
-            unit.titleSubAr,
+            _h(unit.titleSubAr),
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
             style: TextStyle(
@@ -353,7 +376,7 @@ class _UnitScreenState extends State<UnitScreen> {
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
-                      e.value,
+                      _h(e.value),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.right,
                       style: const TextStyle(
@@ -464,7 +487,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          v.arabic,
+                          _h(v.arabic),
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                           style: const TextStyle(
@@ -602,7 +625,7 @@ class _UnitScreenState extends State<UnitScreen> {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        d.speakerAr,
+                        _h(d.speakerAr),
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontFamily: 'Amiri',
@@ -685,7 +708,7 @@ class _UnitScreenState extends State<UnitScreen> {
           if (unit.pairPracticeConditionsAr.isNotEmpty) ...[
             const SizedBox(height: 8),
             Text(
-              unit.pairPracticeConditionsAr,
+              _h(unit.pairPracticeConditionsAr),
               textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
               style: TextStyle(
@@ -737,7 +760,7 @@ class _UnitScreenState extends State<UnitScreen> {
           ),
           const SizedBox(height: 4),
           Text(
-            textAr,
+            _h(textAr),
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
             style: const TextStyle(fontFamily: 'Amiri', fontSize: 21),
@@ -772,7 +795,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    e.arabic,
+                    _h(e.arabic),
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.right,
                     style: const TextStyle(
@@ -831,7 +854,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 children: [
                   if (title.isNotEmpty)
                     Text(
-                      title,
+                      _h(title),
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
                         fontFamily: 'Amiri',
@@ -844,7 +867,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     (p) => Padding(
                       padding: const EdgeInsets.only(bottom: 6),
                       child: Text(
-                        p as String,
+                        _h(p as String),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                       ),
@@ -891,7 +914,7 @@ class _UnitScreenState extends State<UnitScreen> {
                   (cell) => Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      '$cell',
+                      _h('$cell'),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontFamily: 'Amiri', fontSize: 18),
@@ -907,6 +930,9 @@ class _UnitScreenState extends State<UnitScreen> {
 
   Widget _readingSection(BuildContext context, UnitModel unit) {
     final scheme = Theme.of(context).colorScheme;
+    final tokens = context.tokens;
+    final (arabic, malay) = _splitReadingText(unit.readingAr);
+    final revealed = _revealedTranslations.contains('reading-${unit.id}');
     return _card(
       context,
       child: Column(
@@ -921,6 +947,23 @@ class _UnitScreenState extends State<UnitScreen> {
                   'Teks Bacaan',
                 ),
               ),
+              if (malay.isNotEmpty)
+                IconButton(
+                  icon: Icon(
+                    revealed ? Icons.translate : Icons.translate_outlined,
+                    color: revealed ? scheme.primary : tokens.textSecondary,
+                  ),
+                  tooltip: revealed
+                      ? 'Sembunyikan Terjemahan'
+                      : 'Tunjukkan Terjemahan',
+                  onPressed: () => setState(() {
+                    if (revealed) {
+                      _revealedTranslations.remove('reading-${unit.id}');
+                    } else {
+                      _revealedTranslations.add('reading-${unit.id}');
+                    }
+                  }),
+                ),
               IconButton(
                 icon: Icon(
                   _playingId == '${unit.audioCode}-reading'
@@ -930,13 +973,24 @@ class _UnitScreenState extends State<UnitScreen> {
                 ),
                 onPressed: () => _playLine(
                   '${unit.audioCode}-reading',
-                  unit.readingAr,
+                  arabic,
                   'male',
                 ),
               ),
             ],
           ),
-          _arabicBlock(context, unit.readingAr, size: 22),
+          _arabicBlock(context, arabic, size: 22),
+          if (revealed) ...[
+            const SizedBox(height: 10),
+            Divider(height: 1, color: tokens.border),
+            const SizedBox(height: 10),
+            Text(
+              malay,
+              textDirection: TextDirection.ltr,
+              textAlign: TextAlign.left,
+              style: TextStyle(color: tokens.textSecondary, height: 1.6),
+            ),
+          ],
         ],
       ),
     );
@@ -954,7 +1008,7 @@ class _UnitScreenState extends State<UnitScreen> {
           if (unit.ayahSource.isNotEmpty) ...[
             const SizedBox(height: 6),
             Text(
-              unit.ayahSource,
+              _h(unit.ayahSource),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontFamily: 'Amiri',
@@ -990,7 +1044,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                unit.ayahReflection,
+                _h(unit.ayahReflection),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
                 style: const TextStyle(fontFamily: 'Amiri', fontSize: 20),
@@ -1034,7 +1088,7 @@ class _UnitScreenState extends State<UnitScreen> {
           if (unit.hadithSource.isNotEmpty) ...[
             const SizedBox(height: 6),
             Text(
-              unit.hadithSource,
+              _h(unit.hadithSource),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontFamily: 'Amiri',
@@ -1064,7 +1118,7 @@ class _UnitScreenState extends State<UnitScreen> {
           if (unit.hadithLessons.isNotEmpty) ...[
             const SizedBox(height: 12),
             Text(
-              'الدُّرُوسُ الْمُسْتَفَادَةُ',
+              _h('الدُّرُوسُ الْمُسْتَفَادَةُ'),
               textDirection: TextDirection.rtl,
               style: TextStyle(
                 fontFamily: 'Amiri',
@@ -1083,7 +1137,7 @@ class _UnitScreenState extends State<UnitScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        l,
+                        _h(l),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(
@@ -1113,12 +1167,19 @@ class _UnitScreenState extends State<UnitScreen> {
             (ex) => Padding(
               padding: const EdgeInsets.only(bottom: 18),
               child: ex.type == 'matching'
-                  ? MatchingExercise(exercise: ex, unit: unit)
-                  : _OpenExercise(exercise: ex),
+                  ? MatchingExercise(
+                      exercise: ex,
+                      unit: unit,
+                      showHarakat: _showHarakat,
+                    )
+                  : _OpenExercise(exercise: ex, showHarakat: _showHarakat),
             ),
           ),
           if (unit.modelAnswersAr.isNotEmpty)
-            _ModelAnswersReveal(answers: unit.modelAnswersAr),
+            _ModelAnswersReveal(
+              answers: unit.modelAnswersAr,
+              showHarakat: _showHarakat,
+            ),
         ],
       ),
     );
@@ -1163,7 +1224,7 @@ class _UnitScreenState extends State<UnitScreen> {
               contentPadding: EdgeInsets.zero,
               activeColor: scheme.primary,
               title: Text(
-                e.value,
+                _h(e.value),
                 textDirection: TextDirection.rtl,
                 textAlign: TextAlign.right,
                 style: const TextStyle(fontFamily: 'Amiri', fontSize: 21),
@@ -1216,6 +1277,21 @@ class _UnitScreenState extends State<UnitScreen> {
   }
 }
 
+/// The reading passage (النَّصُّ الْقِرَائِيُّ) is stored with its Malay
+/// translation appended in the same string, e.g. "...دِرَاسَتِهِ. Maksud:
+/// Kursus Bahasa Arab...". Split it so the Arabic body and the Malay gloss
+/// can be rendered (and revealed) separately instead of running together
+/// as one RTL Amiri block.
+final _maksudSplitPattern = RegExp(
+  r'\s*(?:Maksud:|التَّرْجَمَةُ بِاللُّغَةِ الْمَلَايُوِيَّةِ:)\s*',
+);
+
+(String arabic, String malay) _splitReadingText(String text) {
+  final parts = text.split(_maksudSplitPattern);
+  if (parts.length < 2) return (text.trim(), '');
+  return (parts.first.trim(), parts.sublist(1).join(' ').trim());
+}
+
 /// Exercise prompt text from the source guide packs multiple numbered
 /// sub-questions (e.g. "١. ... ٢. ... ٣. ...") into one run-on string with
 /// no line breaks. Split on the Arabic-Indic numeral markers so each
@@ -1239,7 +1315,8 @@ List<String> _splitNumberedArabic(String text) {
 
 class _OpenExercise extends StatefulWidget {
   final ExerciseBlock exercise;
-  const _OpenExercise({required this.exercise});
+  final bool showHarakat;
+  const _OpenExercise({required this.exercise, required this.showHarakat});
 
   @override
   State<_OpenExercise> createState() => _OpenExerciseState();
@@ -1259,11 +1336,12 @@ class _OpenExerciseState extends State<_OpenExercise> {
     final storage = context.watch<StorageService>();
     final done = storage.checkedItems.contains(widget.exercise.id);
     final tokens = context.tokens;
+    String h(String s) => widget.showHarakat ? s : stripHarakat(s);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          widget.exercise.titleAr,
+          h(widget.exercise.titleAr),
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.right,
           style: const TextStyle(
@@ -1277,7 +1355,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           (line) => Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
-              line,
+              h(line),
               textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
               style: TextStyle(
@@ -1320,7 +1398,8 @@ class _OpenExerciseState extends State<_OpenExercise> {
 /// open-ended activities may have more than one acceptable answer.
 class _ModelAnswersReveal extends StatefulWidget {
   final List<String> answers;
-  const _ModelAnswersReveal({required this.answers});
+  final bool showHarakat;
+  const _ModelAnswersReveal({required this.answers, required this.showHarakat});
 
   @override
   State<_ModelAnswersReveal> createState() => _ModelAnswersRevealState();
@@ -1406,7 +1485,7 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
                     const SizedBox(width: 6),
                     Expanded(
                       child: Text(
-                        e.value,
+                        widget.showHarakat ? e.value : stripHarakat(e.value),
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.right,
                         style: const TextStyle(

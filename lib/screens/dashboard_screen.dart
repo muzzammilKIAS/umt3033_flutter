@@ -4,26 +4,15 @@ import '../models/unit_model.dart';
 import '../services/data_service.dart';
 import '../services/storage_service.dart';
 import '../theme/app_theme.dart';
+import '../utils/arabic_text.dart';
 import '../widgets/unit_card.dart';
 import 'unit_screen.dart';
 
-/// Strips Arabic diacritics (harakat/tashkeel) so headings on the dashboard
-/// read as plain, unvocalized Arabic -- the fully-vocalized form used
-/// elsewhere in the app (for pronunciation guidance) looks dense/busy here.
-final _harakatPattern = RegExp('[ً-ْٰ]');
-
-String _stripHarakat(String text) => text.replaceAll(_harakatPattern, '');
-
-const _westernDigits = '0123456789';
-const _arabicIndicDigits = '٠١٢٣٤٥٦٧٨٩';
-
-String _toArabicDigits(String input) => input
-    .split('')
-    .map((c) {
-      final i = _westernDigits.indexOf(c);
-      return i == -1 ? c : _arabicIndicDigits[i];
-    })
-    .join();
+// Dashboard headings show plain, unvocalized Arabic (via stripHarakat) --
+// the fully-vocalized form used inside the unit page (for pronunciation
+// guidance) looks dense/busy here.
+const _stripHarakat = stripHarakat;
+const _toArabicDigits = toArabicDigits;
 
 class DashboardScreen extends StatelessWidget {
   final void Function(int unitId) onOpenUnit;
