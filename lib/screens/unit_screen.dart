@@ -1198,6 +1198,27 @@ class _UnitScreenState extends State<UnitScreen> {
   }
 }
 
+/// Exercise prompt text from the source guide packs multiple numbered
+/// sub-questions (e.g. "١. ... ٢. ... ٣. ...") into one run-on string with
+/// no line breaks. Split on the Arabic-Indic numeral markers so each
+/// sub-question renders as its own paragraph instead of one dense block.
+List<String> _splitNumberedArabic(String text) {
+  final markers = RegExp(r'[٠-٩]+\.').allMatches(text).toList();
+  if (markers.length < 2) return [text];
+  final lines = <String>[];
+  if (markers.first.start > 0) {
+    final lead = text.substring(0, markers.first.start).trim();
+    if (lead.isNotEmpty) lines.add(lead);
+  }
+  for (var i = 0; i < markers.length; i++) {
+    final start = markers[i].start;
+    final end = i + 1 < markers.length ? markers[i + 1].start : text.length;
+    final segment = text.substring(start, end).trim();
+    if (segment.isNotEmpty) lines.add(segment);
+  }
+  return lines;
+}
+
 class _OpenExercise extends StatefulWidget {
   final ExerciseBlock exercise;
   const _OpenExercise({required this.exercise});
@@ -1234,15 +1255,20 @@ class _OpenExerciseState extends State<_OpenExercise> {
           ),
         ),
         const SizedBox(height: 6),
-        Text(
-          widget.exercise.promptAr,
-          textDirection: TextDirection.rtl,
-          textAlign: TextAlign.right,
-          style: TextStyle(
-            height: 1.8,
-            color: tokens.textPrimary,
-            fontFamily: 'Amiri',
-            fontSize: 21,
+        ..._splitNumberedArabic(widget.exercise.promptAr).map(
+          (line) => Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Text(
+              line,
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                height: 1.8,
+                color: tokens.textPrimary,
+                fontFamily: 'Amiri',
+                fontSize: 21,
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 8),
