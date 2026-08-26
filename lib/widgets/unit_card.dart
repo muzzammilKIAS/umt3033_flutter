@@ -120,12 +120,15 @@ class _UnitCardState extends State<UnitCard> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
-                                'Unit ${widget.unit.id}',
-                                textDirection: TextDirection.ltr,
+                                _stripHarakat(
+                                  'الْوَحْدَةُ ${toArabicDigits(widget.unit.id.toString())}',
+                                ),
+                                textDirection: TextDirection.rtl,
                                 style: const TextStyle(
+                                  fontFamily: 'Amiri',
                                   color: Colors.white,
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w800,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),

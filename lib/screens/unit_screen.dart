@@ -118,11 +118,12 @@ class _UnitScreenState extends State<UnitScreen> {
     final data = context.watch<DataService>();
     final storage = context.watch<StorageService>();
     final unit = data.unitById(widget.unitId);
+    final tokens = context.tokens;
 
     if (unit == null) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Unit', textDirection: TextDirection.ltr),
+          title: const Text('الْوَحْدَةُ', textDirection: TextDirection.rtl),
         ),
         body: const Center(
           child: Text('Unit tidak dijumpai', textDirection: TextDirection.ltr),
@@ -132,7 +133,28 @@ class _UnitScreenState extends State<UnitScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Unit ${unit.id}', textDirection: TextDirection.ltr),
+        titleSpacing: 0,
+        title: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+            ),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Text(
+            _h('الْوَحْدَةُ ${toArabicDigits(unit.id.toString())}'),
+            textDirection: TextDirection.rtl,
+            style: const TextStyle(
+              fontFamily: 'Amiri',
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+              color: Colors.white,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Container(
@@ -304,17 +326,41 @@ class _UnitScreenState extends State<UnitScreen> {
 
   Widget _openingHeader(BuildContext context, UnitModel unit) {
     final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Unit ${unit.id} • ${unit.code}',
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-            fontSize: 12,
-            color: tokens.textSecondary,
-            fontWeight: FontWeight.w700,
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              decoration: BoxDecoration(
+                color: scheme.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                _h('الْوَحْدَةُ ${toArabicDigits(unit.id.toString())}'),
+                textDirection: TextDirection.rtl,
+                style: TextStyle(
+                  fontFamily: 'Amiri',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                  color: scheme.primary,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              unit.code,
+              textDirection: TextDirection.ltr,
+              style: TextStyle(
+                fontSize: 12,
+                color: tokens.textSecondary,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 6),
         FittedBox(
