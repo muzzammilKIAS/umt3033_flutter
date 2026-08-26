@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:just_audio/just_audio.dart';
@@ -68,7 +69,13 @@ class _UnitScreenState extends State<UnitScreen> {
     setState(() => _playingId = itemId);
     if (path != null) {
       try {
-        await _player.setAsset(path);
+        if (kIsWeb) {
+          // just_audio's asset: scheme isn't supported on web; resolve the
+          // asset's actual served URL (assets/assets/<path>) instead.
+          await _player.setUrl(Uri.base.resolve('assets/assets/$path').toString());
+        } else {
+          await _player.setAsset(path);
+        }
         await _player.setSpeed(_speed);
         await _player.play();
         _player.playerStateStream
@@ -141,9 +148,10 @@ class _UnitScreenState extends State<UnitScreen> {
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
         children: [
           _openingHeader(context, unit),
-          const SizedBox(height: 20),
-          if (unit.outcomes.isNotEmpty || unit.learningContextAr.isNotEmpty)
-            _outcomesSection(context, unit),
+          const SizedBox(height: 24),
+          if (unit.learningContextAr.isNotEmpty)
+            _mauqifSection(context, unit),
+          if (unit.outcomes.isNotEmpty) _outcomesSection(context, unit),
           if (unit.vocab.isNotEmpty) _vocabSection(context, unit),
           if (unit.illustration != null) _illustrationSection(context, unit),
           if (unit.dialog.isNotEmpty)
@@ -186,13 +194,15 @@ class _UnitScreenState extends State<UnitScreen> {
 
   Widget _card(BuildContext context, {required Widget child}) {
     final tokens = context.tokens;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: tokens.card,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: tokens.border),
+        borderRadius: BorderRadius.circular(22),
+        border: isDark ? Border.all(color: tokens.border) : null,
+        boxShadow: context.softShadow,
       ),
       child: Material(color: Colors.transparent, child: child),
     );
@@ -303,6 +313,30 @@ class _UnitScreenState extends State<UnitScreen> {
     );
   }
 
+  Widget _mauqifSection(BuildContext context, UnitModel unit) {
+    return _card(
+      context,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _sectionLabel(
+            context,
+            'مَوْقِفٌ تَعَلُّمِيٌّ',
+            'Konteks Pembelajaran',
+          ),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: context.tokens.mist,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: _arabicBlock(context, unit.learningContextAr, size: 20),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _outcomesSection(BuildContext context, UnitModel unit) {
     return _card(
       context,
@@ -314,17 +348,6 @@ class _UnitScreenState extends State<UnitScreen> {
             'أَهْدَافُ التَّعَلُّمِ',
             'Hasil Pembelajaran',
           ),
-          if (unit.learningContextAr.isNotEmpty) ...[
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: context.tokens.mist,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: _arabicBlock(context, unit.learningContextAr, size: 20),
-            ),
-            const SizedBox(height: 12),
-          ],
           ...unit.outcomes.asMap().entries.map(
             (e) => Padding(
               padding: const EdgeInsets.only(bottom: 8),
@@ -355,11 +378,18 @@ class _UnitScreenState extends State<UnitScreen> {
   }
 
   Widget _numberBadge(BuildContext context, int n) {
-    final scheme = Theme.of(context).colorScheme;
+    final tokens = context.tokens;
     return Container(
       width: 24,
       height: 24,
-      decoration: BoxDecoration(color: scheme.primary, shape: BoxShape.circle),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+        ),
+        shape: BoxShape.circle,
+      ),
       child: Center(
         child: Text(
           '$n',

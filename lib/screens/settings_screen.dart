@@ -198,12 +198,14 @@ class SettingsScreen extends StatelessWidget {
 
   Widget _card(BuildContext context, {required Widget child}) {
     final tokens = context.tokens;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: tokens.card,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: tokens.border),
+        borderRadius: BorderRadius.circular(20),
+        border: isDark ? Border.all(color: tokens.border) : null,
+        boxShadow: context.softShadow,
       ),
       child: Material(color: Colors.transparent, child: child),
     );

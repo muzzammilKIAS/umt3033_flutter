@@ -76,11 +76,11 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                     itemBuilder: (context, i) {
                       final g = entries[i];
                       return Container(
-                        margin: const EdgeInsets.only(bottom: 8),
+                        margin: const EdgeInsets.only(bottom: 10),
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
                           color: tokens.card,
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(18),
                           border: Border.all(color: tokens.border),
                         ),
                         child: Row(

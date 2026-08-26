@@ -51,23 +51,26 @@ class DashboardScreen extends StatelessWidget {
       body: units.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               children: [
                 _heroSection(context, course, storage),
-                const SizedBox(height: 20),
-                _progressCard(context, storage),
                 const SizedBox(height: 24),
+                _progressCard(context, storage),
+                const SizedBox(height: 28),
                 _sectionHeader(
                   context,
                   'فِهْرِسُ الْوَحَدَاتِ',
                   'Senarai Unit Pembelajaran',
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 14),
                 ...units.map(
-                  (u) => UnitCard(
-                    unit: u,
-                    completed: storage.isUnitCompleted(u.id),
-                    onTap: () => onOpenUnit(u.id),
+                  (u) => Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: UnitCard(
+                      unit: u,
+                      completed: storage.isUnitCompleted(u.id),
+                      onTap: () => onOpenUnit(u.id),
+                    ),
                   ),
                 ),
               ],
@@ -175,128 +178,128 @@ class DashboardScreen extends StatelessWidget {
     final scheme = Theme.of(context).colorScheme;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: tokens.card,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: tokens.border),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.02),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(22),
+        boxShadow: context.softShadow,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _sectionKicker(context, 'تَقَدُّمُ التَّعَلُّمِ', 'Progress'),
-          const SizedBox(height: 14),
+          const SizedBox(height: 18),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _statTile(
-                context,
-                'Unit Selesai',
-                '${storage.completedUnitCount}/14',
-                Icons.check_circle_outline,
+              SizedBox(
+                width: 108,
+                height: 108,
+                child: TweenAnimationBuilder<double>(
+                  duration: const Duration(milliseconds: 800),
+                  curve: Curves.easeOutCubic,
+                  tween: Tween<double>(begin: 0, end: storage.overallProgress),
+                  builder: (context, value, _) {
+                    return Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox.expand(
+                          child: CircularProgressIndicator(
+                            value: 1,
+                            strokeWidth: 12,
+                            color: tokens.mist,
+                          ),
+                        ),
+                        SizedBox.expand(
+                          child: CircularProgressIndicator(
+                            value: value,
+                            strokeWidth: 12,
+                            strokeCap: StrokeCap.round,
+                            backgroundColor: Colors.transparent,
+                            valueColor: AlwaysStoppedAnimation(scheme.primary),
+                          ),
+                        ),
+                        Text(
+                          '${(value * 100).round()}%',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w800,
+                            color: tokens.textPrimary,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
-              _statTile(
-                context,
-                'Kosa Kata',
-                '${storage.vocabLearned.length}',
-                Icons.style_outlined,
-              ),
-              _statTile(
-                context,
-                'Progress',
-                '${(storage.overallProgress * 100).round()}%',
-                Icons.trending_up,
+              const SizedBox(width: 24),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _legendRow(
+                      context,
+                      color: scheme.primary,
+                      label: 'Unit Selesai',
+                      value: '${storage.completedUnitCount}/14',
+                    ),
+                    const SizedBox(height: 12),
+                    _legendRow(
+                      context,
+                      color: scheme.secondary,
+                      label: 'Kosa Kata Dipelajari',
+                      value: '${storage.vocabLearned.length}',
+                    ),
+                    const SizedBox(height: 12),
+                    _legendRow(
+                      context,
+                      color: tokens.champagne,
+                      label: 'Baki Unit',
+                      value: '${14 - storage.completedUnitCount}',
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-          const SizedBox(height: 14),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: TweenAnimationBuilder<double>(
-              duration: const Duration(milliseconds: 800),
-              curve: Curves.easeOutCubic,
-              tween: Tween<double>(
-                begin: 0,
-                end: storage.overallProgress,
-              ),
-              builder: (context, value, _) {
-                return LinearProgressIndicator(
-                  value: value,
-                  minHeight: 8,
-                  backgroundColor: scheme.primary.withValues(alpha: 0.1),
-                  color: scheme.primary,
-                  borderRadius: BorderRadius.circular(8),
-                );
-              },
-            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _statTile(
-    BuildContext context,
-    String label,
-    String value,
-    IconData icon,
-  ) {
+  Widget _legendRow(
+    BuildContext context, {
+    required Color color,
+    required String label,
+    required String value,
+  }) {
     final tokens = context.tokens;
-    final scheme = Theme.of(context).colorScheme;
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(right: 8),
-        child: Container(
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: tokens.mist,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: tokens.border.withValues(alpha: 0.6),
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: scheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Icon(icon, size: 20, color: scheme.primary),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                value,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: tokens.textPrimary,
-                  letterSpacing: -0.5,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                label,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                  color: tokens.textSecondary,
-                ),
-              ),
-            ],
+    return Row(
+      children: [
+        Container(
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            label,
+            textDirection: TextDirection.ltr,
+            style: TextStyle(fontSize: 13, color: tokens.textSecondary),
           ),
         ),
-      ),
+        Text(
+          value,
+          textDirection: TextDirection.ltr,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w800,
+            color: tokens.textPrimary,
+          ),
+        ),
+      ],
     );
   }
 

@@ -102,10 +102,10 @@ class _SearchScreenState extends State<SearchScreen> {
                       final type = r['type'] as String;
                       final labels = _typeLabels[type] ?? ('', type);
                       return Container(
-                        margin: const EdgeInsets.only(bottom: 8),
+                        margin: const EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
                           color: tokens.card,
-                          borderRadius: BorderRadius.circular(14),
+                          borderRadius: BorderRadius.circular(18),
                           border: Border.all(color: tokens.border),
                         ),
                         clipBehavior: Clip.antiAlias,

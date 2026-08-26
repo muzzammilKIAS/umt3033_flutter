@@ -110,7 +110,6 @@ class _MainShellState extends State<MainShell> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.tokens;
-    final scheme = Theme.of(context).colorScheme;
     final isWideScreen = MediaQuery.of(context).size.width >= 800;
 
     final body = IndexedStack(
@@ -125,53 +124,93 @@ class _MainShellState extends State<MainShell> {
 
     if (isWideScreen) {
       return Scaffold(
+        backgroundColor: tokens.mist,
         body: Row(
           children: [
-            // Navigation Rail for wide screens
+            // Branded sidebar for wide screens
             Container(
+              width: 240,
+              margin: const EdgeInsets.fromLTRB(16, 16, 8, 16),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14),
               decoration: BoxDecoration(
                 color: tokens.card,
-                border: Border(
-                  left: BorderSide(color: tokens.border, width: 1),
-                ),
+                borderRadius: BorderRadius.circular(24),
+                boxShadow: context.softShadow,
               ),
-              child: NavigationRail(
-                selectedIndex: _currentIndex,
-                onDestinationSelected: (i) => setState(() => _currentIndex = i),
-                labelType: NavigationRailLabelType.all,
-                backgroundColor: Colors.transparent,
-                indicatorColor: scheme.primary.withValues(alpha: 0.16),
-                selectedIconTheme: IconThemeData(color: scheme.primary),
-                selectedLabelTextStyle: TextStyle(
-                  color: scheme.primary,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12,
-                ),
-                unselectedIconTheme: IconThemeData(color: tokens.textSecondary),
-                unselectedLabelTextStyle: TextStyle(
-                  color: tokens.textSecondary,
-                  fontSize: 12,
-                ),
-                destinations: const [
-                  NavigationRailDestination(
-                    icon: Icon(Icons.dashboard_outlined),
-                    selectedIcon: Icon(Icons.dashboard),
-                    label: Text('Dashboard', textDirection: TextDirection.ltr),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'ع',
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(
+                              fontFamily: 'Amiri',
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'UMT3033',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            color: tokens.textPrimary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.menu_book_outlined),
-                    selectedIcon: Icon(Icons.menu_book),
-                    label: Text('Glosari', textDirection: TextDirection.ltr),
+                  const SizedBox(height: 28),
+                  _sidebarItem(
+                    context,
+                    icon: Icons.dashboard_outlined,
+                    selectedIcon: Icons.dashboard,
+                    label: 'Dashboard',
+                    index: 0,
                   ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.search_outlined),
-                    selectedIcon: Icon(Icons.search),
-                    label: Text('Cari', textDirection: TextDirection.ltr),
+                  const SizedBox(height: 6),
+                  _sidebarItem(
+                    context,
+                    icon: Icons.menu_book_outlined,
+                    selectedIcon: Icons.menu_book,
+                    label: 'Glosari',
+                    index: 1,
                   ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.settings_outlined),
-                    selectedIcon: Icon(Icons.settings),
-                    label: Text('Tetapan', textDirection: TextDirection.ltr),
+                  const SizedBox(height: 6),
+                  _sidebarItem(
+                    context,
+                    icon: Icons.search_outlined,
+                    selectedIcon: Icons.search,
+                    label: 'Cari',
+                    index: 2,
+                  ),
+                  const SizedBox(height: 6),
+                  _sidebarItem(
+                    context,
+                    icon: Icons.settings_outlined,
+                    selectedIcon: Icons.settings,
+                    label: 'Tetapan',
+                    index: 3,
                   ),
                 ],
               ),
@@ -215,6 +254,55 @@ class _MainShellState extends State<MainShell> {
             label: 'Tetapan',
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _sidebarItem(
+    BuildContext context, {
+    required IconData icon,
+    required IconData selectedIcon,
+    required String label,
+    required int index,
+  }) {
+    final tokens = context.tokens;
+    final selected = _currentIndex == index;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(14),
+        onTap: () => setState(() => _currentIndex = index),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          decoration: BoxDecoration(
+            gradient: selected
+                ? LinearGradient(
+                    colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Row(
+            children: [
+              Icon(
+                selected ? selectedIcon : icon,
+                size: 20,
+                color: selected ? Colors.white : tokens.textSecondary,
+              ),
+              const SizedBox(width: 12),
+              Text(
+                label,
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                  color: selected ? Colors.white : tokens.textSecondary,
+                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

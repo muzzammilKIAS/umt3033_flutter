@@ -35,29 +35,26 @@ class _UnitCardState extends State<UnitCard> {
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: tokens.card,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: _isHovered
-                ? scheme.primary.withValues(alpha: 0.4)
-                : tokens.border,
-            width: _isHovered ? 1.5 : 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: _isHovered
-                  ? scheme.primary.withValues(alpha: 0.08)
-                  : Colors.black.withValues(alpha: 0.02),
-              blurRadius: _isHovered ? 16 : 4,
-              offset: Offset(0, _isHovered ? 6 : 2),
-            ),
-          ],
+          borderRadius: BorderRadius.circular(22),
+          border: _isHovered
+              ? Border.all(color: scheme.primary.withValues(alpha: 0.4), width: 1.5)
+              : null,
+          boxShadow: _isHovered
+              ? [
+                  BoxShadow(
+                    color: scheme.primary.withValues(alpha: 0.18),
+                    blurRadius: 20,
+                    offset: const Offset(0, 8),
+                  ),
+                ]
+              : context.softShadow,
         ),
         child: Material(
           color: Colors.transparent,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(22),
           child: InkWell(
             onTap: widget.onTap,
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: BorderRadius.circular(22),
             splashColor: scheme.primary.withValues(alpha: 0.08),
             highlightColor: scheme.primary.withValues(alpha: 0.04),
             child: Padding(

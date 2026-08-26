@@ -94,6 +94,20 @@ class AppTokens extends ThemeExtension<AppTokens> {
 extension AppTokensX on BuildContext {
   AppTokens get tokens =>
       Theme.of(this).extension<AppTokens>() ?? AppTokens.light;
+
+  /// Soft floating-card shadow used across the redesigned surfaces (hero
+  /// banners, unit cards, the wide-screen sidebar). Kept subtle in dark mode
+  /// since dark backgrounds already read as "elevated" via lighter fills.
+  List<BoxShadow> get softShadow {
+    final isDark = Theme.of(this).brightness == Brightness.dark;
+    return [
+      BoxShadow(
+        color: tokens.textPrimary.withValues(alpha: isDark ? 0.18 : 0.08),
+        blurRadius: 24,
+        offset: const Offset(0, 10),
+      ),
+    ];
+  }
 }
 
 class AppTheme {
