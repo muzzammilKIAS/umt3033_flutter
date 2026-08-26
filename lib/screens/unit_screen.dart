@@ -209,7 +209,7 @@ class _UnitScreenState extends State<UnitScreen> {
     );
   }
 
-  Widget _sectionLabel(BuildContext context, String ar, String my) {
+  Widget _sectionLabel(BuildContext context, String ar, [String my = '']) {
     final scheme = Theme.of(context).colorScheme;
     final tokens = context.tokens;
     return Padding(
@@ -226,18 +226,20 @@ class _UnitScreenState extends State<UnitScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              my,
-              textDirection: TextDirection.ltr,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w700,
-                color: tokens.textSecondary,
+          if (my.isNotEmpty) ...[
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                my,
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: tokens.textSecondary,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );
@@ -320,11 +322,7 @@ class _UnitScreenState extends State<UnitScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel(
-            context,
-            'مَوْقِفٌ تَعَلُّمِيٌّ',
-            'Konteks Pembelajaran',
-          ),
+          _sectionLabel(context, 'مَوْقِفٌ تَعَلُّمِيٌّ'),
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -344,11 +342,7 @@ class _UnitScreenState extends State<UnitScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel(
-            context,
-            'أَهْدَافُ التَّعَلُّمِ',
-            'Hasil Pembelajaran',
-          ),
+          _sectionLabel(context, 'أَهْدَافُ التَّعَلُّمِ'),
           ...unit.outcomes.asMap().entries.map(
             (e) => Padding(
               padding: const EdgeInsets.only(bottom: 8),
@@ -611,8 +605,9 @@ class _UnitScreenState extends State<UnitScreen> {
                         d.speakerAr,
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Amiri',
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
                           color: tokens.textSecondary,
                         ),
                       ),
@@ -694,6 +689,7 @@ class _UnitScreenState extends State<UnitScreen> {
               textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
               style: TextStyle(
+                fontFamily: 'Amiri',
                 color: tokens.textSecondary,
                 fontSize: 13,
                 height: 1.6,
@@ -946,7 +942,11 @@ class _UnitScreenState extends State<UnitScreen> {
             Text(
               unit.ayahSource,
               textDirection: TextDirection.rtl,
-              style: TextStyle(fontSize: 12, color: tokens.textSecondary),
+              style: TextStyle(
+                fontFamily: 'Amiri',
+                fontSize: 12,
+                color: tokens.textSecondary,
+              ),
             ),
           ],
           if (unit.ayahMaksud.isNotEmpty) ...[
@@ -1022,7 +1022,11 @@ class _UnitScreenState extends State<UnitScreen> {
             Text(
               unit.hadithSource,
               textDirection: TextDirection.rtl,
-              style: TextStyle(fontSize: 12, color: tokens.textSecondary),
+              style: TextStyle(
+                fontFamily: 'Amiri',
+                fontSize: 12,
+                color: tokens.textSecondary,
+              ),
             ),
           ],
           if (unit.hadithMaksud.isNotEmpty) ...[
@@ -1276,6 +1280,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           controller: _controller,
           textDirection: TextDirection.rtl,
           maxLines: 3,
+          style: const TextStyle(fontFamily: 'Amiri', fontSize: 18),
           decoration: const InputDecoration(hintText: 'Tulis jawapan anda...'),
         ),
         const SizedBox(height: 6),

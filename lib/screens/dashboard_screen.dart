@@ -71,11 +71,7 @@ class DashboardScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 _progressCard(context, storage),
                 const SizedBox(height: 28),
-                _sectionHeader(
-                  context,
-                  'فِهْرِسُ الْوَحَدَاتِ',
-                  'Senarai Unit Pembelajaran',
-                ),
+                _sectionHeader(context, 'فِهْرِسُ الْوَحَدَاتِ'),
                 const SizedBox(height: 14),
                 ...units.map(
                   (u) => Padding(
@@ -87,6 +83,8 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
+                _footer(context, course),
               ],
             ),
     );
@@ -119,8 +117,6 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _eyebrow('مُقَرَّرٌ تَفَاعُلِيٌّ • ١٤ وَحْدَةً'),
-          const SizedBox(height: 14),
           FittedBox(
             fit: BoxFit.scaleDown,
             alignment: AlignmentDirectional.centerEnd,
@@ -145,17 +141,6 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            course?.courseTitleEn ?? 'Basic Arabic for Muamalat',
-            textDirection: TextDirection.ltr,
-            style: const TextStyle(color: Colors.white70, fontSize: 14),
-          ),
-          Text(
-            '${course?.courseCode ?? 'UMT3033'} • ${course?.authorName ?? ''}',
-            textDirection: TextDirection.ltr,
-            style: const TextStyle(color: Colors.white60, fontSize: 12),
-          ),
           const SizedBox(height: 20),
           _HeroButton(
             storage: storage,
@@ -166,24 +151,28 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _eyebrow(String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.14),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
-      ),
-      child: Text(
-        text,
-        textDirection: TextDirection.rtl,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-          fontFamily: 'Amiri',
-          fontWeight: FontWeight.w700,
+  Widget _footer(BuildContext context, CourseModel? course) {
+    final tokens = context.tokens;
+    return Column(
+      children: [
+        Text(
+          '${course?.courseCode ?? 'UMT3033'} · ${course?.authorName ?? ''}',
+          textDirection: TextDirection.ltr,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w600,
+            color: tokens.textSecondary,
+          ),
         ),
-      ),
+        const SizedBox(height: 2),
+        Text(
+          course?.courseTitleEn ?? 'Basic Arabic for Muamalat',
+          textDirection: TextDirection.ltr,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 10, color: tokens.textSecondary),
+        ),
+      ],
     );
   }
 
@@ -319,8 +308,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _sectionHeader(BuildContext context, String ar, String my) {
-    final tokens = context.tokens;
+  Widget _sectionHeader(BuildContext context, String ar) {
     final scheme = Theme.of(context).colorScheme;
     return Row(
       children: [
@@ -334,18 +322,7 @@ class DashboardScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            my,
-            textDirection: TextDirection.ltr,
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w800,
-              color: tokens.textPrimary,
-            ),
-          ),
-        ),
+        const Spacer(),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
@@ -442,10 +419,14 @@ class _HeroButtonState extends State<_HeroButton> {
           label: Text(
             widget.storage.lastUnitId > 1 ||
                     widget.storage.completedUnitCount > 0
-                ? 'Sambung Belajar'
-                : 'Mula Belajar',
-            textDirection: TextDirection.ltr,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                ? 'وَاصِلِ التَّعَلُّمَ'
+                : 'اِبْدَأِ التَّعَلُّمَ',
+            textDirection: TextDirection.rtl,
+            style: const TextStyle(
+              fontFamily: 'Amiri',
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+            ),
           ),
         ),
       ),

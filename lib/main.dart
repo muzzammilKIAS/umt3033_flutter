@@ -99,6 +99,7 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   int _currentIndex = 0;
+  bool _sidebarExpanded = false;
 
   void _navigateToUnit(int unitId) {
     Navigator.push(
@@ -127,92 +128,113 @@ class _MainShellState extends State<MainShell> {
         backgroundColor: tokens.mist,
         body: Row(
           children: [
-            // Branded sidebar for wide screens
-            Container(
-              width: 240,
-              margin: const EdgeInsets.fromLTRB(16, 16, 8, 16),
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 14),
-              decoration: BoxDecoration(
-                color: tokens.card,
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: context.softShadow,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [tokens.heroGradientStart, tokens.heroGradientEnd],
+            // Branded sidebar for wide screens: icon-only, expands on hover
+            MouseRegion(
+              onEnter: (_) => setState(() => _sidebarExpanded = true),
+              onExit: (_) => setState(() => _sidebarExpanded = false),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOutCubic,
+                width: _sidebarExpanded ? 240 : 76,
+                margin: const EdgeInsets.fromLTRB(16, 16, 8, 16),
+                padding: EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: _sidebarExpanded ? 14 : 10,
+                ),
+                decoration: BoxDecoration(
+                  color: tokens.card,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: context.softShadow,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: _sidebarExpanded
+                          ? MainAxisAlignment.start
+                          : MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                tokens.heroGradientStart,
+                                tokens.heroGradientEnd,
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'ع',
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontFamily: 'Amiri',
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                          child: const Center(
+                            child: Text(
+                              'ع',
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(
+                                fontFamily: 'Amiri',
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Text(
-                          'UMT3033',
-                          textDirection: TextDirection.ltr,
-                          style: TextStyle(
-                            color: tokens.textPrimary,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 15,
+                        if (_sidebarExpanded) ...[
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              'UMT3033',
+                              textDirection: TextDirection.ltr,
+                              style: TextStyle(
+                                color: tokens.textPrimary,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 15,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 28),
-                  _sidebarItem(
-                    context,
-                    icon: Icons.dashboard_outlined,
-                    selectedIcon: Icons.dashboard,
-                    label: 'Dashboard',
-                    index: 0,
-                  ),
-                  const SizedBox(height: 6),
-                  _sidebarItem(
-                    context,
-                    icon: Icons.menu_book_outlined,
-                    selectedIcon: Icons.menu_book,
-                    label: 'Glosari',
-                    index: 1,
-                  ),
-                  const SizedBox(height: 6),
-                  _sidebarItem(
-                    context,
-                    icon: Icons.search_outlined,
-                    selectedIcon: Icons.search,
-                    label: 'Cari',
-                    index: 2,
-                  ),
-                  const SizedBox(height: 6),
-                  _sidebarItem(
-                    context,
-                    icon: Icons.settings_outlined,
-                    selectedIcon: Icons.settings,
-                    label: 'Tetapan',
-                    index: 3,
-                  ),
-                ],
+                        ],
+                      ],
+                    ),
+                    const SizedBox(height: 28),
+                    _sidebarItem(
+                      context,
+                      icon: Icons.dashboard_outlined,
+                      selectedIcon: Icons.dashboard,
+                      label: 'Dashboard',
+                      index: 0,
+                      expanded: _sidebarExpanded,
+                    ),
+                    const SizedBox(height: 6),
+                    _sidebarItem(
+                      context,
+                      icon: Icons.menu_book_outlined,
+                      selectedIcon: Icons.menu_book,
+                      label: 'Glosari',
+                      index: 1,
+                      expanded: _sidebarExpanded,
+                    ),
+                    const SizedBox(height: 6),
+                    _sidebarItem(
+                      context,
+                      icon: Icons.search_outlined,
+                      selectedIcon: Icons.search,
+                      label: 'Cari',
+                      index: 2,
+                      expanded: _sidebarExpanded,
+                    ),
+                    const SizedBox(height: 6),
+                    _sidebarItem(
+                      context,
+                      icon: Icons.settings_outlined,
+                      selectedIcon: Icons.settings,
+                      label: 'Tetapan',
+                      index: 3,
+                      expanded: _sidebarExpanded,
+                    ),
+                  ],
+                ),
               ),
             ),
             // Main content
@@ -264,6 +286,7 @@ class _MainShellState extends State<MainShell> {
     required IconData selectedIcon,
     required String label,
     required int index,
+    required bool expanded,
   }) {
     final tokens = context.tokens;
     final selected = _currentIndex == index;
@@ -274,7 +297,10 @@ class _MainShellState extends State<MainShell> {
         onTap: () => setState(() => _currentIndex = index),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          padding: EdgeInsets.symmetric(
+            horizontal: expanded ? 14 : 0,
+            vertical: 12,
+          ),
           decoration: BoxDecoration(
             gradient: selected
                 ? LinearGradient(
@@ -284,22 +310,27 @@ class _MainShellState extends State<MainShell> {
             borderRadius: BorderRadius.circular(14),
           ),
           child: Row(
+            mainAxisAlignment: expanded
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
             children: [
               Icon(
                 selected ? selectedIcon : icon,
                 size: 20,
                 color: selected ? Colors.white : tokens.textSecondary,
               ),
-              const SizedBox(width: 12),
-              Text(
-                label,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(
-                  color: selected ? Colors.white : tokens.textSecondary,
-                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                  fontSize: 13,
+              if (expanded) ...[
+                const SizedBox(width: 12),
+                Text(
+                  label,
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: selected ? Colors.white : tokens.textSecondary,
+                    fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),
