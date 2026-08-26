@@ -22,6 +22,7 @@ class _UnitScreenState extends State<UnitScreen> {
   final FlutterTts _tts = FlutterTts();
   String? _playingId;
   bool _ttsReady = false;
+  final Set<String> _revealedTranslations = {};
 
   @override
   void initState() {
@@ -552,6 +553,7 @@ class _UnitScreenState extends State<UnitScreen> {
   ) {
     final scheme = Theme.of(context).colorScheme;
     final tokens = context.tokens;
+    final revealed = _revealedTranslations.contains(headingMy);
     return _card(
       context,
       child: Column(
@@ -560,6 +562,22 @@ class _UnitScreenState extends State<UnitScreen> {
           Row(
             children: [
               Expanded(child: _sectionLabel(context, headingAr, headingMy)),
+              IconButton(
+                icon: Icon(
+                  revealed ? Icons.translate : Icons.translate_outlined,
+                  color: revealed ? scheme.primary : tokens.textSecondary,
+                ),
+                tooltip: revealed
+                    ? 'Sembunyikan Terjemahan'
+                    : 'Tunjukkan Terjemahan',
+                onPressed: () => setState(() {
+                  if (revealed) {
+                    _revealedTranslations.remove(headingMy);
+                  } else {
+                    _revealedTranslations.add(headingMy);
+                  }
+                }),
+              ),
               IconButton(
                 icon: Icon(Icons.playlist_play, color: scheme.primary),
                 tooltip: 'Dengar Semua',
@@ -581,7 +599,7 @@ class _UnitScreenState extends State<UnitScreen> {
                 border: Border.all(color: tokens.border),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -604,29 +622,37 @@ class _UnitScreenState extends State<UnitScreen> {
                   ),
                   const SizedBox(height: 4),
                   _arabicBlock(context, d.arabic, size: 22),
-                  const SizedBox(height: 4),
-                  Text(
-                    d.meaning,
-                    textDirection: TextDirection.ltr,
-                    style: TextStyle(
-                      color: tokens.textSecondary,
-                      fontSize: 12.5,
+                  if (revealed) ...[
+                    const SizedBox(height: 6),
+                    Divider(height: 1, color: tokens.border),
+                    const SizedBox(height: 6),
+                    Text(
+                      d.meaning,
+                      textDirection: TextDirection.ltr,
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: tokens.textSecondary,
+                        fontSize: 12.5,
+                      ),
                     ),
-                  ),
+                  ],
                   const SizedBox(height: 4),
-                  IconButton(
-                    visualDensity: VisualDensity.compact,
-                    icon: Icon(
-                      _playingId == d.id
-                          ? Icons.graphic_eq
-                          : Icons.volume_up_outlined,
-                      size: 20,
-                      color: scheme.primary,
-                    ),
-                    onPressed: () => _playLine(
-                      d.id,
-                      d.arabic,
-                      d.gender == 'female' ? 'female' : 'male',
+                  Align(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: IconButton(
+                      visualDensity: VisualDensity.compact,
+                      icon: Icon(
+                        _playingId == d.id
+                            ? Icons.graphic_eq
+                            : Icons.volume_up_outlined,
+                        size: 20,
+                        color: scheme.primary,
+                      ),
+                      onPressed: () => _playLine(
+                        d.id,
+                        d.arabic,
+                        d.gender == 'female' ? 'female' : 'male',
+                      ),
                     ),
                   ),
                 ],
