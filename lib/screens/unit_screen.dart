@@ -479,32 +479,30 @@ class _UnitScreenState extends State<UnitScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 2),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                v.meaning,
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: context.tokens.textPrimary,
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            if (v.transliteration.isNotEmpty)
-                              Text(
-                                v.transliteration,
-                                textDirection: TextDirection.ltr,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  color: context.tokens.textSecondary,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                          ],
+                        const SizedBox(height: 4),
+                        Text(
+                          v.meaning,
+                          textDirection: TextDirection.ltr,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: context.tokens.textPrimary,
+                            fontSize: 13,
+                          ),
                         ),
+                        if (v.transliteration.isNotEmpty) ...[
+                          const SizedBox(height: 2),
+                          Text(
+                            v.transliteration,
+                            textDirection: TextDirection.ltr,
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: context.tokens.textSecondary,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ],
                       ],
                     ),
                   ),
