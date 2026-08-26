@@ -135,18 +135,29 @@ class _UnitScreenState extends State<UnitScreen> {
         title: Text('Unit ${unit.id}', textDirection: TextDirection.ltr),
         actions: [
           IconButton(
-            icon: Text(
-              'ً',
-              style: TextStyle(
-                fontFamily: 'Amiri',
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+            icon: Container(
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
                 color: _showHarakat
-                    ? Theme.of(context).colorScheme.primary
-                    : context.tokens.textSecondary,
-                decoration: _showHarakat
-                    ? null
-                    : TextDecoration.lineThrough,
+                    ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.14)
+                    : context.tokens.mist,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  'ـّ',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                    fontFamily: 'Amiri',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    height: 1,
+                    color: _showHarakat
+                        ? Theme.of(context).colorScheme.primary
+                        : context.tokens.textSecondary,
+                  ),
+                ),
               ),
             ),
             tooltip: _showHarakat ? 'Sembunyikan Harakat' : 'Tunjukkan Harakat',
@@ -687,18 +698,52 @@ class _UnitScreenState extends State<UnitScreen> {
   ) {
     final done = storage.checkedItems.contains('${unit.code}-pair-practice');
     final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
+    final (simpleAr, simpleMy) = _splitArabicMalay(unit.pairPracticeSimpleAr);
+    final revealed = _revealedTranslations.contains('pairpractice-${unit.id}');
     return _card(
       context,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel(
-            context,
-            'تَدَرَّبْ مَعَ زَمِيلِكَ',
-            'Latihan Berpasangan',
+          Row(
+            children: [
+              Expanded(
+                child: _sectionLabel(
+                  context,
+                  'تَدَرَّبْ مَعَ زَمِيلِكَ',
+                  'Latihan Berpasangan',
+                ),
+              ),
+              if (simpleMy.isNotEmpty)
+                IconButton(
+                  icon: Icon(
+                    revealed ? Icons.translate : Icons.translate_outlined,
+                    color: revealed ? scheme.primary : tokens.textSecondary,
+                  ),
+                  tooltip: revealed
+                      ? 'Sembunyikan Terjemahan'
+                      : 'Tunjukkan Terjemahan',
+                  onPressed: () => setState(() {
+                    if (revealed) {
+                      _revealedTranslations.remove('pairpractice-${unit.id}');
+                    } else {
+                      _revealedTranslations.add('pairpractice-${unit.id}');
+                    }
+                  }),
+                ),
+            ],
           ),
-          if (unit.pairPracticeSimpleAr.isNotEmpty)
-            _arabicBlock(context, unit.pairPracticeSimpleAr, size: 20),
+          if (simpleAr.isNotEmpty) _arabicBlock(context, simpleAr, size: 20),
+          if (revealed) ...[
+            const SizedBox(height: 8),
+            Text(
+              simpleMy,
+              textDirection: TextDirection.ltr,
+              textAlign: TextAlign.left,
+              style: TextStyle(color: tokens.textSecondary, height: 1.5),
+            ),
+          ],
           if (unit.pairPracticeRoleA.isNotEmpty) ...[
             const SizedBox(height: 8),
             _roleTile(context, 'Pelajar (أ)', unit.pairPracticeRoleA),
@@ -931,7 +976,7 @@ class _UnitScreenState extends State<UnitScreen> {
   Widget _readingSection(BuildContext context, UnitModel unit) {
     final scheme = Theme.of(context).colorScheme;
     final tokens = context.tokens;
-    final (arabic, malay) = _splitReadingText(unit.readingAr);
+    final (arabic, malay) = _splitArabicMalay(unit.readingAr);
     final revealed = _revealedTranslations.contains('reading-${unit.id}');
     return _card(
       context,
@@ -1277,19 +1322,37 @@ class _UnitScreenState extends State<UnitScreen> {
   }
 }
 
-/// The reading passage (النَّصُّ الْقِرَائِيُّ) is stored with its Malay
-/// translation appended in the same string, e.g. "...دِرَاسَتِهِ. Maksud:
-/// Kursus Bahasa Arab...". Split it so the Arabic body and the Malay gloss
-/// can be rendered (and revealed) separately instead of running together
-/// as one RTL Amiri block.
+/// Several fields (النَّصُّ الْقِرَائِيُّ, تَدَرَّبْ مَعَ زَمِيلِكَ) store their
+/// Malay translation appended directly in the same string as the Arabic,
+/// e.g. "...دِرَاسَتِهِ. Maksud: Kursus Bahasa Arab..." or, with no marker
+/// word at all, "...هَذَا الْفَصْلَ. Perkenalkan diri anda...". Split it so
+/// the Arabic body and the Malay gloss render (and reveal) separately
+/// instead of running together as one RTL Amiri block.
 final _maksudSplitPattern = RegExp(
   r'\s*(?:Maksud:|التَّرْجَمَةُ بِاللُّغَةِ الْمَلَايُوِيَّةِ:)\s*',
 );
 
-(String arabic, String malay) _splitReadingText(String text) {
-  final parts = text.split(_maksudSplitPattern);
-  if (parts.length < 2) return (text.trim(), '');
-  return (parts.first.trim(), parts.sublist(1).join(' ').trim());
+/// Fallback for text with no marker word: the boundary between the last
+/// Arabic letter (plus trailing punctuation) and a capitalized Latin run.
+final _arabicToLatinBoundary = RegExp(
+  r'([؀-ۿ][.!؟]?)\s+([A-Z][A-Za-z].*)$',
+  dotAll: true,
+);
+
+(String arabic, String malay) _splitArabicMalay(String text) {
+  final markerParts = text.split(_maksudSplitPattern);
+  if (markerParts.length >= 2) {
+    return (
+      markerParts.first.trim(),
+      markerParts.sublist(1).join(' ').trim(),
+    );
+  }
+  final m = _arabicToLatinBoundary.firstMatch(text);
+  if (m != null) {
+    final cut = m.start + m.group(1)!.length;
+    return (text.substring(0, cut).trim(), text.substring(cut).trim());
+  }
+  return (text.trim(), '');
 }
 
 /// Exercise prompt text from the source guide packs multiple numbered
