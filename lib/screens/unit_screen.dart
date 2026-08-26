@@ -760,28 +760,36 @@ class _UnitScreenState extends State<UnitScreen> {
             'Ungkapan Penting',
           ),
           ...unit.importantExpressions.map(
-            (e) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
+            (e) => Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              decoration: BoxDecoration(
+                color: tokens.mist,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      e.meaning,
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(
-                        color: tokens.textSecondary,
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
                   Text(
                     e.arabic,
                     textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.right,
                     style: const TextStyle(
                       fontFamily: 'Amiri',
-                      fontSize: 20,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    e.meaning,
+                    textDirection: TextDirection.ltr,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: tokens.textSecondary,
                       fontWeight: FontWeight.w600,
+                      fontSize: 13,
                     ),
                   ),
                 ],
