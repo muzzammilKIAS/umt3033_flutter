@@ -81,7 +81,8 @@ class DashboardScreen extends StatelessWidget {
     StorageService storage,
   ) {
     final tokens = context.tokens;
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         gradient: LinearGradient(
@@ -89,6 +90,13 @@ class DashboardScreen extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: tokens.heroGradientStart.withValues(alpha: 0.3),
+            blurRadius: 24,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -110,6 +118,13 @@ class DashboardScreen extends StatelessWidget {
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
+                shadows: [
+                  Shadow(
+                    color: Colors.black.withValues(alpha: 0.2),
+                    offset: const Offset(0, 2),
+                    blurRadius: 4,
+                  ),
+                ],
               ),
             ),
           ),
@@ -125,24 +140,9 @@ class DashboardScreen extends StatelessWidget {
             style: const TextStyle(color: Colors.white60, fontSize: 12),
           ),
           const SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => UnitScreen(unitId: storage.lastUnitId),
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: tokens.heroGradientStart,
-            ),
-            icon: const Icon(Icons.play_arrow, size: 20),
-            label: Text(
-              storage.lastUnitId > 1 || storage.completedUnitCount > 0
-                  ? 'Sambung Belajar'
-                  : 'Mula Belajar',
-              textDirection: TextDirection.ltr,
-            ),
+          _HeroButton(
+            storage: storage,
+            tokens: tokens,
           ),
         ],
       ),
@@ -173,12 +173,20 @@ class DashboardScreen extends StatelessWidget {
   Widget _progressCard(BuildContext context, StorageService storage) {
     final tokens = context.tokens;
     final scheme = Theme.of(context).colorScheme;
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: tokens.card,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: tokens.border),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,10 +218,22 @@ class DashboardScreen extends StatelessWidget {
           const SizedBox(height: 14),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: LinearProgressIndicator(
-              value: storage.overallProgress,
-              minHeight: 8,
-              color: scheme.primary,
+            child: TweenAnimationBuilder<double>(
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.easeOutCubic,
+              tween: Tween<double>(
+                begin: 0,
+                end: storage.overallProgress,
+              ),
+              builder: (context, value, _) {
+                return LinearProgressIndicator(
+                  value: value,
+                  minHeight: 8,
+                  backgroundColor: scheme.primary.withValues(alpha: 0.1),
+                  color: scheme.primary,
+                  borderRadius: BorderRadius.circular(8),
+                );
+              },
             ),
           ),
         ],
@@ -233,29 +253,45 @@ class DashboardScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 8),
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
             color: tokens.mist,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: tokens.border.withValues(alpha: 0.6),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, size: 20, color: scheme.primary),
-              const SizedBox(height: 6),
+              Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: scheme.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(icon, size: 20, color: scheme.primary),
+              ),
+              const SizedBox(height: 10),
               Text(
                 value,
                 textDirection: TextDirection.ltr,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.w800,
                   color: tokens.textPrimary,
+                  letterSpacing: -0.5,
                 ),
               ),
+              const SizedBox(height: 2),
               Text(
                 label,
                 textDirection: TextDirection.ltr,
-                style: TextStyle(fontSize: 10.5, color: tokens.textSecondary),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                  color: tokens.textSecondary,
+                ),
               ),
             ],
           ),
@@ -337,6 +373,63 @@ class DashboardScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _HeroButton extends StatefulWidget {
+  final StorageService storage;
+  final AppTokens tokens;
+
+  const _HeroButton({
+    required this.storage,
+    required this.tokens,
+  });
+
+  @override
+  State<_HeroButton> createState() => _HeroButtonState();
+}
+
+class _HeroButtonState extends State<_HeroButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedScale(
+        scale: _isHovered ? 1.04 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutCubic,
+        child: ElevatedButton.icon(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => UnitScreen(unitId: widget.storage.lastUnitId),
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: widget.tokens.heroGradientStart,
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            elevation: _isHovered ? 6 : 2,
+            shadowColor: Colors.black.withValues(alpha: 0.25),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          icon: const Icon(Icons.play_arrow_rounded, size: 22),
+          label: Text(
+            widget.storage.lastUnitId > 1 ||
+                    widget.storage.completedUnitCount > 0
+                ? 'Sambung Belajar'
+                : 'Mula Belajar',
+            textDirection: TextDirection.ltr,
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+          ),
+        ),
+      ),
     );
   }
 }

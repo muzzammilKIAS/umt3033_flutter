@@ -146,6 +146,7 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: tokens.card,
         elevation: 0,
+        shadowColor: scheme.primary.withValues(alpha: 0.08),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18),
           side: BorderSide(color: tokens.border, width: 1),

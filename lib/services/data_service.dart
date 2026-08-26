@@ -77,7 +77,8 @@ class DataService {
     }
     final chosen = exact ?? any;
     if (chosen == null) return null;
-    return chosen.path.replaceFirst('/audio/', 'assets/audio/');
+    // Remove leading slash only - Flutter's AssetBundle prepends 'assets/' automatically
+    return chosen.path.startsWith('/') ? chosen.path.substring(1) : chosen.path;
   }
 
   List<Map<String, dynamic>> search(String query) {

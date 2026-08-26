@@ -109,16 +109,87 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
+    final isWideScreen = MediaQuery.of(context).size.width >= 800;
+
+    final body = IndexedStack(
+      index: _currentIndex,
+      children: [
+        DashboardScreen(onOpenUnit: _navigateToUnit),
+        const GlossaryScreen(),
+        SearchScreen(onOpenUnit: _navigateToUnit),
+        const SettingsScreen(),
+      ],
+    );
+
+    if (isWideScreen) {
+      return Scaffold(
+        body: Row(
+          children: [
+            // Navigation Rail for wide screens
+            Container(
+              decoration: BoxDecoration(
+                color: tokens.card,
+                border: Border(
+                  left: BorderSide(color: tokens.border, width: 1),
+                ),
+              ),
+              child: NavigationRail(
+                selectedIndex: _currentIndex,
+                onDestinationSelected: (i) => setState(() => _currentIndex = i),
+                labelType: NavigationRailLabelType.all,
+                backgroundColor: Colors.transparent,
+                indicatorColor: scheme.primary.withValues(alpha: 0.16),
+                selectedIconTheme: IconThemeData(color: scheme.primary),
+                selectedLabelTextStyle: TextStyle(
+                  color: scheme.primary,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                ),
+                unselectedIconTheme: IconThemeData(color: tokens.textSecondary),
+                unselectedLabelTextStyle: TextStyle(
+                  color: tokens.textSecondary,
+                  fontSize: 12,
+                ),
+                destinations: const [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.dashboard_outlined),
+                    selectedIcon: Icon(Icons.dashboard),
+                    label: Text('Dashboard', textDirection: TextDirection.ltr),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.menu_book_outlined),
+                    selectedIcon: Icon(Icons.menu_book),
+                    label: Text('Glosari', textDirection: TextDirection.ltr),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.search_outlined),
+                    selectedIcon: Icon(Icons.search),
+                    label: Text('Cari', textDirection: TextDirection.ltr),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.settings_outlined),
+                    selectedIcon: Icon(Icons.settings),
+                    label: Text('Tetapan', textDirection: TextDirection.ltr),
+                  ),
+                ],
+              ),
+            ),
+            // Main content
+            Expanded(
+              child: Container(
+                constraints: const BoxConstraints(maxWidth: 1400),
+                child: body,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: [
-          DashboardScreen(onOpenUnit: _navigateToUnit),
-          const GlossaryScreen(),
-          SearchScreen(onOpenUnit: _navigateToUnit),
-          const SettingsScreen(),
-        ],
-      ),
+      body: body,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (i) => setState(() => _currentIndex = i),

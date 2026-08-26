@@ -1,0 +1,137 @@
+[
+  {
+    "id": "u02-expdialog-002",
+    "unit": 2,
+    "type": "expdialog",
+    "text": "لَا، يُمْكِنُكَ الذَّهَابُ مُبَاشَرَةً إِلَى الْقِسْمِ.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u05-dialog-005",
+    "unit": 5,
+    "type": "dialog",
+    "text": "فِيهَا خَدْشٌ صَغِيرٌ، وَلَكِنَّهَا تَعْمَلُ جَيِّدًا.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u05-expdialog-001",
+    "unit": 5,
+    "type": "expdialog",
+    "text": "هَلْ يُمْكِنُنِي إِرْجَاعُ الطَّابِعَةِ إِذَا ظَهَرَ عَيْبٌ ",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u05-expdialog-004",
+    "unit": 5,
+    "type": "expdialog",
+    "text": "يُمْكِنُكَ الدَّفْعَ نَقْدًا أَوْ بِالْبِطَاقَةِ.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u06-dialog-013",
+    "unit": 6,
+    "type": "dialog",
+    "text": "تَفَضَّلِي، وَهَذَا مُلَخَّصُ الْمَعْلُومَاتِ.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u06-expdialog-004",
+    "unit": 6,
+    "type": "expdialog",
+    "text": "يُمْكِنُكِ ذَلِكَ، لَكِنَّ السَّحْبَ الْمُبَكِّرَ قَدْ يُقَل",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u07-expdialog-004",
+    "unit": 7,
+    "type": "expdialog",
+    "text": "يُمْكِنُكِ الِاتِّصَالُ بِمَكْتَبِنَا فِي أَيِّ وَقْتٍ.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u08-expdialog-003",
+    "unit": 8,
+    "type": "expdialog",
+    "text": "هَلْ يُمْكِنُنِي تَغْيِيرُ الْمُسْتَفِيدِ لَاحِقًا؟",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u10-dialog-003",
+    "unit": 10,
+    "type": "dialog",
+    "text": "تَفَضَّلِي. مَا نَوْعُ الْمَالِ الَّذِي تَمْلِكِينَهُ؟",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u10-dialog-007",
+    "unit": 10,
+    "type": "dialog",
+    "text": "نَعَمْ، يُمْكِنُكِ الدَّفْعُ عَبْرَ الْقَنَوَاتِ الْمُعْتَمَ",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u10-expdialog-002",
+    "unit": 10,
+    "type": "expdialog",
+    "text": "نَعَمْ، يُمْكِنُكِ الدَّفْعُ عَبْرَ مَوْقِعِنَا الْإِلِكْتُر",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u11-expdialog-001",
+    "unit": 11,
+    "type": "expdialog",
+    "text": "هَلْ يُمْكِنُنِي تَمْدِيدُ مُدَّةِ الرَّهْنِ إِذَا لَزِمَ ال",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u11-expdialog-002",
+    "unit": 11,
+    "type": "expdialog",
+    "text": "نَعَمْ، يُمْكِنُكَ التَّمْدِيدُ قَبْلَ انْتِهَاءِ الْمُدَّةِ",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u12-expdialog-004",
+    "unit": 12,
+    "type": "expdialog",
+    "text": "نَعَمْ، يُمْكِنُكِ إِعَادَةُ الصَّرْفِ بِنَفْسِ الْإِيصَالِ.",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  },
+  {
+    "id": "u13-dialog-008",
+    "unit": 13,
+    "type": "dialog",
+    "text": "مُضَارَبَةٌ مِنَ الْجِذْرِ ض ر ب، وَمُرَابَحَةٌ مِنَ الْجِذْ",
+    "current_gender": "male",
+    "detected_gender": "female",
+    "reason": "Context analysis"
+  }
+]
