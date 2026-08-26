@@ -866,6 +866,12 @@ class _UnitScreenState extends State<UnitScreen> {
       ),
       clipBehavior: Clip.antiAlias,
       child: Table(
+        // Row data is authored in literal left-to-right column order (e.g.
+        // a trailing "number" column that must land at the visual right
+        // edge). Force LTR column layout so it isn't mirrored by the app's
+        // ambient RTL Directionality; the Arabic cell text itself still
+        // renders RTL via each cell's own textDirection.
+        textDirection: TextDirection.ltr,
         border: TableBorder(horizontalInside: BorderSide(color: tokens.border)),
         children: rows.map((row) {
           return TableRow(

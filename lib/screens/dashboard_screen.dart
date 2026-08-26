@@ -14,6 +14,17 @@ final _harakatPattern = RegExp('[ً-ْٰ]');
 
 String _stripHarakat(String text) => text.replaceAll(_harakatPattern, '');
 
+const _westernDigits = '0123456789';
+const _arabicIndicDigits = '٠١٢٣٤٥٦٧٨٩';
+
+String _toArabicDigits(String input) => input
+    .split('')
+    .map((c) {
+      final i = _westernDigits.indexOf(c);
+      return i == -1 ? c : _arabicIndicDigits[i];
+    })
+    .join();
+
 class DashboardScreen extends StatelessWidget {
   final void Function(int unitId) onOpenUnit;
 
@@ -197,7 +208,7 @@ class DashboardScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionKicker(context, 'تَقَدُّمُ التَّعَلُّمِ', 'Progress'),
+          _sectionKicker(context, 'تَقَدُّمُ التَّعَلُّمِ'),
           const SizedBox(height: 18),
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -230,8 +241,8 @@ class DashboardScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${(value * 100).round()}%',
-                          textDirection: TextDirection.ltr,
+                          '${_toArabicDigits((value * 100).round().toString())}٪',
+                          textDirection: TextDirection.rtl,
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w800,
@@ -251,22 +262,28 @@ class DashboardScreen extends StatelessWidget {
                     _legendRow(
                       context,
                       color: scheme.primary,
-                      label: 'Unit Selesai',
-                      value: '${storage.completedUnitCount}/14',
+                      label: 'وَحَدَاتٌ مُكْتَمِلَةٌ',
+                      value: _toArabicDigits(
+                        '${storage.completedUnitCount}/14',
+                      ),
                     ),
                     const SizedBox(height: 12),
                     _legendRow(
                       context,
                       color: scheme.secondary,
-                      label: 'Kosa Kata',
-                      value: '${storage.vocabLearned.length}',
+                      label: 'الْمُفْرَدَاتُ',
+                      value: _toArabicDigits(
+                        '${storage.vocabLearned.length}',
+                      ),
                     ),
                     const SizedBox(height: 12),
                     _legendRow(
                       context,
                       color: tokens.champagne,
-                      label: 'Baki Unit',
-                      value: '${14 - storage.completedUnitCount}',
+                      label: 'وَحَدَاتٌ مُتَبَقِّيَةٌ',
+                      value: _toArabicDigits(
+                        '${14 - storage.completedUnitCount}',
+                      ),
                     ),
                   ],
                 ),
@@ -295,16 +312,22 @@ class DashboardScreen extends StatelessWidget {
         const SizedBox(width: 10),
         Expanded(
           child: Text(
-            label,
-            textDirection: TextDirection.ltr,
+            _stripHarakat(label),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.right,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 13, color: tokens.textSecondary),
+            style: TextStyle(
+              fontFamily: 'Amiri',
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              color: tokens.textSecondary,
+            ),
           ),
         ),
         Text(
           value,
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w800,
@@ -350,7 +373,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _sectionKicker(BuildContext context, String ar, String my) {
+  Widget _sectionKicker(BuildContext context, String ar, [String my = '']) {
     final tokens = context.tokens;
     final scheme = Theme.of(context).colorScheme;
     return Row(
@@ -365,16 +388,18 @@ class DashboardScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(width: 6),
-        Text(
-          my,
-          textDirection: TextDirection.ltr,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w800,
-            color: tokens.textPrimary,
+        if (my.isNotEmpty) ...[
+          const SizedBox(width: 6),
+          Text(
+            my,
+            textDirection: TextDirection.ltr,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              color: tokens.textPrimary,
+            ),
           ),
-        ),
+        ],
       ],
     );
   }
