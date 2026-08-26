@@ -19,7 +19,7 @@ jobs:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter build web --release
+      - run: flutter build web --release --base-href="/umt3033_flutter/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
