@@ -7,6 +7,13 @@ import '../theme/app_theme.dart';
 import '../widgets/unit_card.dart';
 import 'unit_screen.dart';
 
+/// Strips Arabic diacritics (harakat/tashkeel) so headings on the dashboard
+/// read as plain, unvocalized Arabic -- the fully-vocalized form used
+/// elsewhere in the app (for pronunciation guidance) looks dense/busy here.
+final _harakatPattern = RegExp('[ً-ْٰ]');
+
+String _stripHarakat(String text) => text.replaceAll(_harakatPattern, '');
+
 class DashboardScreen extends StatelessWidget {
   final void Function(int unitId) onOpenUnit;
 
@@ -121,7 +128,7 @@ class DashboardScreen extends StatelessWidget {
             fit: BoxFit.scaleDown,
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
-              'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
+              _stripHarakat('اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ'),
               textAlign: TextAlign.right,
               textDirection: TextDirection.rtl,
               maxLines: 1,
@@ -313,7 +320,7 @@ class DashboardScreen extends StatelessWidget {
     return Row(
       children: [
         Text(
-          ar,
+          _stripHarakat(ar),
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontFamily: 'Amiri',
@@ -349,7 +356,7 @@ class DashboardScreen extends StatelessWidget {
     return Row(
       children: [
         Text(
-          ar,
+          _stripHarakat(ar),
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontFamily: 'Amiri',
@@ -417,10 +424,12 @@ class _HeroButtonState extends State<_HeroButton> {
           ),
           icon: const Icon(Icons.play_arrow_rounded, size: 22),
           label: Text(
-            widget.storage.lastUnitId > 1 ||
-                    widget.storage.completedUnitCount > 0
-                ? 'وَاصِلِ التَّعَلُّمَ'
-                : 'اِبْدَأِ التَّعَلُّمَ',
+            _stripHarakat(
+              widget.storage.lastUnitId > 1 ||
+                      widget.storage.completedUnitCount > 0
+                  ? 'وَاصِلِ التَّعَلُّمَ'
+                  : 'اِبْدَأِ التَّعَلُّمَ',
+            ),
             textDirection: TextDirection.rtl,
             style: const TextStyle(
               fontFamily: 'Amiri',

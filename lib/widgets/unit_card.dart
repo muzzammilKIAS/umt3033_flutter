@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import '../models/unit_model.dart';
 import '../theme/app_theme.dart';
 
+/// Strips Arabic diacritics (harakat/tashkeel) so the dashboard's unit list
+/// reads as plain, unvocalized Arabic instead of the dense fully-vocalized
+/// form used inside the unit page itself (kept there for pronunciation).
+final _harakatPattern = RegExp('[ً-ْٰ]');
+String _stripHarakat(String text) => text.replaceAll(_harakatPattern, '');
+
 class UnitCard extends StatefulWidget {
   final UnitModel unit;
   final bool completed;
@@ -134,7 +140,7 @@ class _UnitCardState extends State<UnitCard> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.unit.titleAr,
+                          _stripHarakat(widget.unit.titleAr),
                           textAlign: TextAlign.right,
                           textDirection: TextDirection.rtl,
                           style: const TextStyle(
@@ -147,7 +153,7 @@ class _UnitCardState extends State<UnitCard> {
                         if (widget.unit.titleSubAr.isNotEmpty) ...[
                           const SizedBox(height: 4),
                           Text(
-                            widget.unit.titleSubAr,
+                            _stripHarakat(widget.unit.titleSubAr),
                             textDirection: TextDirection.rtl,
                             textAlign: TextAlign.right,
                             style: TextStyle(
