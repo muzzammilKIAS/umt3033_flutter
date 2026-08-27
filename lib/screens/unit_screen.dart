@@ -98,7 +98,7 @@ class _UnitScreenState extends State<UnitScreen> {
     }
     if (_ttsReady) {
       await _tts.setSpeechRate(0.4 * _speed);
-      await _tts.speak(text);
+      await _tts.speak(prepareArabicForTts(text));
     }
     if (mounted) setState(() => _playingId = null);
   }
@@ -676,7 +676,7 @@ class _UnitScreenState extends State<UnitScreen> {
                   Row(
                     children: [
                       Icon(
-                        isMale ? Icons.person : Icons.person_2,
+                        isMale ? Icons.man : Icons.woman,
                         size: 14,
                         color: tokens.textSecondary,
                       ),
@@ -925,44 +925,73 @@ class _UnitScreenState extends State<UnitScreen> {
           _sectionLabel(context, 'الْقَوَاعِدُ', 'Kaedah Bahasa'),
           ...unit.qawaid.map((q) {
             if (q.containsKey('raw')) {
+              final rawStr = q['raw'] as String;
+              final arabic = isArabic(rawStr);
               return Container(
+                width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 10),
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: tokens.mist,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: _arabicBlock(context, q['raw'] as String, size: 20),
+                child: Text(
+                  _h(rawStr),
+                  textDirection: arabic ? TextDirection.rtl : TextDirection.ltr,
+                  textAlign: arabic ? TextAlign.right : TextAlign.left,
+                  style: TextStyle(
+                    fontFamily: arabic ? 'Amiri' : null,
+                    fontSize: arabic ? 19 : 14,
+                    height: 1.6,
+                  ),
+                ),
               );
             }
             final title = q['titleAr'] as String? ?? '';
             final tables = (q['tables'] as List?) ?? [];
             final paragraphs = (q['paragraphs'] as List?) ?? [];
+            final titleIsArabic = isArabic(title);
             return Padding(
               padding: const EdgeInsets.only(bottom: 14),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty)
+                  if (title.isNotEmpty) ...[
                     Text(
                       _h(title),
-                      textDirection: TextDirection.rtl,
-                      style: const TextStyle(
-                        fontFamily: 'Amiri',
+                      textDirection:
+                          titleIsArabic ? TextDirection.rtl : TextDirection.ltr,
+                      textAlign:
+                          titleIsArabic ? TextAlign.right : TextAlign.left,
+                      style: TextStyle(
+                        fontFamily: titleIsArabic ? 'Amiri' : null,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22,
+                        fontSize: titleIsArabic ? 22 : 16,
                       ),
                     ),
-                  const SizedBox(height: 6),
+                    const SizedBox(height: 6),
+                  ],
                   ...paragraphs.map(
-                    (p) => Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Text(
-                        _h(p as String),
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
+                    (p) {
+                      final str = p as String;
+                      final arabic = isArabic(str);
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 6),
+                        child: Text(
+                          _h(str),
+                          textDirection:
+                              arabic ? TextDirection.rtl : TextDirection.ltr,
+                          textAlign:
+                              arabic ? TextAlign.right : TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: arabic ? 'Amiri' : null,
+                            fontSize: arabic ? 19 : 14,
+                            height: 1.5,
+                            color: arabic ? null : tokens.textSecondary,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   ...tables.map(
                     (t) =>
@@ -980,6 +1009,58 @@ class _UnitScreenState extends State<UnitScreen> {
   Widget _miniTable(BuildContext context, List<List<dynamic>> rows) {
     final tokens = context.tokens;
     if (rows.isEmpty) return const SizedBox.shrink();
+
+    // Check if this single-row entry is actually a sub-heading or note
+    if (rows.length == 1) {
+      final firstCell = '${rows.first.first}'.trim();
+      final hasEmptySecond =
+          rows.first.length == 1 ||
+          (rows.first.length == 2 && '${rows.first[1]}'.trim().isEmpty);
+
+      if (hasEmptySecond) {
+        final isSubHeading = firstCell.startsWith(RegExp(r'[٠-٩0-9]+\.'));
+        if (isSubHeading) {
+          final arabic = isArabic(firstCell);
+          return Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 6),
+            child: Text(
+              _h(firstCell),
+              textDirection: arabic ? TextDirection.rtl : TextDirection.ltr,
+              textAlign: arabic ? TextAlign.right : TextAlign.left,
+              style: TextStyle(
+                fontFamily: arabic ? 'Amiri' : null,
+                fontWeight: FontWeight.bold,
+                fontSize: arabic ? 20 : 15,
+              ),
+            ),
+          );
+        } else {
+          // Note / Exercise callout block
+          final arabic = isArabic(firstCell);
+          return Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: tokens.mist,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: tokens.border),
+            ),
+            child: Text(
+              _h(firstCell),
+              textDirection: arabic ? TextDirection.rtl : TextDirection.ltr,
+              textAlign: arabic ? TextAlign.right : TextAlign.left,
+              style: TextStyle(
+                fontFamily: arabic ? 'Amiri' : null,
+                fontSize: arabic ? 18 : 13.5,
+                height: 1.5,
+              ),
+            ),
+          );
+        }
+      }
+    }
+
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
@@ -988,29 +1069,38 @@ class _UnitScreenState extends State<UnitScreen> {
       ),
       clipBehavior: Clip.antiAlias,
       child: Table(
-        // Row data is authored in literal left-to-right column order (e.g.
-        // a trailing "number" column that must land at the visual right
-        // edge). Force LTR column layout so it isn't mirrored by the app's
-        // ambient RTL Directionality; the Arabic cell text itself still
-        // renders RTL via each cell's own textDirection.
         textDirection: TextDirection.ltr,
         border: TableBorder(horizontalInside: BorderSide(color: tokens.border)),
         children: rows.map((row) {
+          final isHeader = row == rows.first;
           return TableRow(
             decoration: BoxDecoration(
-              color: row == rows.first ? tokens.mist : tokens.card,
+              color: isHeader ? tokens.mist : tokens.card,
             ),
             children: row
                 .map(
-                  (cell) => Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(
-                      _h('$cell'),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(fontFamily: 'Amiri', fontSize: 18),
-                    ),
-                  ),
+                  (cell) {
+                    final text = '$cell';
+                    final arabic = isArabic(text);
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 8,
+                      ),
+                      child: Text(
+                        _h(text),
+                        textDirection:
+                            arabic ? TextDirection.rtl : TextDirection.ltr,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: arabic ? 'Amiri' : null,
+                          fontSize: arabic ? 18 : 13.5,
+                          fontWeight:
+                              isHeader ? FontWeight.bold : FontWeight.normal,
+                        ),
+                      ),
+                    );
+                  },
                 )
                 .toList(),
           );
@@ -1089,12 +1179,36 @@ class _UnitScreenState extends State<UnitScreen> {
 
   Widget _ayahSection(BuildContext context, UnitModel unit) {
     final tokens = context.tokens;
+    final scheme = Theme.of(context).colorScheme;
     return _card(
       context,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionLabel(context, 'الْآيَةُ الْقُرْآنِيَّةُ', 'Ayat al-Quran'),
+          Row(
+            children: [
+              Expanded(
+                child: _sectionLabel(
+                  context,
+                  'الْآيَةُ الْقُرْآنِيَّةُ',
+                  'Ayat al-Quran',
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  _playingId == '${unit.audioCode}-ayah'
+                      ? Icons.graphic_eq
+                      : Icons.volume_up_outlined,
+                  color: scheme.primary,
+                ),
+                onPressed: () => _playLine(
+                  '${unit.audioCode}-ayah',
+                  unit.ayahAr,
+                  'male',
+                ),
+              ),
+            ],
+          ),
           _arabicBlock(context, unit.ayahAr, size: 24),
           if (unit.ayahSource.isNotEmpty) ...[
             const SizedBox(height: 6),

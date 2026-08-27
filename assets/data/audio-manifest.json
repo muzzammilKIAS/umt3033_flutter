@@ -286,7 +286,7 @@
       "id": "u01-hadith",
       "unitId": 1,
       "section": "hadith",
-      "arabic": "قَالَ رَسُولُ اللهِ ﷺ \"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ\"",
+      "arabic": "قَالَ رَسُولُ اللَّهِ ﷺ: \"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ\"",
       "gender": "male",
       "path": "/audio/unit-01/male/u01-hadith-male.mp3",
       "status": "generated",
@@ -693,7 +693,7 @@
       "id": "u02-hadith",
       "unitId": 2,
       "section": "hadith",
-      "arabic": "قَالَ رَسُولُ اللهِ ﷺ:\" التَّاجِرُ الصَّدُوقُ الْأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ\"",
+      "arabic": "قَالَ رَسُولُ اللَّهِ ﷺ: \" التَّاجِرُ الصَّدُوقُ الْأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ\"",
       "gender": "male",
       "path": "/audio/unit-02/male/u02-hadith-male.mp3",
       "status": "generated",
@@ -991,11 +991,11 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "السَّلَامُ عَلَيْكُمْ، كَيْفَ أُسَاعِدُكِ؟",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-001-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-001-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-dialog-002",
@@ -1013,11 +1013,11 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "تَفَضَّلِي. هَلْ مَعَكِ بِطَاقَةُ الْهُوِيَّةِ؟",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-003-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-003-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-dialog-004",
@@ -1035,11 +1035,11 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "اِمْلَئِي هَذِهِ الِاسْتِمَارَةَ، ثُمَّ وَقِّعِي هُنَا.",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-005-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-005-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-dialog-006",
@@ -1057,11 +1057,11 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "نَعَمْ، الْحَدُّ الْأَدْنَى خَمْسُونَ رِينْغِيتًا.",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-007-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-007-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-dialog-008",
@@ -1079,11 +1079,11 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "تَسْتَلِمِينَهَا بَعْدَ خَمْسَةِ أَيَّامِ عَمَلٍ.",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-009-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-009-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-dialog-010",
@@ -1101,22 +1101,22 @@
       "unitId": 3,
       "section": "dialog",
       "arabic": "عَفْوًا.",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-dialog-011-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-dialog-011-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-expdialog-001",
       "unitId": 3,
       "section": "expandedDialog",
       "arabic": "هَلْ يُمْكِنُنِي مَعْرِفَةُ رَصِيدِي فِي أَيِّ فَرْعٍ؟",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-expdialog-001-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-expdialog-001-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-expdialog-002",
@@ -1134,11 +1134,11 @@
       "unitId": 3,
       "section": "expandedDialog",
       "arabic": "وَهَلْ يُمْكِنُنِي سَحْبُ النُّقُودِ مِنْ حِسَابِ التَّوْفِيرِ؟",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-expdialog-003-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-expdialog-003-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-expdialog-004",
@@ -1156,11 +1156,11 @@
       "unitId": 3,
       "section": "expandedDialog",
       "arabic": "شُكْرًا جَزِيلًا عَلَى هَذِهِ الْمَعْلُومَاتِ.",
-      "gender": "male",
-      "path": "/audio/unit-03/male/u03-expdialog-005-male.mp3",
+      "gender": "female",
+      "path": "/audio/unit-03/female/u03-expdialog-005-female.mp3",
       "status": "generated",
       "ttsEngine": "Microsoft Edge Neural TTS",
-      "voice": "ar-SA-HamedNeural"
+      "voice": "ar-SA-ZariyahNeural"
     },
     {
       "id": "u03-expdialog-006",
@@ -1188,7 +1188,7 @@
       "id": "u03-hadith",
       "unitId": 3,
       "section": "hadith",
-      "arabic": "قَالَ رَسُولُ اللهِ ﷺ:\" رَحِمَ اللَّهُ رَجُلًا سَمْحًا إِذَا بَاعَ، وَإِذَا اشْتَرَى، وَإِذَا اقْتَضَى\".",
+      "arabic": "قَالَ رَسُولُ اللَّهِ ﷺ: \" رَحِمَ اللَّهُ رَجُلًا سَمْحًا إِذَا بَاعَ، وَإِذَا اشْتَرَى، وَإِذَا اقْتَضَى\".",
       "gender": "male",
       "path": "/audio/unit-03/male/u03-hadith-male.mp3",
       "status": "generated",
@@ -1661,7 +1661,7 @@
       "id": "u04-ayah",
       "unitId": 4,
       "section": "ayah",
-      "arabic": "قَالَ الله :تَعَالَى : وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا",
+      "arabic": "قَالَ اللَّهُ تَعَالَى: وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا",
       "gender": "male",
       "path": "/audio/unit-04/male/u04-ayah-male.mp3",
       "status": "generated",
@@ -5038,7 +5038,7 @@
       "id": "u11-hadith",
       "unitId": 11,
       "section": "hadith",
-      "arabic": "أَنَّ النَّبِيَّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ اشْتَرَى طَعَامًا مِنْ يَهُودِيٍّ إِلَى أَجَلٍ، وَرَهَنَهُ دِرْعًا مِنْ حَدِيدٍ.",
+      "arabic": "أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ اشْتَرَى طَعَامًا مِنْ يَهُودِيٍّ إِلَى أَجَلٍ، وَرَهَنَهُ دِرْعًا مِنْ حَدِيدٍ.",
       "gender": "male",
       "path": "/audio/unit-11/male/u11-hadith-male.mp3",
       "status": "generated",

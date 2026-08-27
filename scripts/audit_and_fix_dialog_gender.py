@@ -27,8 +27,7 @@ VOICES = {
 UNIT_DIALOG_ROLES = {
     1: ("female", "male"),     # Pensyarah Perempuan (P) & Pelajar Lelaki (L)
     2: ("male", "male"),       # Pegawai (L) & Pelanggan Lelaki (L)
-    3: ("male", "female"),     # Pegawai Bank (L) & Pelanggan Perempuan (P - كَيْفَ أُسَاعِدُكِ)
-    4: ("male", "male"),       # Pegawai (L) & Pelanggan Lelaki (L)
+    3: ("female", "female"),   # Pegawai Bank (P - الْمُوَظَّفَةُ) & Pelanggan Perempuan (P - الْعَمِيلَةُ)
     5: ("male", "male"),       # Penjual (L) & Pembeli Lelaki (L - كَيْفَ أُسَاعِدُكَ)
     6: ("male", "female"),     # Pegawai Pelaburan (L) & Pelabur Wanita (P - كَيْفَ أُسَاعِدُكِ)
     7: ("male", "female"),     # Pegawai Syariah (L) & Pelanggan Wanita (P - كَيْفَ أُسَاعِدُكِ)
