@@ -1515,25 +1515,62 @@ final _arabicToLatinBoundary = RegExp(
   return (text.trim(), '');
 }
 
+/// The source guide prefixes each exercise prompt with its own exercise
+/// number (e.g. "٢.٤ — ..." or "١٠.٤ - ..."), not a sub-question number.
+/// Pull it out so it can be shown next to the exercise title instead of
+/// buried inside the instruction text.
+final _exerciseNumberPattern = RegExp(r'^([٠-٩]+\.[٠-٩]+)\s*[—-]\s*');
+
+({String number, String body}) _extractExerciseNumber(String text) {
+  final match = _exerciseNumberPattern.firstMatch(text);
+  if (match == null) return (number: '', body: text);
+  return (number: match.group(1)!, body: text.substring(match.end));
+}
+
 /// Exercise prompt text from the source guide packs multiple numbered
 /// sub-questions (e.g. "١. ... ٢. ... ٣. ...") into one run-on string with
 /// no line breaks. Split on the Arabic-Indic numeral markers so each
 /// sub-question renders as its own paragraph instead of one dense block.
 List<String> _splitNumberedArabic(String text) {
   final markers = RegExp(r'[٠-٩]+\.').allMatches(text).toList();
-  if (markers.length < 2) return [text];
+  final raw = <String>[];
+  if (markers.length < 2) {
+    raw.add(text);
+  } else {
+    if (markers.first.start > 0) {
+      final lead = text.substring(0, markers.first.start).trim();
+      if (lead.isNotEmpty) raw.add(lead);
+    }
+    for (var i = 0; i < markers.length; i++) {
+      final start = markers[i].start;
+      final end = i + 1 < markers.length ? markers[i + 1].start : text.length;
+      final segment = text.substring(start, end).trim();
+      if (segment.isNotEmpty) raw.add(segment);
+    }
+  }
+  // A segment may still bundle a short exercise-topic clause with its
+  // instruction clause, joined by ". " (e.g. "...الجُمَلَ. اِسْتَعْمِلِ...").
+  // Split those onto their own lines too, so topic and instruction never
+  // render as one run-on paragraph — but keep any leading "١. " question
+  // marker glued to the text right after it, so the number stays on the
+  // same line as its own question instead of splitting off alone.
   final lines = <String>[];
-  if (markers.first.start > 0) {
-    final lead = text.substring(0, markers.first.start).trim();
-    if (lead.isNotEmpty) lines.add(lead);
+  for (final segment in raw) {
+    final leadMarker = RegExp(r'^[٠-٩]+\.\s*').firstMatch(segment);
+    final head = leadMarker?.group(0) ?? '';
+    final rest = segment.substring(head.length);
+    final parts = rest.split('. ');
+    var addedAny = false;
+    for (var i = 0; i < parts.length; i++) {
+      final part = parts[i].trim();
+      if (part.isEmpty) continue;
+      final withHead = i == 0 ? '$head$part' : part;
+      lines.add(i < parts.length - 1 ? '$withHead.' : withHead);
+      addedAny = true;
+    }
+    if (!addedAny && head.isNotEmpty) lines.add(head.trim());
   }
-  for (var i = 0; i < markers.length; i++) {
-    final start = markers[i].start;
-    final end = i + 1 < markers.length ? markers[i + 1].start : text.length;
-    final segment = text.substring(start, end).trim();
-    if (segment.isNotEmpty) lines.add(segment);
-  }
-  return lines;
+  return lines.isEmpty ? [text] : lines;
 }
 
 class _OpenExercise extends StatefulWidget {
@@ -1560,11 +1597,15 @@ class _OpenExerciseState extends State<_OpenExercise> {
     final done = storage.checkedItems.contains(widget.exercise.id);
     final tokens = context.tokens;
     String h(String s) => widget.showHarakat ? s : stripHarakat(s);
+    final (:number, :body) = _extractExerciseNumber(widget.exercise.promptAr);
+    final heading = number.isEmpty
+        ? widget.exercise.titleAr
+        : '$number — ${widget.exercise.titleAr}';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          h(widget.exercise.titleAr),
+          h(heading),
           textDirection: TextDirection.rtl,
           textAlign: TextAlign.right,
           style: const TextStyle(
@@ -1574,7 +1615,7 @@ class _OpenExerciseState extends State<_OpenExercise> {
           ),
         ),
         const SizedBox(height: 6),
-        ..._splitNumberedArabic(widget.exercise.promptAr).map(
+        ..._splitNumberedArabic(body).map(
           (line) => Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Text(
