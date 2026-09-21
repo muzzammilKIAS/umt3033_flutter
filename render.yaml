@@ -1,0 +1,27 @@
+# Render blueprint for the UMT3033 course app + Arabic Muamalat Adventure.
+# The Firebase values are marked sync: false, so Render prompts for them in the
+# dashboard instead of keeping them in source control.
+services:
+  - type: web
+    name: umt3033-adventure
+    runtime: static
+    buildCommand: ./tools/render_build.sh
+    staticPublishPath: build/web
+    envVars:
+      - key: FLUTTER_VERSION
+        value: 3.44.8
+      # Served at the domain root on Render, unlike the GitHub Pages sub-path.
+      - key: BASE_HREF
+        value: /
+      - key: FIREBASE_API_KEY
+        sync: false
+      - key: FIREBASE_APP_ID
+        sync: false
+      - key: FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: FIREBASE_DATABASE_URL
+        sync: false

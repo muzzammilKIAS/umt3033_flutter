@@ -34,6 +34,46 @@ and the explicitly labelled local browser-tab preview without Firebase.
    green LIVE CLASSROOM banner. Open the QR on a second device and complete the
    17-step checklist in GAME_QA_CHECKLIST.md before using it in a real class.
 
+## Deploying to Render with Firebase
+
+`render.yaml` is a Blueprint for a Render **static site**. Render images have no
+Flutter, so `tools/render_build.sh` fetches the pinned SDK (3.44.8) on the first
+build and reuses it from the build cache. It bundles CanvasKit, and serves at the
+domain root (`BASE_HREF=/`) rather than the GitHub Pages sub-path.
+
+1. Finish steps 1–3 above so the Firebase project, Anonymous auth and the
+   deployed database rules exist.
+2. Render dashboard → **New → Blueprint** → pick this repository. Render reads
+   `render.yaml` and creates the static site.
+3. Render prompts for the six `sync: false` variables. Paste the values from the
+   Firebase Web app config:
+
+   | Render variable | Firebase Web config field |
+   |---|---|
+   | `FIREBASE_API_KEY` | `apiKey` |
+   | `FIREBASE_APP_ID` | `appId` |
+   | `FIREBASE_MESSAGING_SENDER_ID` | `messagingSenderId` |
+   | `FIREBASE_PROJECT_ID` | `projectId` |
+   | `FIREBASE_AUTH_DOMAIN` | `authDomain` |
+   | `FIREBASE_DATABASE_URL` | the regional `https://…firebasedatabase.app` URL |
+
+4. **Add the Render domain** (for example `umt3033-adventure.onrender.com`, plus
+   any custom domain) under Firebase → Authentication → Settings → Authorized
+   domains. Anonymous sign-in is rejected from an unlisted domain and the game
+   screen then shows `Unable to connect`.
+5. Deploy, open `https://<your-site>.onrender.com/#/game/host`, create a room and
+   confirm the green **LIVE CLASSROOM** banner. A yellow **LOCAL PREVIEW** banner
+   means the build had no Firebase variables, and phones cannot join in that mode.
+6. The QR encodes the page's own origin and path, so it works at the Render root
+   and at the Pages sub-path with no code change.
+
+If a variable is missing the build still succeeds and logs which keys were absent,
+falling back to the labelled local preview instead of failing the deploy.
+
+GitHub Pages deployment is unaffected and still uses the `FIREBASE_WEB_CONFIG`
+repository variable. Both hosts can share one Firebase project as long as both
+domains are authorized.
+
 ## Rules verification (no production project needed)
 Node and Java 21+ are required:
 ```sh
