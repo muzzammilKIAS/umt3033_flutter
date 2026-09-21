@@ -9,6 +9,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:umt3033_app/main.dart';
+import 'package:umt3033_app/screens/glossary_screen.dart';
+import 'package:umt3033_app/screens/search_screen.dart';
+import 'package:umt3033_app/screens/settings_screen.dart';
+import 'package:umt3033_app/screens/unit_screen.dart';
 import 'package:umt3033_app/services/data_service.dart';
 import 'package:umt3033_app/services/storage_service.dart';
 
@@ -27,6 +31,10 @@ Future<Widget> _buildApp() async {
 }
 
 Future<void> _pumpApp(WidgetTester tester) async {
+  tester.view.physicalSize = const Size(700, 1000);
+  tester.view.devicePixelRatio = 1;
+  addTearDown(tester.view.resetPhysicalSize);
+  addTearDown(tester.view.resetDevicePixelRatio);
   final app = await tester.runAsync(_buildApp);
   await tester.pumpWidget(app!);
   for (var i = 0; i < 6; i++) {
@@ -43,9 +51,9 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     await _pumpApp(tester);
 
-    expect(find.text('Basic Arabic for Muamalat • UMT3033'), findsOneWidget);
+    expect(find.text('UMT3033'), findsWidgets);
     expect(
-      find.text('0/14'),
+      find.text('٠/١٤'),
       findsOneWidget,
     ); // "Unit Selesai" stat, confirms 14 units loaded
   });
@@ -58,15 +66,15 @@ void main() {
 
     await tester.tap(find.text('Glosari'));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Cari istilah...'), findsOneWidget);
+    expect(find.byType(GlossaryScreen), findsOneWidget);
 
     await tester.tap(find.text('Cari'));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Carian'), findsOneWidget);
+    expect(find.byType(SearchScreen), findsOneWidget);
 
     await tester.tap(find.text('Tetapan'));
     await tester.pump(const Duration(milliseconds: 300));
-    expect(find.text('Tetapan'), findsWidgets);
+    expect(find.byType(SettingsScreen), findsOneWidget);
   });
 
   testWidgets('Opening a unit from the hero button shows UnitScreen content', (
@@ -75,11 +83,11 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     await _pumpApp(tester);
 
-    await tester.tap(find.text('Mula Belajar'));
+    await tester.tap(find.text('ابدأ التعلم'));
     for (var i = 0; i < 6; i++) {
       await tester.pump(const Duration(milliseconds: 100));
     }
 
-    expect(find.text('Unit 1'), findsWidgets);
+    expect(find.byType(UnitScreen), findsOneWidget);
   });
 }

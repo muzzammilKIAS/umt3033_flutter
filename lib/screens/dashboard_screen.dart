@@ -75,6 +75,43 @@ class DashboardScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               children: [
                 _heroSection(context, course, storage),
+                const SizedBox(height: 16),
+                Card(
+                  color: const Color(0xFF102D3D),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                    leading: const Icon(
+                      Icons.sports_esports_rounded,
+                      color: Color(0xFFF0C56B),
+                      size: 34,
+                    ),
+                    title: const Text(
+                      'Arabic Muamalat Adventure',
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    subtitle: const Text(
+                      'مغامرة العربية للمعاملات',
+                      style: TextStyle(
+                        fontFamily: 'Amiri',
+                        color: Color(0xFFF0C56B),
+                        fontSize: 22,
+                        height: 1.7,
+                      ),
+                    ),
+                    onTap: () => Navigator.pushNamed(context, '/game'),
+                    trailing: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 24),
                 _progressCard(context, storage),
                 const SizedBox(height: 28),
@@ -128,7 +165,9 @@ class DashboardScreen extends StatelessWidget {
             fit: BoxFit.scaleDown,
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
-              _stripHarakat('اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ'),
+              _stripHarakat(
+                'اللُّغَةُ الْعَرَبِيَّةُ الْأَسَاسِيَّةُ لِلْمُعَامَلَاتِ',
+              ),
               textAlign: TextAlign.right,
               textDirection: TextDirection.rtl,
               maxLines: 1,
@@ -149,10 +188,7 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          _HeroButton(
-            storage: storage,
-            tokens: tokens,
-          ),
+          _HeroButton(storage: storage, tokens: tokens),
         ],
       ),
     );
@@ -261,9 +297,7 @@ class DashboardScreen extends StatelessWidget {
                       context,
                       color: scheme.secondary,
                       label: 'الْمُفْرَدَاتُ',
-                      value: _toArabicDigits(
-                        '${storage.vocabLearned.length}',
-                      ),
+                      value: _toArabicDigits('${storage.vocabLearned.length}'),
                     ),
                     const SizedBox(height: 12),
                     _legendRow(
@@ -398,10 +432,7 @@ class _HeroButton extends StatefulWidget {
   final StorageService storage;
   final AppTokens tokens;
 
-  const _HeroButton({
-    required this.storage,
-    required this.tokens,
-  });
+  const _HeroButton({required this.storage, required this.tokens});
 
   @override
   State<_HeroButton> createState() => _HeroButtonState();

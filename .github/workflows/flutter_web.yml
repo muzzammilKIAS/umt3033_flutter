@@ -19,7 +19,22 @@ jobs:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter build web --release --base-href="/umt3033_flutter/"
+      - run: flutter analyze
+      - run: flutter test
+      - name: Build course and adventure
+        env:
+          FIREBASE_WEB_CONFIG: ${{ vars.FIREBASE_WEB_CONFIG }}
+        run: |
+          if [ -n "$FIREBASE_WEB_CONFIG" ]; then
+            config_dir="$(mktemp -d)"
+            config_file="$config_dir/firebase.json"
+            printf '%s' "$FIREBASE_WEB_CONFIG" > "$config_file"
+            flutter build web --release --base-href="/umt3033_flutter/" --no-web-resources-cdn --dart-define-from-file="$config_file"
+            rm -f "$config_file"
+            rmdir "$config_dir"
+          else
+            flutter build web --release --base-href="/umt3033_flutter/" --no-web-resources-cdn
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

@@ -31,8 +31,9 @@ docs/        This project's academic-source mapping, content/audio QA
 ```
 
 State management: `provider` (two singletons — `DataService`,
-`StorageService` — injected via `MultiProvider` in `main.dart`). No backend,
-no login, no analytics, no network calls at runtime.
+`StorageService` — injected via `MultiProvider` in `main.dart`). The original
+course remains account-free. The optional Adventure module adds Firebase
+anonymous classroom sessions when configured; solo play needs no backend.
 
 ## Academic source hierarchy
 
@@ -184,3 +185,39 @@ orange/brown "cocoa" theme).
 
 No login, no analytics, no tracking, no cloud sync, no student-data
 collection. All progress is stored locally via `shared_preferences`.
+
+
+## Arabic Muamalat Adventure
+
+Open the **Arabic Muamalat Adventure** card on the existing dashboard, or visit
+`#/game`. Five original platform worlds cover all fourteen topics using exact
+vocabulary from the existing module. Solo play saves checkpoints, best results,
+stars and topic mastery separately from course progress.
+
+- Desktop: A/D or arrows, Space to jump. Phone: hold left/right and tap jump.
+- Solo: choose an avatar and any of the five worlds. Cleared gates are saved.
+- Classroom: Host → select world → create → share QR/link → Start. Projector
+  lanes show every participant; host controls include pause/resume, lock, remove,
+  end, restart, next world, fullscreen, analytics and CSV.
+- **Without Firebase configuration, classroom mode is a labelled same-browser
+  preview. Scanning that QR on another phone does not provide multiplayer.**
+- Live deployment is pending Firebase project setup and physical-device QA.
+
+See [implementation/audit](docs/GAME_IMPLEMENTATION_PLAN.md),
+[architecture](docs/GAME_ARCHITECTURE.md), [Firebase setup](docs/FIREBASE_SETUP.md),
+[QA and outstanding checks](docs/GAME_QA_CHECKLIST.md),
+[academic review requirements](docs/GAME_CONTENT_REVIEW.md), and
+[original artwork](docs/GAME_ASSETS.md).
+
+Validation:
+```sh
+flutter analyze
+flutter test
+flutter build web --release --base-href=/umt3033_flutter/
+cd tools/game_qa
+npm ci
+npm run rules   # Java 21+, local demo Firebase emulator only
+npm run browser # Chrome; serve build/web at localhost:8765/umt3033_flutter/
+```
+The existing JavaScript web build is used. The pre-existing flutter_tts package
+currently reports Wasm dry-run compatibility warnings; the release JS build passes.

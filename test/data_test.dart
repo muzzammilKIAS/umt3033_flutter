@@ -1,6 +1,7 @@
 // Data-integrity tests for the course content bundled in assets/data.
 // Run with: flutter test
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:umt3033_app/models/unit_model.dart';
@@ -133,27 +134,33 @@ void main() {
 
   group('audio-manifest.json', () {
     test(
-      'every generated item has a non-empty path and male gender (documented voice limitation)',
+      'every generated item has a real file and an explicit supported voice',
       () {
         final items = audioManifest['items'] as List;
         for (final item in items) {
           if (item['status'] == 'generated') {
             expect(item['path'], isNotEmpty);
-            expect(item['gender'], 'male');
+            expect(['male', 'female'], contains(item['gender']));
+            expect(File('assets/${item['path']}').existsSync(), isTrue);
           }
         }
       },
     );
 
     test(
-      'female dialogue lines are explicitly marked fallback-tts, never faked',
+      'female dialogue lines use female recordings or explicit TTS fallback',
       () {
         final items = audioManifest['items'] as List;
         final femaleItems = items.where((i) => i['gender'] == 'female');
         expect(femaleItems, isNotEmpty);
         for (final item in femaleItems) {
-          expect(item['status'], 'fallback-tts');
-          expect(item['path'], isEmpty);
+          expect(['generated', 'fallback-tts'], contains(item['status']));
+          if (item['status'] == 'generated') {
+            expect(item['path'], contains('/female/'));
+            expect(File('assets/${item['path']}').existsSync(), isTrue);
+          } else {
+            expect(item['path'], isEmpty);
+          }
         }
       },
     );

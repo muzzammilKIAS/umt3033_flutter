@@ -50,3 +50,8 @@ app.*.map.json
 /assets/data/units_extracted.json
 /docs/_extract_report.txt
 .claude/
+
+# Adventure tooling and local Firebase configuration
+node_modules/
+firebase.local.json
+.firebase/

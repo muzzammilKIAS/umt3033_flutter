@@ -11,6 +11,7 @@ import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
 import 'theme/app_theme.dart';
 import 'theme/app_colors.dart';
+import 'game/game_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,6 +86,7 @@ class UMT3033App extends StatelessWidget {
           ),
         );
       },
+      onGenerateRoute: adventureRoute,
       home: const MainShell(),
     );
   }

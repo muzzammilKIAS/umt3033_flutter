@@ -15,35 +15,44 @@ void main() {
     test('expands SAW ligature ﷺ to full phrase', () {
       final input = 'قَالَ رَسُولُ اللَّهِ ﷺ';
       final output = prepareArabicForTts(input);
-      expect(output, contains('صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ'));
+      expect(output, contains('صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ'));
       expect(output, isNot(contains('ﷺ')));
     });
 
-    test('ensures Allah has proper tashdid and wasl in rasulullah', () {
-      final input = 'قَالَ رَسُولُ اللهِ';
-      final output = prepareArabicForTts(input);
-      expect(output, contains('رَسُولُ ٱللَّهِ'));
-    });
+    test(
+      'ensures Allah has proper tashdid and standard Alif for TTS in rasulullah',
+      () {
+        final input = 'قَالَ رَسُولُ اللهِ';
+        final output = prepareArabicForTts(input);
+        expect(output, contains('رَسُولُ اللَّهِ'));
+      },
+    );
 
     test('fixes salla Allahu and qala Allahu taala', () {
-      expect(prepareArabicForTts('صَلَّى اللهُ'), contains('صَلَّى ٱللَّهُ'));
-      expect(prepareArabicForTts('قَالَ الله تَعَالَى'), contains('قَالَ ٱللَّهُ'));
+      expect(prepareArabicForTts('صَلَّى اللهُ'), contains('صَلَّى اللَّهُ'));
+      expect(
+        prepareArabicForTts('قَالَ الله تَعَالَى'),
+        contains('قَالَ اللَّهُ'),
+      );
     });
 
     test('fixes Unit 4 ahalla Allahu al-bay and harrama al-riba', () {
       final input = 'لَا. أَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا.';
       final output = prepareArabicForTts(input);
-      expect(output, contains('وَأَحَلَّ ٱللَّهُ ٱلْبَيْعَ'));
-      expect(output, contains('وَحَرَّمَ ٱلرِّبَا'));
+      expect(output, contains('أَحَلَّ اللَّهُ الْبَيْعَ'));
+      expect(output, contains('وَحَرَّمَ الرِّبَا'));
+      expect(
+        output,
+        startsWith('لَا. أَحَلَّ'),
+      ); // Do not add words absent from the source.
     });
 
     test('cleans up raw quotation marks and colons around SAW', () {
       final input = 'قَالَ رَسُولُ اللهِ ﷺ: "الْحَدِيثُ"';
       final output = prepareArabicForTts(input);
-      expect(output, contains('رَسُولُ ٱللَّهِ'));
-      expect(output, contains('صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ'));
+      expect(output, contains('رَسُولُ اللَّهِ'));
+      expect(output, contains('صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ'));
       expect(output, isNot(contains('"')));
     });
   });
 }
-
