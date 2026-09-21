@@ -48,9 +48,10 @@ Browser test status is recorded in GAME_DELIVERY_REPORT.md. Canvas text is not
 always represented verbatim in Flutter's HTML accessibility mirror; tests use
 interactive semantics plus stored state and screenshots where appropriate.
 
-## Live classroom quality gate — pending Firebase configuration
-No production credentials/configuration were supplied. These are **not claimed
-as passed on real devices**:
+## Live classroom quality gate — pending real-device testing
+Firebase is configured and a two-client run passed against the live project and the
+deployed site (see the delivery report). These are **not claimed as passed on real
+devices**:
 
 - [ ] 1–3. Lecturer opens deployed course → Adventure → Host.
 - [ ] 4–7. Select world, show large QR, two physical phones scan and join live.

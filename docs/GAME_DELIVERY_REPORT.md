@@ -1,8 +1,8 @@
 # Arabic Muamalat Adventure — delivery report (2026-09-21)
 
-Status: **implemented, verified locally and pushed to `main` for the Pages deploy;
-the live classroom gate is still pending.** No production Firebase project is
-configured yet, so multiplayer runs in local-preview mode until one is supplied.
+Status: **implemented, deployed, and connected to a live Firebase project
+(`umt3033-adventure`, Realtime Database in `asia-southeast1`).** The remaining gate is
+running it on real phones in a real classroom (see the checklist).
 
 ## Created files
 - `lib/game/` — isolated game module (nothing in `lib/models|services|screens` was replaced):
@@ -50,10 +50,9 @@ Note: the emulator needs Java. It was run with the JDK 21 JRE Codex left in `/pr
 path is temporary, so install a JDK (e.g. `brew install openjdk@17`) to repeat it.
 
 ## Remaining manual steps
-1. Create/configure the Firebase project (Anonymous Auth, Realtime Database, deploy `firebase/database.rules.json`,
-   set `FIREBASE_WEB_CONFIG`) — see `FIREBASE_SETUP.md`.
-2. Run the 17-step live classroom gate in `GAME_QA_CHECKLIST.md` on real phones once
-   the deploy is live and Firebase is configured.
+1. If deploying to Render, follow "Deploying to Render with Firebase" in `FIREBASE_SETUP.md`
+   and add the Render domain to Firebase Authentication → Authorized domains.
+2. Run the 17-step live classroom gate in `GAME_QA_CHECKLIST.md` on real phones.
 3. Lecturer review of vocabulary selection/distractors and supply per-question keys for grammar/reading
    (currently `CONTENT_REVIEW_REQUIRED`; see `GAME_CONTENT_REVIEW.md`).
 
@@ -81,3 +80,12 @@ path is temporary, so install a JDK (e.g. `brew install openjdk@17`) to repeat i
   or classroom network.
 - **No level locking.** All five worlds are open from the start, so a lecturer can run
   any topic. `ProgressStore.unlocked` was removed; bests, stars and mastery remain.
+
+## Live Firebase verification (2026-09-21)
+Against the real project, using a separate browser context per participant so each has
+its own anonymous identity: the host shows the green LIVE CLASSROOM banner, two players
+join from the QR link, both start together after the server-clock countdown, the host
+sees both lanes, and results render. Repeated against the deployed GitHub Pages site.
+Database rules are deployed (not test mode) and GitHub Pages is authorized for sign-in.
+Test rooms were deleted afterwards. Physical phones and 10–50 concurrent clients on
+classroom Wi-Fi remain untested.
