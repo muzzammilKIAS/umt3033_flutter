@@ -11,9 +11,11 @@ COPY server /app/server
 RUN dart pub get --offline
 RUN dart compile exe bin/main.dart -o /app/server/bin/game_server
 
-FROM debian:bookworm-slim
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+# scratch (not debian-slim) so copying /runtime/ onto / doesn't collide with
+# debian's merged-usr symlinks (e.g. /lib -> /usr/lib), which made this fail
+# on Render with "cannot copy to non-directory: .../lib". The server makes
+# no outbound HTTPS calls, so it needs no CA certificates either.
+FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/server/bin/game_server /app/game_server
 EXPOSE 8080
