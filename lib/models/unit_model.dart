@@ -132,6 +132,7 @@ class UnitModel {
   final String summaryAr;
   final List<String> assessmentItems;
   final String? illustration;
+  final String? video;
   final List<String> reviewFlags;
 
   UnitModel({
@@ -170,6 +171,7 @@ class UnitModel {
     this.summaryAr = '',
     this.assessmentItems = const [],
     this.illustration,
+    this.video,
     this.reviewFlags = const [],
   });
 
@@ -228,6 +230,7 @@ class UnitModel {
     summaryAr: json['summaryAr'] ?? '',
     assessmentItems: List<String>.from(json['assessmentItems'] ?? []),
     illustration: json['illustration'] as String?,
+    video: json['video'] as String?,
     reviewFlags: List<String>.from(json['reviewFlags'] ?? []),
   );
 }

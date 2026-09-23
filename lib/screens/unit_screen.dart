@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:video_player/video_player.dart';
 import '../models/unit_model.dart';
 import '../services/data_service.dart';
 import '../services/storage_service.dart';
@@ -211,6 +212,7 @@ class _UnitScreenState extends State<UnitScreen> {
           if (unit.outcomes.isNotEmpty) _outcomesSection(context, unit),
           if (unit.vocab.isNotEmpty) _vocabSection(context, unit),
           if (unit.illustration != null) _illustrationSection(context, unit),
+          if (unit.video != null) _VideoSection(assetPath: unit.video!),
           if (unit.dialog.isNotEmpty)
             _dialogSection(
               context,
@@ -1765,6 +1767,315 @@ class _ModelAnswersRevealState extends State<_ModelAnswersReveal> {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Video box for a unit — matches the illustration box's styling (margin,
+/// border radius, border) so the two sit as same-size cards in the list.
+/// Tap to play/pause, a small badge shows while playing, and a fullscreen
+/// button reuses the same controller so playback position carries over.
+class _VideoSection extends StatefulWidget {
+  final String assetPath;
+  const _VideoSection({required this.assetPath});
+
+  @override
+  State<_VideoSection> createState() => _VideoSectionState();
+}
+
+class _VideoSectionState extends State<_VideoSection> {
+  late final VideoPlayerController _controller;
+  bool _ready = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset(widget.assetPath)
+      ..initialize().then((_) {
+        if (!mounted) return;
+        setState(() => _ready = true);
+      })
+      ..addListener(() {
+        if (mounted) setState(() {});
+      });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _togglePlay() {
+    if (!_ready) return;
+    setState(() {
+      if (_controller.value.isPlaying) {
+        _controller.pause();
+      } else {
+        if (_controller.value.position >= _controller.value.duration) {
+          _controller.seekTo(Duration.zero);
+        }
+        _controller.play();
+      }
+    });
+  }
+
+  void _openFullscreen() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => _FullscreenVideoPage(controller: _controller),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.tokens;
+    final playing = _ready && _controller.value.isPlaying;
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: tokens.border),
+      ),
+      child: AspectRatio(
+        aspectRatio: _ready ? _controller.value.aspectRatio : 16 / 9,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            if (_ready)
+              GestureDetector(
+                onTap: _togglePlay,
+                child: VideoPlayer(_controller),
+              )
+            else
+              Container(
+                color: Colors.black12,
+                alignment: Alignment.center,
+                child: const CircularProgressIndicator(),
+              ),
+            if (_ready)
+              GestureDetector(
+                onTap: _togglePlay,
+                behavior: HitTestBehavior.translucent,
+                child: AnimatedOpacity(
+                  opacity: playing ? 0.0 : 1.0,
+                  duration: const Duration(milliseconds: 200),
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: const BoxDecoration(
+                        color: Colors.black45,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.play_arrow_rounded,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            if (playing)
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _PlayingDot(),
+                      SizedBox(width: 6),
+                      Text(
+                        'Sedang dimainkan',
+                        style: TextStyle(color: Colors.white, fontSize: 11),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            Positioned(
+              bottom: 8,
+              left: 8,
+              child: Material(
+                color: Colors.black45,
+                shape: const CircleBorder(),
+                child: IconButton(
+                  icon: const Icon(Icons.fullscreen, color: Colors.white),
+                  tooltip: 'Skrin penuh',
+                  onPressed: _ready ? _openFullscreen : null,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PlayingDot extends StatefulWidget {
+  const _PlayingDot();
+
+  @override
+  State<_PlayingDot> createState() => _PlayingDotState();
+}
+
+class _PlayingDotState extends State<_PlayingDot>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 900),
+  )..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: Tween(begin: 0.3, end: 1.0).animate(_controller),
+      child: Container(
+        width: 8,
+        height: 8,
+        decoration: const BoxDecoration(
+          color: Colors.redAccent,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
+  }
+}
+
+/// Fullscreen video view, sharing the same controller as the inline player
+/// so play/pause state and position carry over both ways.
+class _FullscreenVideoPage extends StatefulWidget {
+  final VideoPlayerController controller;
+  const _FullscreenVideoPage({required this.controller});
+
+  @override
+  State<_FullscreenVideoPage> createState() => _FullscreenVideoPageState();
+}
+
+class _FullscreenVideoPageState extends State<_FullscreenVideoPage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(_onTick);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_onTick);
+    super.dispose();
+  }
+
+  void _onTick() {
+    if (mounted) setState(() {});
+  }
+
+  void _togglePlay() {
+    setState(() {
+      if (widget.controller.value.isPlaying) {
+        widget.controller.pause();
+      } else {
+        widget.controller.play();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final playing = widget.controller.value.isPlaying;
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Center(
+              child: AspectRatio(
+                aspectRatio: widget.controller.value.aspectRatio,
+                child: GestureDetector(
+                  onTap: _togglePlay,
+                  child: VideoPlayer(widget.controller),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 8,
+              right: 8,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.fullscreen_exit,
+                  color: Colors.white,
+                  size: 28,
+                ),
+                tooltip: 'Keluar skrin penuh',
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ),
+            if (!playing)
+              Center(
+                child: GestureDetector(
+                  onTap: _togglePlay,
+                  child: Container(
+                    padding: const EdgeInsets.all(18),
+                    decoration: const BoxDecoration(
+                      color: Colors.black45,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.play_arrow_rounded,
+                      color: Colors.white,
+                      size: 56,
+                    ),
+                  ),
+                ),
+              ),
+            if (playing)
+              Positioned(
+                top: 12,
+                left: 12,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _PlayingDot(),
+                      SizedBox(width: 6),
+                      Text(
+                        'Sedang dimainkan',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

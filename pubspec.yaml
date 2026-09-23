@@ -23,6 +23,7 @@ dependencies:
   firebase_database: ^12.6.0
   qr_flutter: ^4.1.0
   web: ^1.1.1
+  video_player: ^2.9.5
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +48,7 @@ flutter:
     - assets/data/
     - assets/images/
     - assets/images/units/
+    - assets/videos/
     - assets/audio/unit-01/male/
     - assets/audio/unit-01/female/
     - assets/audio/unit-02/male/
