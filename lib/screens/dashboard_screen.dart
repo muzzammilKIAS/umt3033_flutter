@@ -135,10 +135,28 @@ class DashboardScreen extends StatelessWidget {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    subtitle: const Text(
-                      'Sertai kelas guru di pelayar — kod bilik & QR',
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(color: Color(0xFF8EC9E8), fontSize: 13),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text(
+                          'مَسَارُ الْمُعَامَلَاتِ',
+                          style: TextStyle(
+                            fontFamily: 'Amiri',
+                            color: Color(0xFF8EC9E8),
+                            fontSize: 22,
+                            height: 1.7,
+                          ),
+                        ),
+                        Text(
+                          'Sertai kelas guru di pelayar — kod bilik & QR',
+                          textDirection: TextDirection.ltr,
+                          style: TextStyle(
+                            color: Color(0xFF8EC9E8),
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
                     ),
                     onTap: () => launchUrl(
                       Uri.parse(muamalatTrailUrl),
