@@ -1,0 +1,14 @@
+name: game_server
+description: >
+  Standalone WebSocket server for Arabic Muamalat Adventure's live classroom
+  multiplayer -- rooms are kept in memory, no external database. Deployed to
+  Render as a Docker web service; see server/Dockerfile.
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  game_shared:
+    path: ../packages/game_shared

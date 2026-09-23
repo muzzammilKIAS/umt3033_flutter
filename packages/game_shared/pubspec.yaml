@@ -1,0 +1,11 @@
+name: game_shared
+description: >
+  Pure-Dart room state model and rules for the Arabic Muamalat Adventure
+  game, shared between the Flutter client and the standalone game server.
+  No Flutter dependency, so plain `dart` tooling (and the server's Docker
+  build) can use it without the Flutter SDK.
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.12.2

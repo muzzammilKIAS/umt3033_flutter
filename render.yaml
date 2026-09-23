@@ -1,6 +1,7 @@
 # Render blueprint for the UMT3033 course app + Arabic Muamalat Adventure.
-# The Firebase values are marked sync: false, so Render prompts for them in the
-# dashboard instead of keeping them in source control.
+# Two services: the Flutter web static site, and the standalone Dart
+# WebSocket game server that replaces Firebase for live classroom
+# multiplayer. Rooms live in the server's memory only -- no database.
 services:
   - type: web
     name: umt3033-adventure
@@ -13,15 +14,17 @@ services:
       # Served at the domain root on Render, unlike the GitHub Pages sub-path.
       - key: BASE_HREF
         value: /
-      - key: FIREBASE_API_KEY
+      # wss://<game server's Render URL>/ws -- fill in once the game server
+      # service below has deployed and you have its onrender.com hostname.
+      - key: GAME_SERVER_WS_URL
         sync: false
-      - key: FIREBASE_APP_ID
-        sync: false
-      - key: FIREBASE_MESSAGING_SENDER_ID
-        sync: false
-      - key: FIREBASE_PROJECT_ID
-        sync: false
-      - key: FIREBASE_AUTH_DOMAIN
-        sync: false
-      - key: FIREBASE_DATABASE_URL
-        sync: false
+
+  - type: web
+    name: umt3033-adventure-server
+    runtime: docker
+    dockerfilePath: server/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        value: 8080
+    healthCheckPath: /healthz

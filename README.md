@@ -199,12 +199,12 @@ stars and topic mastery separately from course progress.
 - Classroom: Host → select world → create → share QR/link → Start. Projector
   lanes show every participant; host controls include pause/resume, lock, remove,
   end, restart, next world, fullscreen, analytics and CSV.
-- **Without Firebase configuration, classroom mode is a labelled same-browser
+- **Without a configured game server, classroom mode is a labelled same-browser
   preview. Scanning that QR on another phone does not provide multiplayer.**
-- Live deployment is pending Firebase project setup and physical-device QA.
+- Live deployment is pending game server deployment and physical-device QA.
 
 See [implementation/audit](docs/GAME_IMPLEMENTATION_PLAN.md),
-[architecture](docs/GAME_ARCHITECTURE.md), [Firebase setup](docs/FIREBASE_SETUP.md),
+[architecture](docs/GAME_ARCHITECTURE.md), [game server setup](docs/GAME_SERVER_SETUP.md),
 [QA and outstanding checks](docs/GAME_QA_CHECKLIST.md),
 [academic review requirements](docs/GAME_CONTENT_REVIEW.md), and
 [original artwork](docs/GAME_ASSETS.md).

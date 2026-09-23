@@ -8,7 +8,7 @@ import '../data/question_bank.dart';
 import '../models/curriculum.dart';
 import '../models/race_state.dart';
 import '../multiplayer/room_service.dart';
-import '../multiplayer/firebase_room_service.dart';
+import '../multiplayer/render_room_service.dart';
 import '../multiplayer/local_room_service.dart';
 import '../utils/browser.dart';
 import '../widgets/adventure_style.dart';
@@ -51,8 +51,8 @@ class _RoomScreenState extends State<RoomScreen> {
 
   Future<void> _initialize() async {
     try {
-      final service = FirebaseRoomService.configured
-          ? await FirebaseRoomService.open()
+      final service = RenderRoomService.configured
+          ? await RenderRoomService.open()
           : await LocalRoomService.open();
       if (!mounted) {
         await service.dispose();

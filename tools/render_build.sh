@@ -2,9 +2,9 @@
 # Build the course app + adventure for a Render static site.
 #
 # Render images have no Flutter, so the pinned SDK is fetched on first build and
-# reused from the build cache afterwards. Firebase web configuration is read from
-# the service's environment variables; when none are set the build still succeeds
-# and multiplayer falls back to the labelled local preview.
+# reused from the build cache afterwards. The live classroom multiplayer server's
+# WebSocket URL is read from GAME_SERVER_WS_URL; when unset the build still
+# succeeds and multiplayer falls back to the labelled local preview.
 set -euo pipefail
 
 FLUTTER_VERSION="${FLUTTER_VERSION:-3.44.8}"
@@ -22,21 +22,11 @@ export PATH="$FLUTTER_DIR/bin:$PATH"
 flutter --version
 
 defines=()
-missing=()
-for key in FIREBASE_API_KEY FIREBASE_APP_ID FIREBASE_MESSAGING_SENDER_ID \
-  FIREBASE_PROJECT_ID FIREBASE_AUTH_DOMAIN FIREBASE_DATABASE_URL; do
-  value="${!key:-}"
-  if [ -n "$value" ]; then
-    defines+=("--dart-define=$key=$value")
-  else
-    missing+=("$key")
-  fi
-done
-
-if [ ${#missing[@]} -eq 0 ]; then
-  echo "Firebase configured: building the live classroom bundle."
+if [ -n "${GAME_SERVER_WS_URL:-}" ]; then
+  defines+=("--dart-define=GAME_SERVER_WS_URL=$GAME_SERVER_WS_URL")
+  echo "Game server configured: building the live classroom bundle."
 else
-  echo "No Firebase configuration (missing: ${missing[*]})."
+  echo "No GAME_SERVER_WS_URL set."
   echo "Building the local-preview bundle; phones will not be able to join."
 fi
 
