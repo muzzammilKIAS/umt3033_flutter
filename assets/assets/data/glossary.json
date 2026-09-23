@@ -1,0 +1,1633 @@
+[
+  {
+    "id": "u01-vocab-001",
+    "termAr": "مُقَرَّرٌ",
+    "transliteration": "",
+    "term": "Kursus",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-002",
+    "termAr": "لُغَةٌ عَرَبِيَّةٌ",
+    "transliteration": "",
+    "term": "Bahasa Arab",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-003",
+    "termAr": "مُعَامَلَاتٌ",
+    "transliteration": "",
+    "term": "Muamalat",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-004",
+    "termAr": "طَالِبٌ",
+    "transliteration": "",
+    "term": "Pelajar lelaki",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-005",
+    "termAr": "طَالِبَةٌ",
+    "transliteration": "",
+    "term": "Pelajar perempuan",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-006",
+    "termAr": "مُحَاضِرٌ",
+    "transliteration": "",
+    "term": "Pensyarah lelaki",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-007",
+    "termAr": "مُحَاضِرَةٌ",
+    "transliteration": "",
+    "term": "Pensyarah perempuan",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-008",
+    "termAr": "دَرْسٌ",
+    "transliteration": "",
+    "term": "Pelajaran",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-009",
+    "termAr": "مَوْضُوعٌ",
+    "transliteration": "",
+    "term": "Topik",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-010",
+    "termAr": "وَاجِبٌ",
+    "transliteration": "",
+    "term": "Tugasan",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-011",
+    "termAr": "اِخْتِبَارٌ",
+    "transliteration": "",
+    "term": "Ujian",
+    "unitId": 1
+  },
+  {
+    "id": "u01-vocab-012",
+    "termAr": "عَرْضٌ تَقْدِيمِيٌّ",
+    "transliteration": "",
+    "term": "Pembentangan",
+    "unitId": 1
+  },
+  {
+    "id": "u02-vocab-001",
+    "termAr": "مُؤَسَّسَةٌ",
+    "transliteration": "mu’assasah",
+    "term": "institusi",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-002",
+    "termAr": "مُؤَسَّسَةٌ مَالِيَّةٌ",
+    "transliteration": "mu’assasah māliyyah",
+    "term": "institusi kewangan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-003",
+    "termAr": "مُوَظَّفٌ",
+    "transliteration": "muwaẓẓaf",
+    "term": "pegawai lelaki",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-004",
+    "termAr": "عَمِيلٌ",
+    "transliteration": "‘amīl",
+    "term": "pelanggan lelaki",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-005",
+    "termAr": "مَكْتَبُ الِاسْتِقْبَالِ",
+    "transliteration": "maktab al-istiqbāl",
+    "term": "kaunter penerimaan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-006",
+    "termAr": "قِسْمٌ",
+    "transliteration": "qism",
+    "term": "bahagian",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-007",
+    "termAr": "خِدْمَةٌ",
+    "transliteration": "khidmah",
+    "term": "perkhidmatan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-008",
+    "termAr": "مَعْلُومَاتٌ",
+    "transliteration": "ma‘lūmāt",
+    "term": "maklumat",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-009",
+    "termAr": "تَمْوِيلٌ",
+    "transliteration": "tamwīl",
+    "term": "pembiayaan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-010",
+    "termAr": "اِسْتِثْمَارٌ",
+    "transliteration": "istithmār",
+    "term": "pelaburan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-011",
+    "termAr": "تَكَافُلٌ",
+    "transliteration": "takāful",
+    "term": "takaful",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-012",
+    "termAr": "مَشْرُوعٌ",
+    "transliteration": "mashrū‘",
+    "term": "projek / perniagaan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-013",
+    "termAr": "يُقَدِّمُ",
+    "transliteration": "yuqaddimu",
+    "term": "menyediakan / memberikan",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-014",
+    "termAr": "يَسْأَلُ",
+    "transliteration": "yas’alu",
+    "term": "bertanya",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-015",
+    "termAr": "يُرِيدُ",
+    "transliteration": "yurīdu",
+    "term": "mahu",
+    "unitId": 2
+  },
+  {
+    "id": "u02-vocab-016",
+    "termAr": "يَذْهَبُ",
+    "transliteration": "yadhhabu",
+    "term": "pergi",
+    "unitId": 2
+  },
+  {
+    "id": "u03-vocab-001",
+    "termAr": "بَنْكٌ إِسْلَامِيٌّ",
+    "transliteration": "bankun islāmiyyun",
+    "term": "bank Islam",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-002",
+    "termAr": "فَرْعٌ",
+    "transliteration": "far‘un",
+    "term": "cawangan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-003",
+    "termAr": "حِسَابٌ",
+    "transliteration": "ḥisābun",
+    "term": "akaun",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-004",
+    "termAr": "حِسَابُ التَّوْفِيرِ",
+    "transliteration": "ḥisābu al-tawfīr",
+    "term": "akaun simpanan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-005",
+    "termAr": "حِسَابٌ جَارٍ",
+    "transliteration": "ḥisābun jārin",
+    "term": "akaun semasa",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-007",
+    "termAr": "عَمِيلَةٌ",
+    "transliteration": "‘amīlatun",
+    "term": "pelanggan perempuan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-009",
+    "termAr": "مُوَظَّفَةٌ",
+    "transliteration": "muwaẓẓafatun",
+    "term": "pegawai perempuan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-010",
+    "termAr": "بِطَاقَةُ الْهُوِيَّةِ",
+    "transliteration": "biṭāqatu al-huwiyyah",
+    "term": "kad pengenalan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-011",
+    "termAr": "اِسْتِمَارَةٌ",
+    "transliteration": "istimāratun",
+    "term": "borang",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-012",
+    "termAr": "إِيدَاعٌ",
+    "transliteration": "īdā‘un",
+    "term": "deposit",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-013",
+    "termAr": "سَحْبٌ",
+    "transliteration": "saḥbun",
+    "term": "pengeluaran wang",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-014",
+    "termAr": "رَصِيدٌ",
+    "transliteration": "raṣīdun",
+    "term": "baki",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-015",
+    "termAr": "بِطَاقَةٌ مَصْرِفِيَّةٌ",
+    "transliteration": "biṭāqatun maṣrifiyyah",
+    "term": "kad bank",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-016",
+    "termAr": "يَفْتَحُ",
+    "transliteration": "yaftaḥu",
+    "term": "membuka",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-017",
+    "termAr": "يَمْلَأُ",
+    "transliteration": "yamla’u",
+    "term": "mengisi",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-018",
+    "termAr": "يُوَقِّعُ",
+    "transliteration": "yuwaqqi‘u",
+    "term": "menandatangani",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-019",
+    "termAr": "يُودِعُ",
+    "transliteration": "yūdi‘u",
+    "term": "mendepositkan",
+    "unitId": 3
+  },
+  {
+    "id": "u03-vocab-020",
+    "termAr": "يَسْحَبُ",
+    "transliteration": "yasḥabu",
+    "term": "mengeluarkan wang",
+    "unitId": 3
+  },
+  {
+    "id": "u04-vocab-001",
+    "termAr": "بَيْعٌ",
+    "transliteration": "bay‘un",
+    "term": "jual beli",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-002",
+    "termAr": "شِرَاءٌ",
+    "transliteration": "shirā’un",
+    "term": "pembelian",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-003",
+    "termAr": "بَائِعٌ",
+    "transliteration": "bā’i‘un",
+    "term": "penjual",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-004",
+    "termAr": "مُشْتَرٍ",
+    "transliteration": "mushtarin",
+    "term": "pembeli",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-005",
+    "termAr": "سِلْعَةٌ",
+    "transliteration": "sil‘atun",
+    "term": "barangan",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-006",
+    "termAr": "ثَمَنٌ",
+    "transliteration": "thamanun",
+    "term": "harga",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-007",
+    "termAr": "عَقْدٌ",
+    "transliteration": "‘aqdun",
+    "term": "kontrak",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-008",
+    "termAr": "رِبًا",
+    "transliteration": "riban",
+    "term": "riba",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-009",
+    "termAr": "حَلَالٌ",
+    "transliteration": "ḥalālun",
+    "term": "halal",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-010",
+    "termAr": "حَرَامٌ",
+    "transliteration": "ḥarāmun",
+    "term": "haram",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-011",
+    "termAr": "مُرَابَحَةٌ",
+    "transliteration": "murābaḥatun",
+    "term": "murabahah",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-012",
+    "termAr": "قِسْطٌ",
+    "transliteration": "qisṭun",
+    "term": "ansuran",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-013",
+    "termAr": "رِبْحٌ",
+    "transliteration": "ribḥun",
+    "term": "keuntungan",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-014",
+    "termAr": "يَشْتَرِي",
+    "transliteration": "yashtarī",
+    "term": "membeli",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-015",
+    "termAr": "يَبِيعُ",
+    "transliteration": "yabī‘u",
+    "term": "menjual",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-016",
+    "termAr": "يَدْفَعُ",
+    "transliteration": "yadfa‘u",
+    "term": "membayar",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-017",
+    "termAr": "أَحَلَّ",
+    "transliteration": "aḥalla",
+    "term": "menghalalkan",
+    "unitId": 4
+  },
+  {
+    "id": "u04-vocab-018",
+    "termAr": "حَرَّمَ",
+    "transliteration": "ḥarrama",
+    "term": "mengharamkan",
+    "unitId": 4
+  },
+  {
+    "id": "u05-vocab-001",
+    "termAr": "حَدِيثٌ",
+    "transliteration": "ḥadīthun",
+    "term": "hadis",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-008",
+    "termAr": "عَيْبٌ",
+    "transliteration": "‘aybun",
+    "term": "kecacatan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-009",
+    "termAr": "خَدْشٌ",
+    "transliteration": "khadshun",
+    "term": "calar",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-010",
+    "termAr": "خِيَارٌ",
+    "transliteration": "khiyārun",
+    "term": "hak pilihan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-011",
+    "termAr": "صِدْقٌ",
+    "transliteration": "ṣidqun",
+    "term": "kejujuran",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-012",
+    "termAr": "بَيَانٌ",
+    "transliteration": "bayānun",
+    "term": "penjelasan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-013",
+    "termAr": "بَرَكَةٌ",
+    "transliteration": "barakatun",
+    "term": "keberkatan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-014",
+    "termAr": "ضَمَانٌ",
+    "transliteration": "ḍamānun",
+    "term": "jaminan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-015",
+    "termAr": "إِيصَالٌ",
+    "transliteration": "īṣālun",
+    "term": "resit",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-018",
+    "termAr": "يَفْحَصُ",
+    "transliteration": "yafḥaṣu",
+    "term": "memeriksa",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-019",
+    "termAr": "يُبَيِّنُ",
+    "transliteration": "yubayyinu",
+    "term": "menjelaskan",
+    "unitId": 5
+  },
+  {
+    "id": "u05-vocab-020",
+    "termAr": "يَكْتُمُ",
+    "transliteration": "yaktumu",
+    "term": "menyembunyikan",
+    "unitId": 5
+  },
+  {
+    "id": "u06-vocab-002",
+    "termAr": "مُسْتَثْمِرٌ",
+    "transliteration": "mustathmirun",
+    "term": "pelabur lelaki",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-003",
+    "termAr": "مُسْتَثْمِرَةٌ",
+    "transliteration": "mustathmiratun",
+    "term": "pelabur perempuan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-004",
+    "termAr": "رَأْسُ الْمَالِ",
+    "transliteration": "ra’su al-māl",
+    "term": "modal",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-005",
+    "termAr": "مَبْلَغٌ",
+    "transliteration": "mablaghun",
+    "term": "jumlah wang",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-007",
+    "termAr": "خَسَارَةٌ",
+    "transliteration": "khasāratun",
+    "term": "kerugian",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-008",
+    "termAr": "عَائِدٌ",
+    "transliteration": "‘ā’idun",
+    "term": "pulangan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-009",
+    "termAr": "مَخَاطِرُ",
+    "transliteration": "makhāṭiru",
+    "term": "risiko-risiko",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-010",
+    "termAr": "مُدَّةٌ",
+    "transliteration": "muddatun",
+    "term": "tempoh",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-012",
+    "termAr": "صُنْدُوقٌ اِسْتِثْمَارِيٌّ",
+    "transliteration": "ṣundūqun istithmāriyyun",
+    "term": "dana pelaburan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-013",
+    "termAr": "مَحْفَظَةٌ اِسْتِثْمَارِيَّةٌ",
+    "transliteration": "maḥfaẓatun istithmāriyyah",
+    "term": "portfolio pelaburan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-014",
+    "termAr": "مُتَوَافِقٌ مَعَ الشَّرِيعَةِ",
+    "transliteration": "mutawāfiqun ma‘a al-sharī‘ah",
+    "term": "selaras dengan Syariah",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-015",
+    "termAr": "يَسْتَثْمِرُ",
+    "transliteration": "yastathmiru",
+    "term": "melabur",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-016",
+    "termAr": "يُدِيرُ",
+    "transliteration": "yudīru",
+    "term": "mengurus",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-017",
+    "termAr": "يَشْرَحُ",
+    "transliteration": "yashraḥu",
+    "term": "menerangkan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-018",
+    "termAr": "يَخْتَارُ",
+    "transliteration": "yakhtāru",
+    "term": "memilih",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-019",
+    "termAr": "يَرْبَحُ",
+    "transliteration": "yarbaḥu",
+    "term": "mendapat keuntungan",
+    "unitId": 6
+  },
+  {
+    "id": "u06-vocab-020",
+    "termAr": "يَخْسَرُ",
+    "transliteration": "yakhsaru",
+    "term": "mengalami kerugian",
+    "unitId": 6
+  },
+  {
+    "id": "u07-vocab-003",
+    "termAr": "مُبَاحٌ",
+    "transliteration": "mubāḥun",
+    "term": "harus / dibenarkan",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-004",
+    "termAr": "مَمْنُوعٌ",
+    "transliteration": "mamnū‘un",
+    "term": "dilarang",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-005",
+    "termAr": "جَائِزٌ",
+    "transliteration": "jā’izun",
+    "term": "harus / sah digunakan",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-006",
+    "termAr": "مُعَامَلَةٌ",
+    "transliteration": "mu‘āmalatun",
+    "term": "urus niaga / transaksi",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-010",
+    "termAr": "أَجَلٌ",
+    "transliteration": "ajalun",
+    "term": "tempoh / tarikh matang",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-011",
+    "termAr": "تَرَاضٍ",
+    "transliteration": "tarāḍin",
+    "term": "saling meredai",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-013",
+    "termAr": "غَرَرٌ",
+    "transliteration": "ghararun",
+    "term": "ketidakpastian berlebihan",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-014",
+    "termAr": "مَيْسِرٌ",
+    "transliteration": "maysirun",
+    "term": "judi / pertaruhan",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-015",
+    "termAr": "وَاضِحٌ",
+    "transliteration": "wāḍiḥun",
+    "term": "jelas",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-016",
+    "termAr": "مَجْهُولٌ",
+    "transliteration": "majhūlun",
+    "term": "tidak diketahui",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-018",
+    "termAr": "يُوَافِقُ",
+    "transliteration": "yuwāfiqu",
+    "term": "bersetuju",
+    "unitId": 7
+  },
+  {
+    "id": "u07-vocab-019",
+    "termAr": "يَتَجَنَّبُ",
+    "transliteration": "yatajannabu",
+    "term": "menjauhi",
+    "unitId": 7
+  },
+  {
+    "id": "u08-vocab-002",
+    "termAr": "تَأْمِينٌ",
+    "transliteration": "ta’mīnun",
+    "term": "insurans / perlindungan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-003",
+    "termAr": "مُشْتَرِكٌ",
+    "transliteration": "mushtarikun",
+    "term": "peserta lelaki",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-004",
+    "termAr": "مُشْتَرِكَةٌ",
+    "transliteration": "mushtarikatun",
+    "term": "peserta perempuan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-005",
+    "termAr": "مُسَاهَمَةٌ",
+    "transliteration": "musāhamatun",
+    "term": "sumbangan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-006",
+    "termAr": "تَبَرُّعٌ",
+    "transliteration": "tabarru‘un",
+    "term": "derma / sumbangan kebajikan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-007",
+    "termAr": "تَعَاوُنٌ",
+    "transliteration": "ta‘āwunun",
+    "term": "kerjasama",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-008",
+    "termAr": "حِمَايَةٌ",
+    "transliteration": "ḥimāyatun",
+    "term": "perlindungan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-009",
+    "termAr": "خَطَرٌ",
+    "transliteration": "khaṭarun",
+    "term": "risiko",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-010",
+    "termAr": "مَنْفَعَةٌ",
+    "transliteration": "manfa‘atun",
+    "term": "manfaat",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-011",
+    "termAr": "مُسْتَفِيدٌ",
+    "transliteration": "mustafīdun",
+    "term": "penerima manfaat",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-012",
+    "termAr": "صُنْدُوقٌ",
+    "transliteration": "ṣundūqun",
+    "term": "dana / tabung",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-013",
+    "termAr": "وَثِيقَةٌ",
+    "transliteration": "wathīqatun",
+    "term": "dokumen / sijil / polisi",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-014",
+    "termAr": "شَرْطٌ",
+    "transliteration": "sharṭun",
+    "term": "syarat",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-015",
+    "termAr": "مُطَالَبَةٌ",
+    "transliteration": "muṭālabatun",
+    "term": "tuntutan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-016",
+    "termAr": "تَعْوِيضٌ",
+    "transliteration": "ta‘wīḍun",
+    "term": "pampasan",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-017",
+    "termAr": "يُسَاهِمُ",
+    "transliteration": "yusāhimu",
+    "term": "menyumbang",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-018",
+    "termAr": "يَتَعَاوَنُ",
+    "transliteration": "yata‘āwanu",
+    "term": "saling bekerjasama",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-019",
+    "termAr": "يُغَطِّي",
+    "transliteration": "yughaṭṭī",
+    "term": "melindungi / merangkumi",
+    "unitId": 8
+  },
+  {
+    "id": "u08-vocab-020",
+    "termAr": "يَسْتَفِيدُ",
+    "transliteration": "yastafīdu",
+    "term": "mendapat manfaat",
+    "unitId": 8
+  },
+  {
+    "id": "u09-vocab-001",
+    "termAr": "بَيْتُ الْمَالِ",
+    "transliteration": "",
+    "term": "Baitul Mal / perbendaharaan awam Islam",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-002",
+    "termAr": "مَالٌ عَامٌّ",
+    "transliteration": "",
+    "term": "harta awam",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-003",
+    "termAr": "إِيرَادٌ",
+    "transliteration": "",
+    "term": "hasil / pendapatan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-004",
+    "termAr": "نَفَقَةٌ",
+    "transliteration": "",
+    "term": "perbelanjaan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-006",
+    "termAr": "مُسَاعَدَةٌ",
+    "transliteration": "",
+    "term": "bantuan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-008",
+    "termAr": "مُسْتَحِقٌّ",
+    "transliteration": "",
+    "term": "orang yang berhak",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-009",
+    "termAr": "طَلَبٌ",
+    "transliteration": "",
+    "term": "permohonan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-011",
+    "termAr": "بَيَانَاتٌ",
+    "transliteration": "",
+    "term": "maklumat / data",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-012",
+    "termAr": "مُرَاجَعَةٌ",
+    "transliteration": "",
+    "term": "semakan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-013",
+    "termAr": "أَمَانَةٌ",
+    "transliteration": "",
+    "term": "amanah",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-014",
+    "termAr": "مَسْؤُولِيَّةٌ",
+    "transliteration": "",
+    "term": "tanggungjawab",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-015",
+    "termAr": "جَمَعَ",
+    "transliteration": "",
+    "term": "telah mengumpulkan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-016",
+    "termAr": "وَزَّعَ",
+    "transliteration": "",
+    "term": "telah mengagihkan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-017",
+    "termAr": "قَدَّمَ",
+    "transliteration": "",
+    "term": "telah menyerahkan / mengemukakan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-018",
+    "termAr": "رَاجَعَ",
+    "transliteration": "",
+    "term": "telah menyemak",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-019",
+    "termAr": "يَجْمَعُ",
+    "transliteration": "",
+    "term": "sedang / akan mengumpulkan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-020",
+    "termAr": "يُوَزِّعُ",
+    "transliteration": "",
+    "term": "sedang / akan mengagihkan",
+    "unitId": 9
+  },
+  {
+    "id": "u09-vocab-022",
+    "termAr": "يُرَاجِعُ",
+    "transliteration": "",
+    "term": "sedang / akan menyemak",
+    "unitId": 9
+  },
+  {
+    "id": "u10-vocab-001",
+    "termAr": "زَكَاةٌ",
+    "transliteration": "",
+    "term": "zakat",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-002",
+    "termAr": "صَدَقَةٌ",
+    "transliteration": "",
+    "term": "sedekah",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-003",
+    "termAr": "هِبَةٌ",
+    "transliteration": "",
+    "term": "pemberian / hibah",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-004",
+    "termAr": "مُزَكٍّ",
+    "transliteration": "",
+    "term": "pembayar zakat",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-005",
+    "termAr": "مُتَصَدِّقٌ",
+    "transliteration": "",
+    "term": "orang yang bersedekah",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-007",
+    "termAr": "فَقِيرٌ",
+    "transliteration": "",
+    "term": "orang fakir",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-008",
+    "termAr": "مِسْكِينٌ",
+    "transliteration": "",
+    "term": "orang miskin",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-009",
+    "termAr": "عَامِلٌ",
+    "transliteration": "",
+    "term": "amil / pengurus zakat",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-010",
+    "termAr": "غَارِمٌ",
+    "transliteration": "",
+    "term": "orang berhutang yang layak",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-011",
+    "termAr": "ابْنُ السَّبِيلِ",
+    "transliteration": "",
+    "term": "musafir yang memerlukan",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-012",
+    "termAr": "نِصَابٌ",
+    "transliteration": "",
+    "term": "paras minimum yang ditetapkan",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-013",
+    "termAr": "حَوْلٌ",
+    "transliteration": "",
+    "term": "tempoh setahun hijrah bagi harta tertentu",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-014",
+    "termAr": "مِقْدَارٌ",
+    "transliteration": "",
+    "term": "kadar / jumlah",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-015",
+    "termAr": "نِيَّةٌ",
+    "transliteration": "",
+    "term": "niat",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-016",
+    "termAr": "تَوْزِيعٌ",
+    "transliteration": "",
+    "term": "pengagihan",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-018",
+    "termAr": "يُعْطِي",
+    "transliteration": "",
+    "term": "memberikan",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-019",
+    "termAr": "يَتَصَدَّقُ",
+    "transliteration": "",
+    "term": "bersedekah",
+    "unitId": 10
+  },
+  {
+    "id": "u10-vocab-020",
+    "termAr": "يَسْتَحِقُّ",
+    "transliteration": "",
+    "term": "berhak menerima",
+    "unitId": 10
+  },
+  {
+    "id": "u11-vocab-001",
+    "termAr": "الرَّهْنُ",
+    "transliteration": "",
+    "term": "gadaian / Ar-Rahn",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-002",
+    "termAr": "الْمَرْهُونُ",
+    "transliteration": "",
+    "term": "barang yang digadaikan",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-003",
+    "termAr": "الرَّاهِنُ",
+    "transliteration": "",
+    "term": "penggadai",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-004",
+    "termAr": "الْمُرْتَهِنُ",
+    "transliteration": "",
+    "term": "penerima gadaian",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-005",
+    "termAr": "قَرْضٌ",
+    "transliteration": "",
+    "term": "pinjaman",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-007",
+    "termAr": "ذَهَبٌ",
+    "transliteration": "",
+    "term": "emas",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-008",
+    "termAr": "سِوَارٌ",
+    "transliteration": "",
+    "term": "gelang",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-009",
+    "termAr": "تَقْيِيمٌ",
+    "transliteration": "",
+    "term": "penilaian",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-010",
+    "termAr": "قِيمَةٌ",
+    "transliteration": "",
+    "term": "nilai",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-011",
+    "termAr": "رَسْمٌ",
+    "transliteration": "",
+    "term": "fi / caj",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-013",
+    "termAr": "خَزَانَةٌ",
+    "transliteration": "",
+    "term": "peti simpanan",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-015",
+    "termAr": "يَرْهَنُ",
+    "transliteration": "",
+    "term": "menggadaikan",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-016",
+    "termAr": "يُقَيِّمُ",
+    "transliteration": "",
+    "term": "menilai",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-017",
+    "termAr": "يَحْفَظُ",
+    "transliteration": "",
+    "term": "menyimpan / menjaga",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-018",
+    "termAr": "يَسْدُدُ",
+    "transliteration": "",
+    "term": "membayar / melunaskan",
+    "unitId": 11
+  },
+  {
+    "id": "u11-vocab-019",
+    "termAr": "يَسْتَرِدُّ",
+    "transliteration": "",
+    "term": "mengambil semula",
+    "unitId": 11
+  },
+  {
+    "id": "u12-vocab-001",
+    "termAr": "نُقُودٌ",
+    "transliteration": "",
+    "term": "wang / mata wang",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-002",
+    "termAr": "عُمْلَةٌ",
+    "transliteration": "",
+    "term": "mata wang",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-003",
+    "termAr": "صَرْفٌ",
+    "transliteration": "",
+    "term": "pertukaran mata wang",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-004",
+    "termAr": "سِعْرُ الصَّرْفِ",
+    "transliteration": "",
+    "term": "kadar pertukaran",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-006",
+    "termAr": "وَرَقَةٌ نَقْدِيَّةٌ",
+    "transliteration": "",
+    "term": "wang kertas",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-007",
+    "termAr": "عُمْلَةٌ مَعْدِنِيَّةٌ",
+    "transliteration": "",
+    "term": "syiling",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-008",
+    "termAr": "رِينْغِيتٌ مَالِيزِيٌّ",
+    "transliteration": "",
+    "term": "ringgit Malaysia",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-009",
+    "termAr": "رِيَالٌ سَعُودِيٌّ",
+    "transliteration": "",
+    "term": "riyal Saudi",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-010",
+    "termAr": "دُولَارٌ أَمْرِيكِيٌّ",
+    "transliteration": "",
+    "term": "dolar Amerika",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-011",
+    "termAr": "دِينَارٌ",
+    "transliteration": "",
+    "term": "dinar",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-012",
+    "termAr": "دِرْهَمٌ",
+    "transliteration": "",
+    "term": "dirham",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-013",
+    "termAr": "رَسْمٌ إِدَارِيٌّ",
+    "transliteration": "",
+    "term": "caj pentadbiran",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-014",
+    "termAr": "إِيصَالٌ رَسْمِيٌّ",
+    "transliteration": "",
+    "term": "resit rasmi",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-015",
+    "termAr": "يُبَدِّلُ",
+    "transliteration": "",
+    "term": "menukar",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-016",
+    "termAr": "يَصْرِفُ",
+    "transliteration": "",
+    "term": "menukar wang",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-017",
+    "termAr": "يَسْتَلِمُ",
+    "transliteration": "",
+    "term": "menerima",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-019",
+    "termAr": "يَرَاجِعُ",
+    "transliteration": "",
+    "term": "menyemak",
+    "unitId": 12
+  },
+  {
+    "id": "u12-vocab-020",
+    "termAr": "يَعُدُّ",
+    "transliteration": "",
+    "term": "mengira",
+    "unitId": 12
+  },
+  {
+    "id": "u13-vocab-001",
+    "termAr": "جِذْرٌ",
+    "transliteration": "",
+    "term": "akar kata",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-002",
+    "termAr": "وَزْنٌ",
+    "transliteration": "",
+    "term": "pola perkataan",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-003",
+    "termAr": "اِشْتِقَاقٌ",
+    "transliteration": "",
+    "term": "penerbitan kata / derivasi",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-004",
+    "termAr": "مُصْطَلَحٌ",
+    "transliteration": "",
+    "term": "istilah",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-005",
+    "termAr": "مَعْنًى",
+    "transliteration": "",
+    "term": "makna",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-006",
+    "termAr": "صِيغَةٌ",
+    "transliteration": "",
+    "term": "bentuk perkataan",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-007",
+    "termAr": "حُرُوفٌ أَصْلِيَّةٌ",
+    "transliteration": "",
+    "term": "huruf asal",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-008",
+    "termAr": "حُرُوفٌ زَائِدَةٌ",
+    "transliteration": "",
+    "term": "huruf tambahan",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-009",
+    "termAr": "دَلَالَةٌ",
+    "transliteration": "",
+    "term": "petunjuk makna",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-010",
+    "termAr": "مَعْنًى لُغَوِيٌّ",
+    "transliteration": "",
+    "term": "makna bahasa",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-011",
+    "termAr": "مَعْنًى اِصْطِلَاحِيٌّ",
+    "transliteration": "",
+    "term": "makna istilah",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-013",
+    "termAr": "شَرِيكٌ",
+    "transliteration": "",
+    "term": "rakan kongsi",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-014",
+    "termAr": "شَرِكَةٌ",
+    "transliteration": "",
+    "term": "syarikat / perkongsian",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-015",
+    "termAr": "مُشَارَكَةٌ",
+    "transliteration": "",
+    "term": "musyarakah / perkongsian",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-016",
+    "termAr": "مُضَارَبَةٌ",
+    "transliteration": "",
+    "term": "mudarabah",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-021",
+    "termAr": "يَشْتَقُّ",
+    "transliteration": "",
+    "term": "diterbitkan / berasal",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-022",
+    "termAr": "يَدُلُّ عَلَى",
+    "transliteration": "",
+    "term": "menunjukkan makna",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-023",
+    "termAr": "يُحَلِّلُ",
+    "transliteration": "",
+    "term": "menganalisis",
+    "unitId": 13
+  },
+  {
+    "id": "u13-vocab-024",
+    "termAr": "يَسْتَخْرِجُ",
+    "transliteration": "",
+    "term": "mengeluarkan / mengenal pasti",
+    "unitId": 13
+  },
+  {
+    "id": "u14-vocab-001",
+    "termAr": "مُعْجَمٌ",
+    "transliteration": "",
+    "term": "kamus / leksikon",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-002",
+    "termAr": "قَامُوسٌ",
+    "transliteration": "",
+    "term": "kamus",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-003",
+    "termAr": "مُقَدِّمَةُ الْمُعْجَمِ",
+    "transliteration": "",
+    "term": "pendahuluan kamus",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-005",
+    "termAr": "مَادَّةٌ",
+    "transliteration": "",
+    "term": "entri akar / bahan kata",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-006",
+    "termAr": "مَدْخَلٌ",
+    "transliteration": "",
+    "term": "entri",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-008",
+    "termAr": "شَرْحٌ",
+    "transliteration": "",
+    "term": "huraian",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-009",
+    "termAr": "مِثَالٌ",
+    "transliteration": "",
+    "term": "contoh",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-010",
+    "termAr": "سِيَاقٌ",
+    "transliteration": "",
+    "term": "konteks",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-011",
+    "termAr": "مُرَادِفٌ",
+    "transliteration": "",
+    "term": "sinonim",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-012",
+    "termAr": "جَمْعٌ",
+    "transliteration": "",
+    "term": "kata jamak",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-013",
+    "termAr": "مَصْدَرٌ",
+    "transliteration": "",
+    "term": "kata terbitan / verbal noun",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-014",
+    "termAr": "فِعْلٌ مَاضٍ",
+    "transliteration": "",
+    "term": "kata kerja lampau",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-015",
+    "termAr": "يَبْحَثُ عَنْ",
+    "transliteration": "",
+    "term": "mencari",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-016",
+    "termAr": "يَرْجِعُ إِلَى",
+    "transliteration": "",
+    "term": "merujuk kepada",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-018",
+    "termAr": "يُرَتِّبُ",
+    "transliteration": "",
+    "term": "menyusun",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-019",
+    "termAr": "يَقْرَأُ",
+    "transliteration": "",
+    "term": "membaca",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-020",
+    "termAr": "يُقَارِنُ",
+    "transliteration": "",
+    "term": "membandingkan",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-022",
+    "termAr": "تَوَرُّقٌ",
+    "transliteration": "",
+    "term": "tawarruq",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-023",
+    "termAr": "وَدِيعَةٌ",
+    "transliteration": "",
+    "term": "wadiah / simpanan amanah",
+    "unitId": 14
+  },
+  {
+    "id": "u14-vocab-024",
+    "termAr": "وَكَالَةٌ",
+    "transliteration": "",
+    "term": "wakalah / perwakilan",
+    "unitId": 14
+  }
+]
