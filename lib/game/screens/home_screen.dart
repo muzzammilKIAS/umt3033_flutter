@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../config/app_links.dart';
 import '../models/curriculum.dart';
 import '../services/progress_store.dart';
 import '../widgets/adventure_style.dart';
@@ -99,6 +101,18 @@ class AdventureHomeScreen extends StatelessWidget {
                       'Bring the whole classroom into the race.',
                       '/game/host',
                     ),
+                    _mode(
+                      context,
+                      width,
+                      Icons.terrain_rounded,
+                      'MUAMALAT TRAIL (WEB)',
+                      'Browser version — join a class via room code or QR.',
+                      null,
+                      onTap: () => launchUrl(
+                        Uri.parse(muamalatTrailUrl),
+                        mode: LaunchMode.externalApplication,
+                      ),
+                    ),
                   ],
                 );
               },
@@ -129,8 +143,9 @@ class AdventureHomeScreen extends StatelessWidget {
     IconData icon,
     String title,
     String description,
-    String route,
-  ) => SizedBox(
+    String? route, {
+    VoidCallback? onTap,
+  }) => SizedBox(
     width: width,
     child: AdventureCard(
       child: Column(
@@ -149,7 +164,8 @@ class AdventureHomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           FilledButton(
-            onPressed: () => Navigator.pushNamed(context, route),
+            onPressed:
+                onTap ?? () => Navigator.pushNamed(context, route!),
             child: const Text('Let’s go →'),
           ),
         ],

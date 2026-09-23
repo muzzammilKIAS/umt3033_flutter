@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../config/app_links.dart';
 import '../models/unit_model.dart';
 import '../services/data_service.dart';
 import '../services/storage_service.dart';
@@ -110,6 +112,39 @@ class DashboardScreen extends StatelessWidget {
                       Icons.arrow_forward,
                       color: Colors.white,
                     ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Card(
+                  color: const Color(0xFF0F2033),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
+                    leading: const Icon(
+                      Icons.terrain_rounded,
+                      color: Color(0xFF8EC9E8),
+                      size: 34,
+                    ),
+                    title: const Text(
+                      'Muamalat Trail (Web)',
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    subtitle: const Text(
+                      'Sertai kelas guru di pelayar — kod bilik & QR',
+                      textDirection: TextDirection.ltr,
+                      style: TextStyle(color: Color(0xFF8EC9E8), fontSize: 13),
+                    ),
+                    onTap: () => launchUrl(
+                      Uri.parse(muamalatTrailUrl),
+                      mode: LaunchMode.externalApplication,
+                    ),
+                    trailing: const Icon(Icons.open_in_new, color: Colors.white),
                   ),
                 ),
                 const SizedBox(height: 24),
