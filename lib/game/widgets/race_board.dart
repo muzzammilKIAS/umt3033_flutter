@@ -1,10 +1,47 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import '../engine/avatar_art.dart';
 import '../models/race_state.dart';
 import 'adventure_style.dart';
 
-class RaceBoard extends StatelessWidget {
+class RaceBoard extends StatefulWidget {
   final RaceRoom room;
   const RaceBoard({super.key, required this.room});
+
+  @override
+  State<RaceBoard> createState() => _RaceBoardState();
+}
+
+class _RaceBoardState extends State<RaceBoard> with SingleTickerProviderStateMixin {
+  // One shared clock drives every lane's run-cycle animation, instead of a
+  // ticker per player -- so 50 avatars on a projector stay cheap to repaint.
+  late final Ticker _ticker;
+  double _worldTime = 0;
+  double _lastPaint = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _ticker = createTicker((elapsed) {
+      _worldTime = elapsed.inMicroseconds / 1e6;
+      // ~30fps is plenty for a leg-scissor run cycle and keeps a full
+      // classroom of lanes light to repaint.
+      if (_worldTime - _lastPaint >= 1 / 30) {
+        _lastPaint = _worldTime;
+        setState(() {});
+      }
+    })..start();
+  }
+
+  @override
+  void dispose() {
+    _ticker.dispose();
+    super.dispose();
+  }
+
+  RaceRoom get room => widget.room;
+
   @override
   Widget build(BuildContext context) => LayoutBuilder(
     builder: (context, constraints) {
@@ -45,6 +82,7 @@ class RaceBoard extends StatelessWidget {
                       player: e.value,
                       rank: e.key + 1,
                       compact: compact,
+                      worldTime: _worldTime,
                     ),
                   ),
                 )
@@ -62,9 +100,11 @@ class _RaceLane extends StatelessWidget {
   final RacePlayer player;
   final int rank;
   final bool compact;
+  final double worldTime;
   const _RaceLane({
     required this.player,
     required this.rank,
+    required this.worldTime,
     required this.compact,
   });
   @override
@@ -189,7 +229,13 @@ class _RaceLane extends StatelessWidget {
                       ),
                       Positioned(
                         left: travel * value,
-                        child: AvatarBadge(player.avatar, size: marker),
+                        child: LiveAvatarMarker(
+                          avatar: player.avatar,
+                          size: marker,
+                          worldTime: worldTime,
+                          running: player.connected && !done,
+                          checkpoint: player.run.checkpoint,
+                        ),
                       ),
                     ],
                   );
@@ -233,4 +279,104 @@ class _RaceLane extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The marker riding each lane: a continuously running figure (driven by the
+/// board's shared clock, same run-cycle as real gameplay) that hops each
+/// time the player's synced checkpoint advances -- i.e. every time they
+/// actually clear a question gate live, not a simulated bounce.
+class LiveAvatarMarker extends StatefulWidget {
+  final int avatar;
+  final double size;
+  final double worldTime;
+  final bool running;
+  final int checkpoint;
+  const LiveAvatarMarker({
+    super.key,
+    required this.avatar,
+    required this.size,
+    required this.worldTime,
+    required this.running,
+    required this.checkpoint,
+  });
+
+  @override
+  State<LiveAvatarMarker> createState() => _LiveAvatarState();
+}
+
+class _LiveAvatarState extends State<LiveAvatarMarker>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _hop = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 420),
+  );
+
+  @override
+  void didUpdateWidget(LiveAvatarMarker old) {
+    super.didUpdateWidget(old);
+    if (widget.checkpoint > old.checkpoint) {
+      _hop.forward(from: 0);
+    }
+  }
+
+  @override
+  void dispose() {
+    _hop.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _hop,
+      builder: (context, child) {
+        final lift = sin(_hop.value * pi) * widget.size * .45;
+        return Transform.translate(
+          offset: Offset(0, -lift),
+          child: child,
+        );
+      },
+      child: Container(
+        width: widget.size,
+        height: widget.size,
+        decoration: BoxDecoration(
+          color: sky.withValues(alpha: .6),
+          borderRadius: BorderRadius.circular(widget.size / 3),
+        ),
+        child: CustomPaint(
+          painter: _LiveAvatarPainter(
+            avatar: widget.avatar,
+            stride: widget.worldTime,
+            running: widget.running,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _LiveAvatarPainter extends CustomPainter {
+  final int avatar;
+  final double stride;
+  final bool running;
+  _LiveAvatarPainter({
+    required this.avatar,
+    required this.stride,
+    required this.running,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.translate(size.width / 2, size.height * .86);
+    canvas.scale(size.height / 70);
+    drawAvatar(canvas, avatar, stride, running);
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(_LiveAvatarPainter oldDelegate) =>
+      avatar != oldDelegate.avatar ||
+      stride != oldDelegate.stride ||
+      running != oldDelegate.running;
 }

@@ -298,10 +298,10 @@ void main() {
       ),
     );
     await tester.pump(const Duration(seconds: 1));
-    expect(find.byType(AvatarBadge), findsNWidgets(50));
+    expect(find.byType(LiveAvatarMarker), findsNWidgets(50));
     expect(tester.takeException(), isNull);
     expect(
-      tester.getBottomRight(find.byType(AvatarBadge).last).dy,
+      tester.getBottomRight(find.byType(LiveAvatarMarker).last).dy,
       lessThan(750),
     );
   });
@@ -341,9 +341,9 @@ void main() {
         ),
       );
       await tester.pump(const Duration(seconds: 1));
-      expect(find.byType(AvatarBadge), findsNWidgets(count));
+      expect(find.byType(LiveAvatarMarker), findsNWidgets(count));
       expect(
-        tester.getBottomRight(find.byType(AvatarBadge).last).dy,
+        tester.getBottomRight(find.byType(LiveAvatarMarker).last).dy,
         lessThanOrEqualTo(504),
       );
       expect(tester.takeException(), isNull);
